@@ -21,7 +21,7 @@
       "styles": [
         "../node_modules/owl.carousel2/dist/assets/owl.carousel.min.css",
         "../node_modules/owl.carousel2/dist/assets/owl.theme.default.min.css",
-        "styles/styles.css"
+        "styles/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -59,7 +59,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }
