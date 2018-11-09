@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/owl.carousel2/dist/assets/owl.carousel.min.css",
+        "../node_modules/owl.carousel2/dist/assets/owl.theme.default.min.css",
+        "../node_modules/owl.carousel2/dist/assets/owl.theme.green.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/owl.carousel2/dist/owl.carousel.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
