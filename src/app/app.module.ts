@@ -4,15 +4,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { OwlcarouselDirective } from './directives/owlcarousel.directive';
+import {AppRoutingModule} from './app-routing.module';
+import { OnboardComponent } from './page/onboard/onboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OwlcarouselDirective
+    OwlcarouselDirective,
+    OnboardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
