@@ -51,4 +51,7 @@ export class OwlcarouselDirective implements AfterViewChecked, OnDestroy {
     this.initOwl();
   }
 
+  next() {
+    this.$el.trigger('next.owl.carousel');
+  }
 }

@@ -2,13 +2,16 @@
 
 .logo {
   width: 160px;
+  height: 160px;
 }
 
+.main {
+  align-self: center;
+}
 
 [appOwlcarousel] {
 
   width: 240px;
-  margin-left: 80px;
 
   color: white;
   font-size: 10pt;
@@ -35,4 +38,14 @@
   }
 }
 
+// operations
+.button-wrapper {
+  width: 80%;
+  margin-top: 10px;
+
+  button {
+    margin-top: 6px;
+    font-size: 9pt;
+  }
+}
 

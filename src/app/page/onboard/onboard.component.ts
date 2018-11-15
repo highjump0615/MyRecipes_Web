@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {OwlcarouselDirective} from '../../directives/owlcarousel.directive';
 
 @Component({
   selector: 'app-onboard',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnboardComponent implements OnInit {
 
+  @ViewChild(OwlcarouselDirective) carousel;
+
+  isLastPage = false;
+
   owlCarouselOptions: Object; // 宣告 Owl Carousel 的 Options
 
   constructor() {
@@ -14,7 +19,8 @@ export class OnboardComponent implements OnInit {
       items: 1,
       navigation: true,
       onTranslate: (e) => {
-        console.log('is translated, the page index is: ' + e.page.index);
+        // check if reaches last page
+        this.isLastPage = e.page.index >= (e.page.count - 1);
       }
     };
   }
@@ -22,4 +28,11 @@ export class OnboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onButNext() {
+    // go to next on carousel
+    this.carousel.next();
+  }
+
+  onButSkip() {
+  }
 }

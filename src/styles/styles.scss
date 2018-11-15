@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'sass/conf/conf';
+@import 'sass/buttons';
+
 
 html,
 body {
@@ -21,6 +24,12 @@ body {
   align-items: center;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .nm-center {
   align-self: center;
   justify-content: center !important;
@@ -31,4 +40,20 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
+}
+
+/**
+general control properties
+ */
+[full] {
+  width: 100%;
+}
+
+[clear] {
+  border: 0;
+  background-color: transparent;
+}
+
+.round {
+  border-radius: 300px;
 }
