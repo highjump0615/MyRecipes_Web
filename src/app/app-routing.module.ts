@@ -5,8 +5,12 @@ import {OnboardComponent} from './page/onboard/onboard.component';
 const routes: Routes = [
   {
     path: '',
-    component: OnboardComponent,
+    redirectTo: 'onboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'onboard',
+    loadChildren: './page/onboard/onboard.module#OnboardModule'
   }
 ];
 
