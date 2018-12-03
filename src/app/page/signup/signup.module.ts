@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SignupRoutingModule } from './signup-routing.module';
 import { SignupEmailComponent } from './signup-email/signup-email.component';
 import {CheckBoxComponent} from '../../components/check-box/check-box.component';
+import { SignupPasswordComponent } from './signup-password/signup-password.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {CheckBoxComponent} from '../../components/check-box/check-box.component'
   ],
   declarations: [
     SignupEmailComponent,
-    CheckBoxComponent
+    CheckBoxComponent,
+    SignupPasswordComponent
   ]
 })
 export class SignupModule { }
