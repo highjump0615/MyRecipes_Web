@@ -94,6 +94,9 @@ button[icon-only] {
   margin-right: 12px;
 }
 
+/**
+  spans
+ */
 .sp-notice {
   color: $light;
   font-size: 10pt;
@@ -103,4 +106,8 @@ button[icon-only] {
     color: $danger;
     text-decoration: none !important;
   }
+}
+.sp-title {
+  color: $light;
+  font-size: 11pt;
 }

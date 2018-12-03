@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -16,5 +19,7 @@ export class SigninComponent implements OnInit {
   }
 
   onButForget() {
+    // go to forget password page
+    this.router.navigate(['forget']);
   }
 }
