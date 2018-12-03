@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'onboard',
     loadChildren: './page/onboard/onboard.module#OnboardModule'
+  },
+  {
+    path: 'login',
+    loadChildren: './page/signin/signin.module#SigninModule'
   }
 ];
 

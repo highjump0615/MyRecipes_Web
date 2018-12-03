@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {OwlcarouselDirective} from '../../directives/owlcarousel.directive';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-onboard',
@@ -14,7 +15,9 @@ export class OnboardComponent implements OnInit {
 
   owlCarouselOptions: Object; // 宣告 Owl Carousel 的 Options
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.owlCarouselOptions = { // 設定 Owl Carousel Options
       items: 1,
       navigation: true,
@@ -29,10 +32,25 @@ export class OnboardComponent implements OnInit {
   }
 
   onButNext() {
+    if (this.isLastPage) {
+      // go to log in page
+      this.goToNext();
+      return;
+    }
+
     // go to next on carousel
     this.carousel.next();
   }
 
   onButSkip() {
+    // go to log in page
+    this.goToNext();
+  }
+
+  /**
+   * go to next page
+   */
+  goToNext() {
+    this.router.navigate(['login']);
   }
 }

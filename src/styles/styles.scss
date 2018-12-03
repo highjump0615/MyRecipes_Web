@@ -2,12 +2,20 @@
 
 @import 'sass/conf/conf';
 @import 'sass/buttons';
+@import 'sass/form';
+
+// font
+@font-face {
+  font-family: 'myriad';
+  src: url('../assets/fonts/MyriadProRegular.ttf') format('truetype');
+}
 
 
 html,
 body {
   height: 100%;
   margin: 0;
+  font-family: 'myriad';
 }
 
 /* background */
@@ -54,6 +62,45 @@ general control properties
   background-color: transparent;
 }
 
+button[icon-only] {
+  padding: 0;
+}
+
 .round {
   border-radius: 300px;
+}
+
+
+//
+// signin form
+//
+.signin-input {
+  border-bottom: 1px solid $light;
+
+  .form-control {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    margin: 7px 0;
+    font-size: 9pt;
+
+    &:focus {
+      border: none;
+      background: transparent;
+    }
+  }
+}
+.signin-input img {
+  margin-right: 12px;
+}
+
+.sp-notice {
+  color: $light;
+  font-size: 10pt;
+  line-height: 1.5;
+
+  a {
+    color: $danger;
+    text-decoration: none !important;
+  }
 }
