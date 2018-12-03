@@ -7,19 +7,20 @@
   align-self: center;
 }
 
+.content {
+  margin-left: 80px;
+  width: 200px;
+}
+
 .sp-title {
   margin-bottom: 20px;
 }
 
-.sp-notice {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-style: italic;
-  font-size: 9pt;
-}
 
 // operations
 .button-wrapper {
+  margin-top: 30px;
+
   button {
     font-size: 9pt;
   }

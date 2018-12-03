@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'forget',
     loadChildren: './page/forget/forget.module#ForgetModule'
+  },
+  {
+    path: 'signup',
+    loadChildren: './page/signup/signup.module#SignupModule'
   }
 ];
 

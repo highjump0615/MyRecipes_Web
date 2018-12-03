@@ -1,0 +1,15 @@
+@import '../../../styles/sass/conf/conf';
+
+:host {
+
+  display: block;
+
+  span {
+    color: $light;
+    margin-left: 10px;
+    margin-top: 2px;
+    font-style: italic;
+    font-size: 9pt;
+  }
+
+}
