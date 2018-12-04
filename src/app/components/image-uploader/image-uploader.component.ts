@@ -14,7 +14,7 @@ export class ImageUploaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  onFileSelected($event) {
+  onFileSelected(event) {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
 

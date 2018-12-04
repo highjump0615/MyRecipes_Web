@@ -1,0 +1,18 @@
+<li class="menu-list-item">
+
+  <a href
+     (click)="onToggleSubMenu($event)"
+     class="menu-list-link flex-c-row">
+    <div>
+      <i *ngIf="icon" class="{{ icon }}"></i>
+      <span>{{title}}</span>
+    </div>
+    <i class="icon ion-ios-arrow-down" [ngClass]="{'ion-ios-arrow-up': expanded}"></i>
+  </a>
+
+  <div class="content-wrapper"
+       #content>
+    <ng-content></ng-content>
+  </div>
+
+</li>

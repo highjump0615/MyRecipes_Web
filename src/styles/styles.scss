@@ -70,6 +70,19 @@ button[icon-only] {
   border-radius: 300px;
 }
 
+//
+// border
+//
+.top-border {
+  border-top: 1px solid $light;
+}
+.bottom-border {
+  border-bottom: 1px solid $light;
+}
+.border-white {
+  border: solid 3px $light;
+}
+
 
 //
 // signin form
