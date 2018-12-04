@@ -1,0 +1,18 @@
+<input type="file"
+       accept="image/*"
+       (change)="onFileSelected($event)"
+       #file />
+
+<div class="nm-center dv-photo">
+  <!-- button -->
+  <button
+    icon-only clear
+    class="btn"
+    (click)="file.click()">
+    <ng-content *ngIf="!picture"></ng-content>
+    <img *ngIf="picture"
+         class="content"
+         [src]="picture" />
+  </button>
+
+</div>

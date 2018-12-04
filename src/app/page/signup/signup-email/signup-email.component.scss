@@ -1,3 +1,5 @@
+@import '../../../../styles/sass/conf/conf';
+
 .logo {
   width: 160px;
   height: 100%;
@@ -27,5 +29,17 @@ app-check-box:not(:first-child) {
 
   button {
     font-size: 9pt;
+  }
+}
+
+
+// photo
+app-image-uploader div {
+  color: $light;
+  font-size: 9pt;
+  line-height: 1.5;
+
+  i {
+    font-size: 17pt;
   }
 }

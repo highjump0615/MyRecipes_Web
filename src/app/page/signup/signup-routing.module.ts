@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {SignupEmailComponent} from './signup-email/signup-email.component';
 import {SignupPasswordComponent} from './signup-password/signup-password.component';
+import {SignupProfileComponent} from './signup-profile/signup-profile.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'password',
     component: SignupPasswordComponent
+  },
+  {
+    path: 'profile',
+    component: SignupProfileComponent
   }
 ];
 
