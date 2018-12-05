@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup-allergies',
@@ -10,7 +11,9 @@ export class SignupAllergiesComponent implements OnInit {
   allergies: Array<string> = [];
   diets: Array<string> = [];
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     // init data
     for (let i = 0; i < 3; i++) {
       this.allergies.push('aa');
@@ -22,6 +25,11 @@ export class SignupAllergiesComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onButNext() {
+    // go to signup allergies page
+    this.router.navigate(['signup/dislike']);
   }
 
 }

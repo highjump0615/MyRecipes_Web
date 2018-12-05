@@ -12,6 +12,7 @@ import {ExpandMenuComponent} from '../../components/expand-menu/expand-menu.comp
 import {ExpandMenuItemComponent} from '../../components/expand-menu/expand-menu-item/expand-menu-item.component';
 import { SignupFavouriteComponent } from './signup-favourite/signup-favourite.component';
 import {CuisineItemComponent} from '../../components/cuisine-item/cuisine-item.component';
+import { SignupDislikeComponent } from './signup-dislike/signup-dislike.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {CuisineItemComponent} from '../../components/cuisine-item/cuisine-item.c
     ExpandMenuComponent,
     ExpandMenuItemComponent,
     SignupFavouriteComponent,
-    CuisineItemComponent
+    CuisineItemComponent,
+    SignupDislikeComponent
   ]
 })
 export class SignupModule { }
