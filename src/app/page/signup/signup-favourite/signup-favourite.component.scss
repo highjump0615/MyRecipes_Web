@@ -1,0 +1,11 @@
+@import '../../../../styles/sass/conf/conf';
+@import "../signup-allergies/signup-allergies.component";
+
+
+.main {
+
+  // accordion contents
+  .content {
+    flex: 0 1 auto;
+  }
+}

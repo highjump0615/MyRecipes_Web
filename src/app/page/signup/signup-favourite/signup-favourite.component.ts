@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-signup-favourite',
   templateUrl: './signup-favourite.component.html',
-  styleUrls: ['../signup-allergies/signup-allergies.component.scss']
+  styleUrls: ['./signup-favourite.component.scss']
 })
 export class SignupFavouriteComponent implements OnInit {
 

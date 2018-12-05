@@ -25,11 +25,9 @@
   .content {
     background: $light;
     border-radius: 10px;
-    flex: 0 1 auto;
 
     overflow-y: scroll;
     overflow-x: hidden;
-
   }
 
   .container-scroll {
@@ -74,3 +72,9 @@
   border-bottom: solid 8px transparent;
 }
 
+
+:host {
+  .content {
+    max-height: 220px;
+  }
+}
