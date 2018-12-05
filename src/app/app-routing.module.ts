@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {OnboardComponent} from './page/onboard/onboard.component';
+import {PageComponent} from './page/page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: './page/signup/signup.module#SignupModule'
+  },
+  {
+    path: 'home',
+    component: PageComponent,
+    loadChildren: './page/home/home.module#HomeModule'
   }
 ];
 
