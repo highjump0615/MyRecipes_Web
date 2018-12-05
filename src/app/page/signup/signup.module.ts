@@ -10,6 +10,8 @@ import {ImageUploaderComponent} from '../../components/image-uploader/image-uplo
 import { SignupAllergiesComponent } from './signup-allergies/signup-allergies.component';
 import {ExpandMenuComponent} from '../../components/expand-menu/expand-menu.component';
 import {ExpandMenuItemComponent} from '../../components/expand-menu/expand-menu-item/expand-menu-item.component';
+import { SignupFavouriteComponent } from './signup-favourite/signup-favourite.component';
+import {CuisineItemComponent} from '../../components/cuisine-item/cuisine-item.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import {ExpandMenuItemComponent} from '../../components/expand-menu/expand-menu-
     ImageUploaderComponent,
     SignupAllergiesComponent,
     ExpandMenuComponent,
-    ExpandMenuItemComponent
+    ExpandMenuItemComponent,
+    SignupFavouriteComponent,
+    CuisineItemComponent
   ]
 })
 export class SignupModule { }

@@ -22,11 +22,13 @@
         "../node_modules/owl.carousel2/dist/assets/owl.carousel.min.css",
         "../node_modules/owl.carousel2/dist/assets/owl.theme.default.min.css",
         "../node_modules/ionicons/dist/scss/ionicons.scss",
+        "../node_modules/bootstrap/scss/bootstrap.scss",
         "styles/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/owl.carousel2/dist/owl.carousel.min.js"
+        "../node_modules/owl.carousel2/dist/owl.carousel.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

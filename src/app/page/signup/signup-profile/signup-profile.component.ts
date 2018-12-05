@@ -17,6 +17,6 @@ export class SignupProfileComponent implements OnInit {
 
   onButNext() {
     // go to allergies page
-    this.router.navigate(['signup/allergy']);
+    this.router.navigate(['signup/favourite']);
   }
 }

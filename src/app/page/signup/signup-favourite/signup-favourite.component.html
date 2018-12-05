@@ -13,37 +13,20 @@
 
     <!-- title -->
     <span class="sp-title top-border bottom-border"
-    >Any allergies or diets?</span>
+    >Tell us your favourite cuisines.</span>
 
-    <app-expand-menu>
-      <!-- allergies -->
-      <app-expand-menu-item
-        title="Allergies"
-        [expanded]="true">
-
-        <!-- content -->
-        <div
-          class="content">
-          <div class="container-scroll">
+    <!-- content -->
+    <div
+      class="content"
+      style="margin-top: 14px;">
+      <div class="container-scroll">
+        <div class="row">
+          <div class="col-3" *ngFor="let data of favourites">
+            <app-cuisine-item text="AMERICAN"></app-cuisine-item>
           </div>
         </div>
-
-      </app-expand-menu-item>
-
-      <!-- diets -->
-      <app-expand-menu-item
-        title="Diets">
-
-        <!-- content -->
-        <div
-          class="content">
-          <div class="container-scroll">
-          </div>
-        </div>
-
-      </app-expand-menu-item>
-    </app-expand-menu>
-
+      </div>
+    </div>
 
     <!-- buttons -->
     <div class="button-wrapper nm-center">
