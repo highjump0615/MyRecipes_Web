@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {PageComponent} from './page/page.component';
 import { PageTopComponent } from './components/page-top/page-top.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarMenuItemComponent } from './components/sidebar/sidebar-menu-item/sidebar-menu-item.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
-    PageTopComponent
+    PageTopComponent,
+    SidebarComponent,
+    SidebarMenuItemComponent
   ],
   imports: [
     BrowserModule,

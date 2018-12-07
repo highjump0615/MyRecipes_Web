@@ -29,7 +29,22 @@ const routes: Routes = [
     path: 'home',
     component: PageComponent,
     loadChildren: './page/home/home.module#HomeModule'
-  }
+  },
+  {
+    path: 'preference',
+    component: PageComponent,
+    loadChildren: './page/preference/preference.module#PreferenceModule'
+  },
+  {
+    path: 'setting',
+    component: PageComponent,
+    loadChildren: './page/setting/setting.module#SettingModule'
+  },
+  {
+    path: 'logout',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

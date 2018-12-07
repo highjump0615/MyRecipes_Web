@@ -1,0 +1,34 @@
+<aside class="al-sidebar">
+  <!-- menu items -->
+  <ul>
+    <app-sidebar-menu-item
+      link="/home"
+      title="Home"
+      icon="ion-ios-home">
+    </app-sidebar-menu-item>
+
+    <app-sidebar-menu-item
+      link="/preference"
+      title="Preferences"
+      icon="ion-ios-apps">
+    </app-sidebar-menu-item>
+
+    <app-sidebar-menu-item
+      link="/setting"
+      title="Settings"
+      icon="ion-md-settings">
+    </app-sidebar-menu-item>
+
+  </ul>
+
+  <!-- log out -->
+  <ul>
+    <app-sidebar-menu-item
+      link="/logout"
+      title="Log Out"
+      icon="ion-md-log-out"
+      [topBorder]="true"
+      [bottomBorder]="false">
+    </app-sidebar-menu-item>
+  </ul>
+</aside>

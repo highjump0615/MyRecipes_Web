@@ -23,6 +23,8 @@ export class SignupDislikeComponent implements OnInit {
   }
 
   onButNext() {
+    // go to main page
+    this.router.navigate(['home']);
   }
 
 }
