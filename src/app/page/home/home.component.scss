@@ -1,0 +1,135 @@
+@import '../../../styles/sass/conf/conf';
+
+$margin-left: 100px;
+$content-width: 660px;
+
+:host {
+  font-size: 9pt;
+}
+
+.dv-profile, .dv-recipes {
+  margin-left: $margin-left;
+  width: $content-width;
+}
+
+.photo {
+  width: 68px;
+  height: 68px;
+  border: 3px solid $primary;
+  margin-right: 10px;
+}
+
+.username {
+  span {
+    font-size: 15pt;
+    margin-right: 4px;
+  }
+
+  a {
+    margin-top: -4px;
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.user-desc {
+  font-size: 10pt;
+  color: gray;
+}
+
+.button-wrapper {
+  button {
+    width: 120px;
+    font-size: 10pt;
+    padding: 4pt 0;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.dv-menus {
+  background-color: $primary;
+  margin-top: 10px;
+  color: $light;
+
+  // content
+  > div {
+    margin-left: $margin-left;
+    width: $content-width;
+  }
+
+  .dv-menu-list {
+    flex: 1;
+    margin: 0 10px;
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      padding: 2px 8px;
+      background-color: $danger;
+      margin-right: 6px;
+
+      img {
+        height: 10px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .btn-add {
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+$menu-spacing: 6px;
+
+.dv-menu {
+  padding: $menu-spacing 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #fff6;
+  }
+}
+
+
+.dv-recipes {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    color: $primary;
+    font-size: 10.5pt;
+
+    .line {
+      height: 1px;
+      background-color: $primary;
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    a {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+
+  // recipes grid
+  .row {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+
+  .col-3 {
+    padding: 4px 4px;
+  }
+}

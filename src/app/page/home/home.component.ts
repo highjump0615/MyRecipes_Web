@@ -7,9 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  desc = 'Food Blogger, Explorer, Designer, Entrepreneur, Food photographer';
+
+  menus: Array<string> = [];
+
+  // recipes
+  upcomings: Array<string> = [];
+  recipes: Array<string> = [];
+
+  constructor() {
+    // init data
+    for (let i = 0; i < 2; i++) {
+      this.menus.push('aa');
+    }
+
+    // init data
+    for (let i = 0; i < 4; i++) {
+      this.upcomings.push('aa');
+      this.recipes.push('aa');
+    }
+  }
 
   ngOnInit() {
   }
 
+  onButCookingTip() {
+  }
 }

@@ -1,0 +1,24 @@
+$padding: 14px;
+
+.card-body {
+  padding: $padding $padding 0 $padding;
+}
+
+app-star-rate {
+  margin: 6px 22px 0 22px;
+}
+
+.title {
+  margin-top: -4px;
+  margin-bottom: 2px;
+  color: #141414;
+}
+
+.date {
+  text-align: center;
+  font-size: 8pt;
+  color: #717171;
+  padding: 4px 0;
+
+  border-top: #8881 1px solid;
+}

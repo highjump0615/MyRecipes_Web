@@ -116,6 +116,14 @@ button.btn.btn-light {
   }
 }
 
+button.btn.btn-gradient {
+  background-image: linear-gradient($primary-light, $primary-dark);
+  color: $light;
+  &:active, &:target {
+    background-position: right center;
+  }
+}
+
 button.btn.btn-inverse {
   @include buttonColor($help-text, $help-text);
   color: $label-text;

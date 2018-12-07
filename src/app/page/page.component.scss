@@ -1,7 +1,15 @@
 @import '../../styles/sass/conf/conf';
 
-.al-main {
-  margin-left: $sidebar-width;
-  min-height: 500px;
-  position: relative;
+:host {
+  .al-main {
+    margin-left: $sidebar-width;
+    min-height: 500px;
+    position: relative;
+  }
+
+  .pg-content {
+    display: flex;
+    width: 100%;
+  }
+
 }
