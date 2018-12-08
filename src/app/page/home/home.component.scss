@@ -1,15 +1,12 @@
 @import '../../../styles/sass/conf/conf';
 
-$margin-left: 100px;
-$content-width: 660px;
 
 :host {
-  font-size: 9pt;
 }
 
 .dv-profile, .dv-recipes {
-  margin-left: $margin-left;
-  width: $content-width;
+  margin: 0 auto;
+  width: $page-content-width;
 }
 
 .photo {
@@ -58,8 +55,8 @@ $content-width: 660px;
 
   // content
   > div {
-    margin-left: $margin-left;
-    width: $content-width;
+    margin: 0 auto;
+    width: $page-content-width;
   }
 
   .dv-menu-list {

@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, OnInit, QueryList} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ExpandMenuItemComponent} from './expand-menu-item/expand-menu-item.component';
 
 @Component({
@@ -8,6 +8,11 @@ import {ExpandMenuItemComponent} from './expand-menu-item/expand-menu-item.compo
 })
 export class ExpandMenuComponent implements AfterContentInit {
 
+  /**
+   * expand multiple menu item at once
+   */
+  @Input() multiple = false;
+
   @ContentChildren(ExpandMenuItemComponent) items: QueryList<ExpandMenuItemComponent>;
 
   constructor() { }
@@ -15,7 +20,10 @@ export class ExpandMenuComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     // Open the first panel
-    this.items.toArray()[0].expanded = true;
+    if (!this.multiple) {
+      this.items.toArray()[0].expanded = true;
+    }
+
     // Loop through all panels
     this.items.toArray().forEach((item) => {
       // subscribe panel toggle event
@@ -27,10 +35,15 @@ export class ExpandMenuComponent implements AfterContentInit {
   }
 
   openPanel(item: ExpandMenuItemComponent) {
-    // close all panels and open new
-    this.items.toArray().forEach(p => {
-      p.expandContent(p === item);
-    });
+    if (this.multiple) {
+      // toggle current menu item
+      item.toggleContent();
+    } else {
+      // close all panels and open new
+      this.items.toArray().forEach(p => {
+        p.expandContent(p === item);
+      });
+    }
   }
 
 }

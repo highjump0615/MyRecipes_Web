@@ -5,6 +5,8 @@
     margin-left: $sidebar-width;
     min-height: 500px;
     position: relative;
+
+    font-size: 9pt;
   }
 
   .pg-content {
@@ -12,4 +14,22 @@
     width: 100%;
   }
 
+  ::ng-deep .pg-title {
+    background-color: white;
+    height: 64px;
+
+    > div {
+      margin: 0 auto;
+      width: $page-content-width;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      // title
+      > span {
+        font-size: 18pt;
+        color: $dark-text;
+      }
+    }
+  }
 }

@@ -24,7 +24,7 @@ export class ExpandMenuItemComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.expandContent(this.expanded, false)
+    this.expandContent(this.expanded, false);
   }
 
   expandContent(expand, animation = true) {
@@ -41,6 +41,13 @@ export class ExpandMenuItemComponent implements AfterContentInit {
     this.expanded = expand;
 
     console.log('expandContent: ' + expand);
+  }
+
+  toggleContent() {
+    const submenu = jQuery(this.content.nativeElement);
+    submenu.slideToggle();
+
+    this.expanded = !this.expanded;
   }
 
 }

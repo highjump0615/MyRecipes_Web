@@ -1,3 +1,81 @@
-<p>
-  preference works!
-</p>
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span>Preferences</span>
+    </div>
+  </div>
+
+  <div class="dv-content">
+    <!-- pref menus -->
+    <app-expand-menu
+      [multiple]="true">
+      <!-- favourites -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Favorite Cuisines">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="row">
+            <div class="col-3" *ngFor="let data of favourites">
+              <app-cuisine-item text="AMERICAN"></app-cuisine-item>
+            </div>
+          </div>
+        </div>
+      </app-expand-menu-item>
+
+      <!-- allergies -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Allergies">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="row">
+            <div class="col-3" *ngFor="let data of allergies">
+              <app-cuisine-item text="AMERICAN"></app-cuisine-item>
+            </div>
+          </div>
+        </div>
+      </app-expand-menu-item>
+
+      <!-- diets -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Diets">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="row">
+            <div class="col-3" *ngFor="let data of diets">
+              <app-cuisine-item text="AMERICAN"></app-cuisine-item>
+            </div>
+          </div>
+        </div>
+      </app-expand-menu-item>
+
+      <!-- disliked -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Disliked Foods">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="row">
+            <div class="col-3" *ngFor="let data of dislikes">
+              <app-cuisine-item text="AMERICAN"></app-cuisine-item>
+            </div>
+          </div>
+        </div>
+      </app-expand-menu-item>
+
+    </app-expand-menu>
+
+  </div>
+
+</div>
