@@ -1,4 +1,5 @@
 import {AfterContentInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-expand-menu-item',
@@ -12,12 +13,23 @@ export class ExpandMenuItemComponent implements AfterContentInit {
   @Input() title: string;
   @Input() icon: string;
   @Input() expanded = false;
+  @Input() linkTo: string;
 
   @Output() toggle = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   public onToggleSubMenu($event): boolean {
+    if (this.linkTo !== 'undefined') {
+      // no expandable menu item
+      console.log(this.linkTo);
+
+      // do not redirect if linkTo is empty
+      return this.linkTo.length > 0;
+    }
+
     this.toggle.emit($event);
 
     return false;

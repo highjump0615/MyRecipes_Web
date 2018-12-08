@@ -8,16 +8,15 @@ import { SignupPasswordComponent } from './signup-password/signup-password.compo
 import { SignupProfileComponent } from './signup-profile/signup-profile.component';
 import {ImageUploaderComponent} from '../../components/image-uploader/image-uploader.component';
 import { SignupAllergiesComponent } from './signup-allergies/signup-allergies.component';
-import {ExpandMenuComponent} from '../../components/expand-menu/expand-menu.component';
-import {ExpandMenuItemComponent} from '../../components/expand-menu/expand-menu-item/expand-menu-item.component';
 import { SignupFavouriteComponent } from './signup-favourite/signup-favourite.component';
-import {CuisineItemComponent} from '../../components/cuisine-item/cuisine-item.component';
 import { SignupDislikeComponent } from './signup-dislike/signup-dislike.component';
+import {ComponentsModule} from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    SignupRoutingModule
+    SignupRoutingModule,
+    ComponentsModule
   ],
   declarations: [
     SignupEmailComponent,
@@ -26,10 +25,7 @@ import { SignupDislikeComponent } from './signup-dislike/signup-dislike.componen
     SignupProfileComponent,
     ImageUploaderComponent,
     SignupAllergiesComponent,
-    ExpandMenuComponent,
-    ExpandMenuItemComponent,
     SignupFavouriteComponent,
-    CuisineItemComponent,
     SignupDislikeComponent
   ]
 })

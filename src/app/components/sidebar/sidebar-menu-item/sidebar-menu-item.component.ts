@@ -20,7 +20,6 @@ export class SidebarMenuItemComponent implements OnInit {
   }
 
   onClick() {
-    console.log('asdfasdf');
   }
 
 }

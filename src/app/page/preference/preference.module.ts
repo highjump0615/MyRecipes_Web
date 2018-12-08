@@ -3,20 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { PreferenceRoutingModule } from './preference-routing.module';
 import { PreferenceComponent } from './preference.component';
-import {ExpandMenuComponent} from '../../components/expand-menu/expand-menu.component';
-import {ExpandMenuItemComponent} from '../../components/expand-menu/expand-menu-item/expand-menu-item.component';
-import {CuisineItemComponent} from '../../components/cuisine-item/cuisine-item.component';
+import {ComponentsModule} from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PreferenceRoutingModule
+    PreferenceRoutingModule,
+    ComponentsModule
   ],
   declarations: [
-    PreferenceComponent,
-    ExpandMenuComponent,
-    ExpandMenuItemComponent,
-    CuisineItemComponent
+    PreferenceComponent
   ]
 })
 export class PreferenceModule { }

@@ -1,3 +1,38 @@
-<p>
-  setting works!
-</p>
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span>Settings</span>
+    </div>
+  </div>
+
+
+  <div class="dv-content">
+    <!-- about -->
+    <app-expand-menu
+      [multiple]="true">
+      <!-- about -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="About the App"
+        linkTo="">
+      </app-expand-menu-item>
+
+      <!-- privacy -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Privacy Policy"
+        linkTo="https://termsfeed.com/privacy-policy/2295de3aaaa3da6fd36567c0ed435590">
+      </app-expand-menu-item>
+
+      <!-- report -->
+      <app-expand-menu-item
+        class="card with-shadow"
+        title="Report a Problem"
+        linkTo="mailto:admin@numenu.com?subject=Report a Problem&body=">
+      </app-expand-menu-item>
+    </app-expand-menu>
+
+  </div>
+
+</div>
