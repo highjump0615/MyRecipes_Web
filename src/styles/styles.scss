@@ -97,7 +97,10 @@ button[icon-only] {
     background-color: transparent;
     font-size: 9pt;
 
+    @include placeholderStyle($content-text, 0.7);
+
     &:focus {
+      color: $content-text;
       border: none;
       background: transparent;
     }

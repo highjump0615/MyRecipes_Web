@@ -1,0 +1,46 @@
+@import '../../../styles/sass/conf/conf';
+@import "~bootstrap/scss/bootstrap";
+
+.dv-content {
+  margin: 16px auto;
+  width: $page-content-width;
+
+  .card {
+    margin-bottom: 12px;
+  }
+
+  .card-body {
+    padding: 10px 12px;
+
+    .card-title {
+      font-size: 12pt;
+      margin-bottom: 6pt;
+    }
+
+    .card-text {
+      color: $gray-600;
+    }
+  }
+}
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+  .input-group {
+    width: 260px;
+    margin: 0;
+
+    .form-control {
+      height: auto;
+      padding: 0 10px;
+    }
+
+    .input-group-append {
+      button {
+        padding: 6px 10px 2px 10px;
+      }
+    }
+  }
+}

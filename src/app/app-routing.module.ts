@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren: './page/setting/setting.module#SettingModule'
   },
   {
+    path: 'cooking-tip',
+    component: PageComponent,
+    loadChildren: './page/cooking-tip/cooking-tip.module#CookingTipModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

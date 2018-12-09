@@ -1,0 +1,35 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span>Cooking Tips</span>
+
+      <!-- search bar -->
+      <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Search">
+        <div class="input-group-append">
+          <button
+            class="btn btn-primary"
+            type="button">
+            <i class="icon ion-md-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv-content">
+    <div class="card with-shadow"
+         *ngFor="let data of tips">
+      <div class="card-body">
+        <div class="card-title">Cooking Tip 1</div>
+        <p class="card-text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

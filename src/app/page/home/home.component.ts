@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,9 @@ export class HomeComponent implements OnInit {
   upcomings: Array<string> = [];
   recipes: Array<string> = [];
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     // init data
     for (let i = 0; i < 2; i++) {
       this.menus.push('aa');
@@ -32,5 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   onButCookingTip() {
+    // go to cooking tip page
+    this.router.navigate(['cooking-tip']);
   }
 }
