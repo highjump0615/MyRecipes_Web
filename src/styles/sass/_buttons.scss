@@ -8,8 +8,8 @@ $hover: 24;
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.1s ease;
-  padding: 0.344rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.344rem 1rem !important;
+  font-size: 0.9rem !important;
 }
 
 .btn:hover {
@@ -136,6 +136,11 @@ button.btn.btn-inverse {
 .btn-with-icon {
   i {
     margin-right: 10px;
+  }
+}
+.btn-with-icon-right {
+  i {
+    margin-left: 4px;
   }
 }
 

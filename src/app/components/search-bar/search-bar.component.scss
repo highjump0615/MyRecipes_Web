@@ -1,0 +1,16 @@
+:host {
+  .input-group {
+    margin: 0;
+  }
+
+  .form-control {
+    height: auto;
+    padding: 0 10px;
+  }
+
+  .input-group-append {
+    button {
+      padding: 6px 10px 2px 10px;
+    }
+  }
+}

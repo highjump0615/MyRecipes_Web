@@ -1,8 +1,7 @@
 @import '../../../styles/sass/conf/conf';
 
 .dv-content {
-  margin: 16px auto;
-  width: $page-content-width;
+  margin-top: 16px;
 }
 
 ::ng-deep app-expand-menu-item {

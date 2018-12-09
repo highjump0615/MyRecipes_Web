@@ -1,0 +1,37 @@
+@import '../../../styles/sass/conf/conf';
+
+$height: 70px;
+
+.card {
+  height: $height;
+  overflow: hidden;
+}
+
+img {
+  width: $height;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-title {
+  color: $primary;
+  font-size: 10pt;
+}
+.recipe-desc {
+  margin-top: 6px;
+  color: #999;
+  font-size: 8.5pt;
+  line-height: 1.5;
+}
+
+// rating star
+app-star-rate {
+  width: 80px;
+
+}

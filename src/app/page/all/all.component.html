@@ -1,0 +1,45 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span>Recipes and Menus</span>
+
+      <!-- search bar -->
+      <app-search-bar></app-search-bar>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex"
+           style="margin-left: 10px">
+        <button
+          type="button"
+          class="btn btn-gradient round btn-with-icon-right"
+          (click)="onButFilter()">
+          <span>Filter</span>
+          <i class="icon ion-ios-funnel"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- menus -->
+  <div class="dv-menus">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/all/recipes"
+           routerLinkActive="active">Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/all/menus"
+           routerLinkActive="active">Menus</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="dv-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

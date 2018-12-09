@@ -5,6 +5,7 @@
     margin-left: $sidebar-width;
     min-height: 500px;
     position: relative;
+    padding-top: 41px;
 
     font-size: 9pt;
   }
@@ -32,4 +33,10 @@
       }
     }
   }
+
+  ::ng-deep .dv-content {
+    margin: 0 auto;
+    width: $page-content-width;
+  }
+
 }

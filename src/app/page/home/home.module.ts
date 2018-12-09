@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import {RecipeGridCardComponent} from '../../components/recipe-grid-card/recipe-grid-card.component';
-import {StarRateComponent} from '../../components/star-rate/star-rate.component';
+import {ComponentsModule} from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ComponentsModule
   ],
   declarations: [
-    HomeComponent,
-    RecipeGridCardComponent,
-    StarRateComponent
+    HomeComponent
   ]
 })
 export class HomeModule { }
