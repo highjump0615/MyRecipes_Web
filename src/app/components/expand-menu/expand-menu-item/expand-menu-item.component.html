@@ -1,7 +1,16 @@
 <li class="menu-list-item">
 
-  <a [href]="linkTo"
+  <a *ngIf="!linkTo"
      (click)="onToggleSubMenu($event)"
+     class="menu-list-link flex-c-row" >
+    <div>
+      <i *ngIf="icon" class="{{ icon }}"></i>
+      <span>{{title}}</span>
+    </div>
+    <i class="icon ion-ios-arrow-forward" [ngClass]="{'ion-ios-arrow-up': expanded}"></i>
+  </a>
+
+  <a *ngIf="linkTo" [href]="linkTo"
      class="menu-list-link flex-c-row">
     <div>
       <i *ngIf="icon" class="{{ icon }}"></i>

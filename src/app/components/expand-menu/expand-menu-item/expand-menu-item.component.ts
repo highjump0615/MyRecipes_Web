@@ -22,14 +22,6 @@ export class ExpandMenuItemComponent implements AfterContentInit {
   ) { }
 
   public onToggleSubMenu($event): boolean {
-    if (this.linkTo !== 'undefined') {
-      // no expandable menu item
-      console.log(this.linkTo);
-
-      // do not redirect if linkTo is empty
-      return this.linkTo.length > 0;
-    }
-
     this.toggle.emit($event);
 
     return false;
