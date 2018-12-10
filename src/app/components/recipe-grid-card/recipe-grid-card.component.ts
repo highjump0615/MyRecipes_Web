@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-recipe-grid-card',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-grid-card.component.scss']
 })
 export class RecipeGridCardComponent implements OnInit {
+
+  @Input() showDate = true;
 
   constructor() { }
 

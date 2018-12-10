@@ -1,0 +1,39 @@
+@import "~bootstrap/scss/bootstrap";
+
+.content-wrapper {
+  position: relative;
+}
+
+.scroll-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.dv-anchor {
+  cursor: pointer;
+
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: linear-gradient(to right, #3334, #3332, #3334);
+
+  i {
+    color: white;
+    font-size: 24pt;
+  }
+
+  &.right {
+    right: 0;
+  }
+}
+
+// hide scroll bar
+::-webkit-scrollbar {
+  display: none;
+}

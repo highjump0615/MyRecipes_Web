@@ -1,3 +1,22 @@
-<p>
-  menus works!
-</p>
+<!-- menus -->
+<div
+  *ngFor="let num of [1, 2, 3, 4, 5]">
+
+  <!-- title -->
+  <div class="title">Mother's Day Menus</div>
+
+  <!-- recipes -->
+  <div class="dv-recipes">
+    <app-hscroll-container [offset]="660">
+      <div class="row flex-nowrap">
+        <div class="col-3"
+             *ngFor="let num of [1, 2, 3, 4, 5]">
+          <app-recipe-grid-card
+            [showDate]="false">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </app-hscroll-container>
+  </div>
+
+</div>

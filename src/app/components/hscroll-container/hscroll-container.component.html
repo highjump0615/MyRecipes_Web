@@ -1,0 +1,21 @@
+<div class="content-wrapper">
+  <div class="scroll-wrapper"
+       #scrollWrapper>
+    <ng-content></ng-content>
+  </div>
+
+  <!-- left scroll button -->
+  <div
+    class="dv-anchor"
+    *ngIf="checkOverflow()"
+    (click)="onButLeft()">
+    <i class="icon ion-ios-arrow-back"></i>
+  </div>
+  <!-- right scroll button -->
+  <div
+    class="dv-anchor right"
+    *ngIf="checkOverflow()"
+    (click)="onButRight()">
+    <i class="icon ion-ios-arrow-forward"></i>
+  </div>
+</div>

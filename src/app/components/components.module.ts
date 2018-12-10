@@ -7,6 +7,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecipeRowCardComponent } from './recipe-row-card/recipe-row-card.component';
 import {StarRateComponent} from './star-rate/star-rate.component';
 import {RecipeGridCardComponent} from './recipe-grid-card/recipe-grid-card.component';
+import { HscrollContainerComponent } from './hscroll-container/hscroll-container.component';
 
 const COMPONENTS = [
   ExpandMenuComponent,
@@ -15,7 +16,8 @@ const COMPONENTS = [
   SearchBarComponent,
   RecipeRowCardComponent,
   RecipeGridCardComponent,
-  StarRateComponent
+  StarRateComponent,
+  HscrollContainerComponent
 ];
 
 @NgModule({
