@@ -56,6 +56,11 @@ const routes: Routes = [
     loadChildren: './page/about/about.module#AboutModule'
   },
   {
+    path: 'profile',
+    component: PageComponent,
+    loadChildren: './page/profile-edit/profile-edit.module#ProfileEditModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

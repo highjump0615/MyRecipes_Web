@@ -6,7 +6,6 @@ import { SignupEmailComponent } from './signup-email/signup-email.component';
 import {CheckBoxComponent} from '../../components/check-box/check-box.component';
 import { SignupPasswordComponent } from './signup-password/signup-password.component';
 import { SignupProfileComponent } from './signup-profile/signup-profile.component';
-import {ImageUploaderComponent} from '../../components/image-uploader/image-uploader.component';
 import { SignupAllergiesComponent } from './signup-allergies/signup-allergies.component';
 import { SignupFavouriteComponent } from './signup-favourite/signup-favourite.component';
 import { SignupDislikeComponent } from './signup-dislike/signup-dislike.component';
@@ -23,7 +22,6 @@ import {ComponentsModule} from '../../components/components.module';
     CheckBoxComponent,
     SignupPasswordComponent,
     SignupProfileComponent,
-    ImageUploaderComponent,
     SignupAllergiesComponent,
     SignupFavouriteComponent,
     SignupDislikeComponent

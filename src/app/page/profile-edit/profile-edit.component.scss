@@ -1,0 +1,46 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-content {
+  margin-top: 60px;
+
+  .card {
+    margin: 0 auto;
+    width: 480px;
+
+    padding: 0 20px 20px 20px;
+
+    button[type=submit] {
+      margin-top: 20px;
+      align-self: center;
+    }
+
+    app-image-uploader {
+      margin: -50px 0 20px 0;
+    }
+  }
+
+  .form-control {
+    height: auto;
+    padding: 4px 12px;
+
+    @include placeholderStyle($dark-text, 0.4);
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+
+    label {
+      color: darkslategrey;
+      font-size: 10pt;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.btn-rect {
+  width: 100px;
+  border-radius: 0;
+  font-size: 9pt;
+  padding: 4px !important;
+}

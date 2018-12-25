@@ -10,9 +10,12 @@
     class="btn"
     (click)="file.click()">
     <ng-content *ngIf="!picture"></ng-content>
-    <img *ngIf="picture"
+    <img *ngIf="picture; else default"
          class="content"
          [src]="picture" />
+    <ng-template #default>
+      <img src="../../../../assets/imgs/default_user.png" />
+    </ng-template>
   </button>
 
 </div>
