@@ -8,6 +8,7 @@ import { RecipeRowCardComponent } from './recipe-row-card/recipe-row-card.compon
 import {StarRateComponent} from './star-rate/star-rate.component';
 import {RecipeGridCardComponent} from './recipe-grid-card/recipe-grid-card.component';
 import { HscrollContainerComponent } from './hscroll-container/hscroll-container.component';
+import {RouterModule} from '@angular/router';
 
 const COMPONENTS = [
   ExpandMenuComponent,
@@ -22,7 +23,8 @@ const COMPONENTS = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     ...COMPONENTS

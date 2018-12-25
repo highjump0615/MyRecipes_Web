@@ -51,6 +51,11 @@ const routes: Routes = [
     loadChildren: './page/all/all.module#AllModule'
   },
   {
+    path: 'about',
+    component: PageComponent,
+    loadChildren: './page/about/about.module#AboutModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

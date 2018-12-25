@@ -1,6 +1,6 @@
 <li class="menu-list-item">
 
-  <a *ngIf="!linkTo"
+  <a *ngIf="!linkTo && !linkPage"
      (click)="onToggleSubMenu($event)"
      class="menu-list-link flex-c-row" >
     <div>
@@ -10,13 +10,24 @@
     <i class="icon ion-ios-arrow-forward" [ngClass]="{'ion-ios-arrow-up': expanded}"></i>
   </a>
 
-  <a *ngIf="linkTo" [href]="linkTo"
+  <a *ngIf="linkTo"
+     [href]="linkTo"
      class="menu-list-link flex-c-row">
     <div>
       <i *ngIf="icon" class="{{ icon }}"></i>
       <span>{{title}}</span>
     </div>
-    <i class="icon ion-ios-arrow-forward" [ngClass]="{'ion-ios-arrow-up': expanded}"></i>
+    <i class="icon ion-ios-arrow-forward"></i>
+  </a>
+
+  <a *ngIf="linkPage"
+     [routerLink]="linkPage"
+     class="menu-list-link flex-c-row">
+    <div>
+      <i *ngIf="icon" class="{{ icon }}"></i>
+      <span>{{title}}</span>
+    </div>
+    <i class="icon ion-ios-arrow-forward"></i>
   </a>
 
   <div class="content-wrapper"

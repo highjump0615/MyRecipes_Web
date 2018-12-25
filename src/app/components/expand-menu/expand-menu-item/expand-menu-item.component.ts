@@ -14,6 +14,7 @@ export class ExpandMenuItemComponent implements AfterContentInit {
   @Input() icon: string;
   @Input() expanded = false;
   @Input() linkTo: string;
+  @Input() linkPage: string;
 
   @Output() toggle = new EventEmitter<any>();
 
