@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../../models/recipe';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,11 +11,17 @@ export class RecipeDetailComponent implements OnInit {
 
   recipe: Recipe;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.recipe = new Recipe();
   }
 
   ngOnInit() {
   }
 
+  onButReview() {
+    // go to reviews page
+    this.router.navigate(['reviews']);
+  }
 }

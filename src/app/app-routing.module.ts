@@ -76,6 +76,11 @@ const routes: Routes = [
     loadChildren: './page/recipe-detail/recipe-detail.module#RecipeDetailModule'
   },
   {
+    path: 'reviews',
+    component: PageComponent,
+    loadChildren: './page/reviews/reviews.module#ReviewsModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'
