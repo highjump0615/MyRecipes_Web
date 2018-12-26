@@ -66,6 +66,11 @@ const routes: Routes = [
     loadChildren: './page/favourite/favourite.module#FavouriteModule'
   },
   {
+    path: 'myrecipes',
+    component: PageComponent,
+    loadChildren: './page/myrecipe/myrecipe.module#MyrecipeModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

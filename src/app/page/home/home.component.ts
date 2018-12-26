@@ -43,4 +43,9 @@ export class HomeComponent implements OnInit {
     // go to favourite page
     this.router.navigate(['favorite']);
   }
+
+  onButMyRecipe() {
+    // go to my recipes page
+    this.router.navigate(['myrecipes']);
+  }
 }
