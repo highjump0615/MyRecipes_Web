@@ -1,0 +1,34 @@
+@import '../../../../styles/sass/conf/conf';
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+}
+
+.dv-content {
+  margin-top: 22px;
+
+  .card {
+    padding: 16px;
+
+    .form-control {
+      height: auto;
+      padding: 4px 12px;
+
+      @include placeholderStyle($dark-text, 0.4);
+    }
+
+    app-star-rate {
+      width: 160px;
+      align-self: center;
+    }
+
+    textarea {
+      margin-top: 10px;
+      height: 240px !important;
+    }
+
+  }
+}

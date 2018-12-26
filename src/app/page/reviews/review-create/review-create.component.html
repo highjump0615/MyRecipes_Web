@@ -1,0 +1,38 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Reviews</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient round"
+          (click)="onButSubmit()"
+        >Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div class="dv-content">
+    <div class="card with-shadow">
+
+      <app-star-rate
+        [starSize]="24"
+        [rating]="3"
+        [readOnly]="false">
+      </app-star-rate>
+
+      <form class="d-flex flex-column">
+        <!-- first name -->
+        <input class="form-control"
+               placeholder="Headline for review" />
+        <textarea class="form-control"
+                  placeholder="Write your review here"></textarea>
+      </form>
+    </div>
+  </div>
+
+</div>

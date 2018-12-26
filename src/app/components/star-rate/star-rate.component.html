@@ -2,6 +2,8 @@
    *ngFor="let num of [1, 2, 3, 4, 5]"
    [ngStyle]="{
     'font-size': starSize + 'pt',
-    'color': getColor(num)
-  }">
+    'color': getColor(num),
+    'cursor': readOnly ? 'normal' : 'pointer'
+    }"
+   (click)="rate(num)">
 </i>
