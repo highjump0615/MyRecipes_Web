@@ -1,0 +1,85 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <div class="d-flex">
+        <span class="title">Barbecue Pork Ribs</span>
+
+        <!-- rate -->
+        <app-star-rate
+          [starSize]="16"
+          [rating]="3">
+        </app-star-rate>
+      </div>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient">
+          <i class="icon ion-ios-list"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dv-content">
+    <!-- image -->
+    <div class="image d-flex">
+      <!-- left button -->
+      <button
+        clear
+        type="button"
+        class="btn">
+        <i class="icon ion-ios-arrow-back"></i>
+      </button>
+
+      <img class="with-shadow"
+           src="../../../assets/imgs/default_food.png" />
+
+      <!-- right button -->
+      <button
+        clear
+        type="button"
+        class="btn">
+        <i class="icon ion-ios-arrow-forward"></i>
+      </button>
+    </div>
+
+    <!-- skill level -->
+    <div class="card with-shadow">
+      <div class="card-body">
+        <span class="title">Skill Level:</span> Medium
+      </div>
+    </div>
+
+    <!-- serving -->
+    <div class="card with-shadow">
+      <div class="card-body">
+        <span class="title">Serving:</span> 3
+      </div>
+    </div>
+
+    <!-- ingredients -->
+    <div class="card with-shadow">
+      <div class="card-body">
+        <span class="title">Ingredients:</span>
+        <ul>
+          <li *ngFor="let ing of recipe.ingredients">
+            {{ing}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- preparations -->
+    <div class="card with-shadow">
+      <div class="card-body">
+        <span class="title">Preparations:</span>
+        <p class="description">{{recipe.preparation}}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

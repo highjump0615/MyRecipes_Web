@@ -1,20 +1,22 @@
-<div class="card d-flex flex-column with-shadow">
-  <div class="card-body d-flex flex-column">
-    <!-- image -->
-    <div
-      class="square border"
-      style="background-image: url('../../../assets/imgs/default_food.png')">
+<a routerLink="/recipe">
+  <div class="card d-flex flex-column with-shadow">
+    <div class="card-body d-flex flex-column">
+      <!-- image -->
+      <div
+        class="square border"
+        style="background-image: url('../../../assets/imgs/default_food.png')">
+      </div>
+
+      <!-- rate -->
+      <app-star-rate
+        [rating]="3">
+      </app-star-rate>
+
+      <!-- title -->
+      <span class="title nm-center">Burger Americana</span>
     </div>
 
-    <!-- rate -->
-    <app-star-rate
-      [rating]="3">
-    </app-star-rate>
-
-    <!-- title -->
-    <span class="title nm-center">Burger Americana</span>
+    <!-- date -->
+    <div *ngIf="showDate" class="date">Feb 12, Monday</div>
   </div>
-
-  <!-- date -->
-  <div *ngIf="showDate" class="date">Feb 12, Monday</div>
-</div>
+</a>

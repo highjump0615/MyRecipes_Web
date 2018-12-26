@@ -1,5 +1,11 @@
 $padding: 14px;
 
+:host {
+  a {
+    text-decoration: none;
+  }
+}
+
 .card-body {
   padding: $padding $padding 0 $padding;
 }
