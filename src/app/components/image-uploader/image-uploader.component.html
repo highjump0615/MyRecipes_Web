@@ -9,12 +9,17 @@
     icon-only clear
     class="btn"
     (click)="file.click()">
+
     <ng-content *ngIf="!picture"></ng-content>
+
     <img *ngIf="picture; else default"
          class="content"
          [src]="picture" />
-    <ng-template #default>
-      <img src="../../../../assets/imgs/default_user.png" />
+
+    <!-- show default image only if content is empty -->
+    <ng-template
+      #default>
+      <img *ngIf="defaultImg" [src]="defaultImg" />
     </ng-template>
   </button>
 

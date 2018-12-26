@@ -1,0 +1,121 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Add Recipe</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient round"
+          (click)="onButSubmit()"
+        >Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dv-content">
+    <div class="card with-shadow">
+      <!-- upload image -->
+      <app-image-uploader class="nm-center">
+        <div class="d-flex nm-center align-items-center">
+          <i class="icon ion-md-add"></i>
+          <span>Upload Photo</span>
+        </div>
+      </app-image-uploader>
+
+      <form class="d-flex flex-column">
+        <!-- title -->
+        <div class="form-group">
+          <label>Title</label>
+          <input class="form-control"
+                 placeholder="Enter recipe title" />
+        </div>
+
+        <!-- skill level -->
+        <div class="form-group">
+          <label>Skill Level</label>
+          <select class="custom-select form-control">
+            <option selected>Select skill level</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">Hight</option>
+          </select>
+        </div>
+
+        <!-- servings -->
+        <div class="form-group">
+          <label>Servings</label>
+          <input class="form-control"
+                 type="number"
+                 placeholder="Enter servings number" />
+        </div>
+
+        <div class="form-group dv-ingredient">
+          <label>Ingredients</label>
+          <form>
+            <div class="form-row">
+              <!-- name -->
+              <div class="col-7">
+                <input class="form-control"
+                       placeholder="Ingredient" />
+              </div>
+
+              <!-- unit -->
+              <div class="col-2">
+                <input class="form-control"
+                       placeholder="Unit" />
+              </div>
+
+              <!-- count -->
+              <div class="col-2">
+                <input class="form-control"
+                       type="number"
+                       placeholder="Quantity" />
+              </div>
+
+              <button type="submit"
+                      class="btn btn-primary col-1"
+              >Add</button>
+
+            </div>
+          </form>
+
+          <!-- ingredient list -->
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Quantity</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Apple</td>
+              <td>kg</td>
+              <td>2</td>
+              <td>
+                <i class="icon ion-md-trash"></i>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- preparation -->
+        <div class="form-group">
+          <label>Preparation</label>
+          <textarea class="form-control"
+                    placeholder="Enter preparation"></textarea>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

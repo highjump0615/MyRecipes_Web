@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ImageUploaderComponent implements OnInit {
 
   @Input() picture = '';
+  @Input() defaultImg = '';
 
   constructor() { }
 

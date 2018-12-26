@@ -34,12 +34,18 @@ app-check-box:not(:first-child) {
 
 
 // photo
-app-image-uploader div {
-  color: $light;
-  font-size: 9pt;
-  line-height: 1.5;
+::ng-deep app-image-uploader {
+  div {
+    color: $light;
+    font-size: 9pt;
+    line-height: 1.5;
 
-  i {
-    font-size: 17pt;
+    i {
+      font-size: 17pt;
+    }
+  }
+
+  .dv-photo {
+    background: $primary;
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-myrecipe',
@@ -10,7 +11,9 @@ export class MyrecipeComponent implements OnInit {
   // recipes
   recipes: Array<string> = [];
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     // init data
     for (let i = 0; i < 4; i++) {
       this.recipes.push('aa');
@@ -21,5 +24,7 @@ export class MyrecipeComponent implements OnInit {
   }
 
   onButNewRecipe() {
+    // go to new recipe page
+    this.router.navigate(['recipe/new']);
   }
 }
