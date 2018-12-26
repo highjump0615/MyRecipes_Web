@@ -61,6 +61,11 @@ const routes: Routes = [
     loadChildren: './page/profile-edit/profile-edit.module#ProfileEditModule'
   },
   {
+    path: 'favorite',
+    component: PageComponent,
+    loadChildren: './page/favourite/favourite.module#FavouriteModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -38,4 +38,9 @@ export class HomeComponent implements OnInit {
     // go to cooking tip page
     this.router.navigate(['cooking-tip']);
   }
+
+  onButFavourite() {
+    // go to favourite page
+    this.router.navigate(['favorite']);
+  }
 }
