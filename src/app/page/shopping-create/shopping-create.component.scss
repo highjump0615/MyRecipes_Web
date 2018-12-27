@@ -1,0 +1,60 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-content {
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  .card {
+    padding: 14px 16px;
+  }
+
+  .dv-list {
+    margin: 12px 0;
+  }
+
+  .trigger-expand {
+    height: 28px;
+    background: $primary-bg;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: $light;
+
+    i {
+      font-size: 16pt;
+    }
+  }
+
+  .expand-content {
+    button {
+      color: $light;
+
+      &[icon-only] {
+        font-size: 14pt !important;
+      }
+    }
+
+    form {
+      background: $primary;
+      padding: 6px 14px;
+      align-items: center;
+
+      input {
+        background: $light;
+
+        &.round {
+          padding: 4px 10px;
+        }
+      }
+    }
+  }
+
+  .list-group-item {
+    cursor: pointer;
+    padding: 6px 16px;
+  }
+}

@@ -1,0 +1,92 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div class="justify-content-between">
+      <span class="title">New Shopping List</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient round"
+        >Save</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv-content">
+    <div class="card with-shadow">
+      <div class="d-flex flex-column">
+        <!-- title -->
+        <input class="form-control"
+               placeholder="Shopping List Name" />
+
+        <!-- shopping list -->
+        <div class="dv-list">
+          <div class="empty-notice">
+            <span>No items added yet</span>
+          </div>
+        </div>
+
+        <!-- source list -->
+        <div class="trigger-expand">
+          <i class="icon ion-ios-arrow-up"></i>
+        </div>
+        <div class="expand-content">
+          <!-- add form -->
+          <form class="d-flex">
+            <!-- increase/decrease -->
+            <button
+              type="button"
+              class="btn"
+              clear icon-only
+              (click)="onButCountDec()">
+              <i class="icon ion-ios-remove-circle-outline"></i>
+            </button>
+            <button
+              type="button"
+              class="btn"
+              clear icon-only
+              style="margin-left: 6px;"
+              (click)="onButCountInc()">
+              <i class="icon ion-ios-add-circle-outline"></i>
+            </button>
+
+            <!-- count -->
+            <input
+              class="round" clear
+              style="margin-left: 10px; width: 70px"
+              type="number"
+              placeholder="Count" />
+            <!-- unit -->
+            <input
+              class="round" clear readonly
+              style="margin-left: 10px; width: 60px"
+              placeholder="Unit" />
+            <!-- item name -->
+            <input
+              class="round" clear readonly
+              style="margin-left: 10px; flex: 1"
+              placeholder="Item Name" />
+
+            <button
+              type="button"
+              class="btn"
+              clear
+              style="margin-left: 10px; padding: 0 !important;"
+              (click)="onButCountInc()"
+            >ADD</button>
+          </form>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-action">Morbi leo risus</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

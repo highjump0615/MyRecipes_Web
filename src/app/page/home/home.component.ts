@@ -48,4 +48,14 @@ export class HomeComponent implements OnInit {
     // go to my recipes page
     this.router.navigate(['myrecipes']);
   }
+
+  onButAddMenu() {
+    // go to add menu page
+    this.router.navigate(['menu/new']);
+  }
+
+  onButAddShoppingList() {
+    // go to add shopping list page
+    this.router.navigate(['shopping/new']);
+  }
 }

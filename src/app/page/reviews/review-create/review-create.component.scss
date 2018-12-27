@@ -13,13 +13,6 @@
   .card {
     padding: 16px;
 
-    .form-control {
-      height: auto;
-      padding: 4px 12px;
-
-      @include placeholderStyle($dark-text, 0.4);
-    }
-
     app-star-rate {
       width: 160px;
       align-self: center;

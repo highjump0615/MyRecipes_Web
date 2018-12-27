@@ -39,4 +39,10 @@
     width: $page-content-width;
   }
 
+  /deep/ .form-control {
+    height: auto;
+    padding: 4px 12px;
+
+    @include placeholderStyle($dark-text, 0.4);
+  }
 }

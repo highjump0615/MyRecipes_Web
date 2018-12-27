@@ -91,6 +91,11 @@ const routes: Routes = [
     loadChildren: './page/menu-create/menu-create.module#MenuCreateModule'
   },
   {
+    path: 'shopping/new',
+    component: PageComponent,
+    loadChildren: './page/shopping-create/shopping-create.module#ShoppingCreateModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

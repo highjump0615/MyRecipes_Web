@@ -61,6 +61,11 @@ general control properties
 [clear] {
   border: 0;
   background-color: transparent;
+
+  &:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
 }
 
 button[icon-only] {
@@ -180,4 +185,13 @@ button[icon-only] {
       box-shadow: none !important;
     }
   }
+}
+
+.empty-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  opacity: 0.4;
 }

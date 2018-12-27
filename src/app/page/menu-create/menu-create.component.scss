@@ -30,12 +30,6 @@
     margin-bottom: 12px;
   }
 
-  /deep/ .form-control {
-    height: auto;
-    padding: 4px 12px;
-
-    @include placeholderStyle($dark-text, 0.4);
-  }
 
   /deep/ .button-wrapper {
     margin-top: 20px;
