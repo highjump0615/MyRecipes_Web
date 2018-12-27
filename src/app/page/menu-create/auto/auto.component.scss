@@ -1,0 +1,64 @@
+@import '../../../../styles/sass/conf/conf';
+
+.card {
+  padding: 16px;
+}
+
+form {
+  > .form-control {
+    margin-bottom: 10px;
+  }
+}
+
+:host /deep/ .menu-filter {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+
+  > li > a.menu-list-link {
+    color: gray !important;
+    height: 31px !important;
+  }
+
+  .content {
+    background-color: $primary;
+    color: $light;
+    padding: 4px 12px;
+    font-size: 10pt;
+
+    .dv-preset {
+      button {
+        color: $light;
+        font-size: 15pt !important;
+      } 
+    }
+  }
+
+  .content-wrapper {
+    margin: 0 !important;
+  }
+}
+
+:host /deep/ .menu-cuisines {
+  a.menu-list-link {
+    padding: 0 !important;
+    border-top: #fff4 1px solid;
+  }
+
+  .content {
+    padding: 0 8px;
+  }
+  .row {
+    margin: 0;
+  }
+
+  .col-3 {
+    padding: 4px 6px;
+  }
+
+  app-cuisine-item {
+    span {
+      color: $light;
+    }
+  }
+}
+

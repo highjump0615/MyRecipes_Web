@@ -1,0 +1,46 @@
+@import '../../../styles/sass/conf/conf';
+@import "~bootstrap/scss/bootstrap";
+
+:host {
+  .dv-menus {
+    background-color: $primary;
+    color: $light;
+
+    // content
+    > .nav {
+      margin: 0 auto;
+      width: $page-content-width;
+
+      .nav-link {
+        color: $light;
+
+        @include hover {
+          color: $light-dark;
+        }
+
+        &.active {
+          border-bottom: $danger 3px solid;
+        }
+      }
+    }
+  }
+
+  .dv-content {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  /deep/ .form-control {
+    height: auto;
+    padding: 4px 12px;
+
+    @include placeholderStyle($dark-text, 0.4);
+  }
+
+  /deep/ .button-wrapper {
+    margin-top: 20px;
+    padding: 6px !important;
+    border: 1px solid $primary;
+    border-radius: 30px;
+  }
+}

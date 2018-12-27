@@ -1,0 +1,31 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Menu Generator</span>
+
+    </div>
+
+  </div>
+
+  <!-- menus -->
+  <div class="dv-menus">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/menu/new/auto"
+           routerLinkActive="active">Generate Menu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/menu/new/manual"
+           routerLinkActive="active">Manual Menu</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="dv-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

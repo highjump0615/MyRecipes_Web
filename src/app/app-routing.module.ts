@@ -86,6 +86,11 @@ const routes: Routes = [
     loadChildren: './page/recipe-create/recipe-create.module#RecipeCreateModule'
   },
   {
+    path: 'menu/new',
+    component: PageComponent,
+    loadChildren: './page/menu-create/menu-create.module#MenuCreateModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'

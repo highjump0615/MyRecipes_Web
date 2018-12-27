@@ -153,3 +153,31 @@ button[icon-only] {
     padding: 4px 4px;
   }
 }
+
+.form-control {
+
+}
+
+.form-control-wrapper {
+  display: flex;
+  align-items: center;
+
+  i {
+    color: $primary;
+  }
+
+  &:focus-within {
+    border-color: $primary-bg;
+  }
+
+  input {
+    padding: 0 !important;
+    border: none;
+    box-shadow: none;
+
+    &:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
