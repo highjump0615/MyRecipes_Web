@@ -1,0 +1,19 @@
+<div class="combo-container">
+
+  <input class="form-control"
+         placeholder="Ingredient"
+         (focus)="onFocusInput()"
+         (blur)="onBlurInput()" />
+
+  <!-- drop down -->
+  <div class="data-container with-shadow"
+       *ngIf="showDropDown">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-action"
+          *ngFor="let num of [1, 2, 3, 4, 5, 6, 7, 8]"
+          (click)="onItemSelected($event)"
+      >Dapibus ac facilisis in</li>
+    </ul>
+  </div>
+
+</div>

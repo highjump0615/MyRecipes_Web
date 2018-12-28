@@ -10,6 +10,7 @@ import {RecipeGridCardComponent} from './recipe-grid-card/recipe-grid-card.compo
 import { HscrollContainerComponent } from './hscroll-container/hscroll-container.component';
 import {RouterModule} from '@angular/router';
 import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
+import { ComboBoxComponent } from './combo-box/combo-box.component';
 
 const COMPONENTS = [
   ExpandMenuComponent,
@@ -20,7 +21,8 @@ const COMPONENTS = [
   RecipeGridCardComponent,
   StarRateComponent,
   HscrollContainerComponent,
-  ImageUploaderComponent
+  ImageUploaderComponent,
+  ComboBoxComponent
 ];
 
 @NgModule({
