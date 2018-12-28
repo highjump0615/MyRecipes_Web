@@ -1,0 +1,30 @@
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+}
+
+.dv-content {
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  .card {
+    padding: 16px 16px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+
+    label {
+      color: darkslategrey;
+      font-size: 10pt;
+      margin-bottom: 2px;
+    }
+  }
+
+  textarea {
+    height: 240px !important;
+  }
+}

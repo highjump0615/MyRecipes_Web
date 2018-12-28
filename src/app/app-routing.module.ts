@@ -96,6 +96,11 @@ const routes: Routes = [
     loadChildren: './page/shopping-create/shopping-create.module#ShoppingCreateModule'
   },
   {
+    path: 'tip/new',
+    component: PageComponent,
+    loadChildren: './page/tip-create/tip-create.module#TipCreateModule'
+  },
+  {
     path: 'logout',
     redirectTo: 'login',
     pathMatch: 'full'
