@@ -8,6 +8,7 @@ import {PageComponent} from './page/page.component';
 import { PageTopComponent } from './components/page-top/page-top.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarMenuItemComponent } from './components/sidebar/sidebar-menu-item/sidebar-menu-item.component';
+import {AuthGuard} from './guards/auth.guard';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { SidebarMenuItemComponent } from './components/sidebar/sidebar-menu-item
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
