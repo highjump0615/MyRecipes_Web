@@ -11,6 +11,7 @@ import { HscrollContainerComponent } from './hscroll-container/hscroll-container
 import {RouterModule} from '@angular/router';
 import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
 import { ComboBoxComponent } from './combo-box/combo-box.component';
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 
 const COMPONENTS = [
   ExpandMenuComponent,
@@ -31,7 +32,8 @@ const COMPONENTS = [
     RouterModule
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    SpinnerOverlayComponent
   ],
   exports: [
     ...COMPONENTS

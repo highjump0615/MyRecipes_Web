@@ -10,7 +10,9 @@
       style="margin-left: 80px;"
     >
 
-      <form>
+      <form ngNativeValidate
+            (ngSubmit)="onSignin()"
+            #signinForm="ngForm">
         <!-- email-->
         <div class="flex-c-row input-item signin-input">
           <img
@@ -18,8 +20,11 @@
             style="width: 16px;" />
           <input
             type="email"
+            name="email"
+            required
             class="form-control"
-            placeholder="Email">
+            placeholder="Email"
+            [(ngModel)]="email">
         </div>
 
         <!-- password-->
@@ -30,6 +35,7 @@
             style="width: 11px;" />
           <input
             type="password"
+            required
             class="form-control"
             placeholder="Password">
         </div>
@@ -40,7 +46,6 @@
             full
             type="submit"
             class="btn btn-light round"
-            (click)="onButSignin()"
           >Let's Go!</button>
           <button
             full clear

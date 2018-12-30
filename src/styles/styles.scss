@@ -101,6 +101,7 @@ button[icon-only] {
     border: none;
     background-color: transparent;
     font-size: 9pt;
+    color: $content-text;
 
     @include placeholderStyle($content-text, 0.7);
 

@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { SigninRoutingModule } from './signin-routing.module';
 import {SigninComponent} from './signin.component';
+import {FormsModule} from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    SigninRoutingModule
+    SigninRoutingModule,
+    FormsModule
   ],
   declarations: [
     SigninComponent
