@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {OnboardComponent} from './page/onboard/onboard.component';
 import {PageComponent} from './page/page.component';
 import {AuthGuard} from './guards/auth.guard';
+import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'onboard',
-    pathMatch: 'full'
+    component: AppComponent
   },
   {
     path: 'onboard',
@@ -123,7 +123,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'onbar',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];

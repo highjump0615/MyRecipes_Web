@@ -9,6 +9,7 @@ import { PageTopComponent } from './components/page-top/page-top.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarMenuItemComponent } from './components/sidebar/sidebar-menu-item/sidebar-menu-item.component';
 import {AuthGuard} from './guards/auth.guard';
+import {SESSION_STORAGE, StorageServiceModule} from 'ngx-webstorage-service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {AuthGuard} from './guards/auth.guard';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StorageServiceModule
   ],
   providers: [
     AuthGuard

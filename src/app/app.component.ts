@@ -1,4 +1,6 @@
-import {Component, NgZone} from '@angular/core';
+import {Component, Inject, NgZone} from '@angular/core';
+import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,25 @@ import {Component, NgZone} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  static KEY_ONBOARD = 'onboard';
+
   title = 'app';
 
-  constructor() {
+  constructor(
+    private router: Router,
+    @Inject(SESSION_STORAGE) private storage: StorageService
+  ) {
+    this.goToSigninView();
+  }
+
+  goToSigninView() {
+    const value = this.storage.get(AppComponent.KEY_ONBOARD);
+    if (value) {
+      // onboard is already shown, go to sign in page directly
+      this.router.navigate(['login']);
+    } else {
+      // app is opened for the first time
+      this.router.navigate(['onboard']);
+    }
   }
 }
