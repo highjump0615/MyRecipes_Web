@@ -6,6 +6,8 @@ import {User} from '../../models/user';
 import {BaseComponent} from '../base/base.component';
 import {AppComponent} from '../../app.component';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
+import {MatDialog} from '@angular/material';
+import {ErrorDialogComponent} from '../../dialogs/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-signin',
@@ -20,12 +22,15 @@ export class SigninComponent extends BaseComponent implements OnInit {
   constructor(
     public router: Router,
     private overlay: SpinnerOverlayService,
-    @Inject(SESSION_STORAGE) private storage: StorageService
+    @Inject(SESSION_STORAGE) private storage: StorageService,
+    public dialog: MatDialog
   ) {
-    super(router);
+    super(dialog);
   }
 
   ngOnInit() {
+
+    console.log('signin init');
 
     const userCurrent = User.currentUser;
 
@@ -63,9 +68,8 @@ export class SigninComponent extends BaseComponent implements OnInit {
     ).then( (res) => {
       console.log(res);
 
-      this.overlay.hide();
-
       if (!res.user) {
+        this.overlay.hide();
         return;
       }
 
@@ -85,6 +89,7 @@ export class SigninComponent extends BaseComponent implements OnInit {
       this.overlay.hide();
 
       // show error alert
+      this.showErrorDialg('Login Failed', err.message);
     });
   }
 

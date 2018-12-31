@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
     const unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
 
       console.log('got auth state');
+      console.log(user);
 
       // do not listen anymore
       unsubscribe();

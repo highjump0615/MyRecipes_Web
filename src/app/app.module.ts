@@ -14,8 +14,10 @@ import {FormsModule} from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {SpinnerOverlayService} from './services/spinner-overlay.service';
 import {SpinnerOverlayComponent} from './components/spinner-overlay/spinner-overlay.component';
-import {MatProgressSpinnerModule} from '@angular/material';
+import {MatDialogModule, MatProgressSpinnerModule} from '@angular/material';
 import { BaseComponent } from './page/base/base.component';
+import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,14 +28,17 @@ import { BaseComponent } from './page/base/base.component';
     SidebarComponent,
     SidebarMenuItemComponent,
     SpinnerOverlayComponent,
-    BaseComponent
+    BaseComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     StorageServiceModule,
     OverlayModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
@@ -41,7 +46,8 @@ import { BaseComponent } from './page/base/base.component';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    ErrorDialogComponent
   ]
 })
 export class AppModule { }
