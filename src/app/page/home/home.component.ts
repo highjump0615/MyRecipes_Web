@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   recipes: Array<string> = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private overlay: SpinnerOverlayService,
   ) {
     // init data
     for (let i = 0; i < 2; i++) {

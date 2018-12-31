@@ -32,8 +32,7 @@ const COMPONENTS = [
     RouterModule
   ],
   declarations: [
-    ...COMPONENTS,
-    SpinnerOverlayComponent
+    ...COMPONENTS
   ],
   exports: [
     ...COMPONENTS

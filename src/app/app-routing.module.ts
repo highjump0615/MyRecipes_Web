@@ -8,7 +8,8 @@ import {AppComponent} from './app.component';
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'onboard',
@@ -30,7 +31,7 @@ const routes: Routes = [
     path: 'home',
     component: PageComponent,
     loadChildren: './page/home/home.module#HomeModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'preference',

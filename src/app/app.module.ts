@@ -15,6 +15,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {SpinnerOverlayService} from './services/spinner-overlay.service';
 import {SpinnerOverlayComponent} from './components/spinner-overlay/spinner-overlay.component';
 import {MatProgressSpinnerModule} from '@angular/material';
+import { BaseComponent } from './page/base/base.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatProgressSpinnerModule} from '@angular/material';
     PageTopComponent,
     SidebarComponent,
     SidebarMenuItemComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,

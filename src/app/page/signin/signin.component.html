@@ -35,9 +35,14 @@
             style="width: 11px;" />
           <input
             type="password"
+            name="password"
             required
             class="form-control"
-            placeholder="Password">
+            placeholder="Password"
+            [(ngModel)]="password">
+        </div>
+
+        <div class="notice-error">
         </div>
 
         <!-- buttons -->
