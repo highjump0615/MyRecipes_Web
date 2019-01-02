@@ -217,6 +217,42 @@ export class User extends BaseModel implements Deserializable {
   }
 
   /**
+   * add or remove dislike
+   * @param data
+   */
+  addDislike(data: Cuisine) {
+    const dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DISLIKE)
+      .child(this.id);
+
+    let index = -1;
+
+    if (this.dislikes) {
+      index = this.dislikes.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.dislikes) {
+        this.dislikes = [];
+      }
+
+      if (!data.isInitData()) {
+        this.dislikes.push(data.id);
+      }
+    } else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.dislikes.splice(index, 1);
+    }
+  }
+
+  /**
    * fetch cuisines data
    * @param completion
    */
@@ -248,7 +284,7 @@ export class User extends BaseModel implements Deserializable {
   onFetchedCuisines(completion: () => void) {
     this.fetchedCuisineCount++;
 
-    if (this.fetchedCuisineCount == this.fetchCuisineCount) {
+    if (this.fetchedCuisineCount === this.fetchCuisineCount) {
       completion();
     }
   }

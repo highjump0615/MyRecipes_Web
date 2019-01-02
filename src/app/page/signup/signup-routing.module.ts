@@ -32,8 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'allergy',
-    component: SignupAllergiesComponent,
-    canActivate: [AuthGuard],
+    component: SignupAllergiesComponent
   },
   {
     path: 'dislike',
