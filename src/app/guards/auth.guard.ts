@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import {User} from '../models/user';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {AppComponent} from '../app.component';
+import {FirebaseManager} from '../helpers/firebase-manager';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -16,11 +17,24 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    const userCurrent = this.storage.get(AppComponent.KEY_USER);
+    console.log('auth guard');
 
     const path = next.data['path'];
+    if (path === 'logout') {
+      // clear current user
+      FirebaseManager.getInstance().signOut();
+      User.currentUser = null;
 
-    console.log('auth guard');
+      // clear storage
+      this.storage.remove(AppComponent.KEY_USER);
+
+      // redirect to login
+      this.router.navigate(['login']);
+
+      return false;
+    }
+
+    const userCurrent = this.storage.get(AppComponent.KEY_USER);
 
     // check authentication state
     if (!userCurrent) {
@@ -29,6 +43,11 @@ export class AuthGuard implements CanActivate {
         // app is opened for the first time
         this.router.navigate(['onboard']);
       } else {
+        // redirect to login, except from login page itself
+        if (path === 'login') {
+          return true;
+        }
+
         this.router.navigate(['login']);
       }
 

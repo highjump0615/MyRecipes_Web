@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'home',
     component: PageComponent,
     loadChildren: './page/home/home.module#HomeModule',
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'preference',
@@ -121,8 +121,9 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    loadChildren: './page/signin/signin.module#SigninModule',
+    canActivate: [AuthGuard],
+    data: {path: 'logout'}
   },
   {
     path: '**',

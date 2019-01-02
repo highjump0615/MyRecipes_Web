@@ -90,8 +90,6 @@ export class SigninComponent extends BaseComponent implements OnInit {
     User.readFromDatabase(userId, (u) => {
       User.currentUser = u;
 
-      this.overlay.hide();
-
       if (!User.currentUser) {
         // get user info, from facebook account info
         if (userInfo) {
@@ -105,11 +103,19 @@ export class SigninComponent extends BaseComponent implements OnInit {
           User.currentUser = newUser;
         }
 
+        // save user info to session storage
+        this.storage.set(AppComponent.KEY_USER, User.currentUser);
+
         // social login, go to signup profile page
         this.router.navigate(['signup/profile']);
       } else {
+        // save user info to session storage
+        this.storage.set(AppComponent.KEY_USER, User.currentUser);
+
         this.router.navigate(['home']);
       }
+
+      this.overlay.hide();
 
       if (onComplete) {
         onComplete();
