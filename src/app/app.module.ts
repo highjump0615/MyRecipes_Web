@@ -18,6 +18,7 @@ import {MatDialogModule, MatProgressSpinnerModule} from '@angular/material';
 import { BaseComponent } from './page/base/base.component';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DataStoreService} from './services/data-store.service';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   providers: [
     AuthGuard,
-    SpinnerOverlayService
+    SpinnerOverlayService,
+    DataStoreService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {DataStoreService} from '../../../services/data-store.service';
 
 @Component({
   selector: 'app-signup-password',
@@ -8,9 +9,13 @@ import {Router} from '@angular/router';
 })
 export class SignupPasswordComponent implements OnInit {
 
+  password = '';
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private dataStore: DataStoreService
+  ) {
+  }
 
   ngOnInit() {
   }

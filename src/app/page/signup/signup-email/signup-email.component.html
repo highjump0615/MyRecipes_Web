@@ -4,41 +4,54 @@
     <!-- logo -->
     <img class="logo" src="../../../assets/imgs/logo.png" />
 
-    <div class="flex-col content">
+    <div class="content">
 
-      <!-- title -->
-      <span class="sp-title">Sign Up</span>
+      <form ngNativeValidate
+            class="flex-col"
+            (ngSubmit)="onNext()"
+            #signupEmailForm="ngForm">
 
-      <!-- email-->
-      <div class="flex-c-row input-item signin-input">
-        <img
-          src="../assets/imgs/signin/signin_email.png"
-          style="width: 16px;" />
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Enter your Email">
-      </div>
+        <!-- title -->
+        <span class="sp-title">Sign Up</span>
 
-      <!-- valid checkboxes -->
-      <div
-        style="margin-top: 20px;">
-        <app-check-box text="Valid email."></app-check-box>
-        <app-check-box
-          text="Not in use."
-          style="margin-top: 6px;">
-        </app-check-box>
-      </div>
+        <!-- email-->
+        <div class="flex-c-row input-item signin-input">
+          <img
+            src="../assets/imgs/signin/signin_email.png"
+            style="width: 16px;" />
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            placeholder="Enter your Email"
+            [(ngModel)]="email"
+            (input)="onChangeText()">
+        </div>
 
-      <!-- buttons -->
-      <div class="button-wrapper">
-        <button
-          full
-          type="submit"
-          class="btn btn-light round"
-          (click)="onButNext()"
-        >Next</button>
-      </div>
+        <!-- valid checkboxes -->
+        <div
+          style="margin-top: 20px;">
+          <app-check-box
+            text="Valid email."
+            [enabled]="isEmailValid">
+          </app-check-box>
+          <app-check-box
+            text="Not in use."
+            [enabled]="isNotUse"
+            style="margin-top: 6px;">
+          </app-check-box>
+        </div>
+
+        <!-- buttons -->
+        <div class="button-wrapper">
+          <button
+            full
+            [disabled]="!isEmailValid || !isNotUse"
+            type="submit"
+            class="btn btn-light round"
+          >Next</button>
+        </div>
+      </form>
 
     </div>
 

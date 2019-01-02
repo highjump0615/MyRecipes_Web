@@ -10,12 +10,14 @@ import { SignupAllergiesComponent } from './signup-allergies/signup-allergies.co
 import { SignupFavouriteComponent } from './signup-favourite/signup-favourite.component';
 import { SignupDislikeComponent } from './signup-dislike/signup-dislike.component';
 import {ComponentsModule} from '../../components/components.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SignupRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   declarations: [
     SignupEmailComponent,
