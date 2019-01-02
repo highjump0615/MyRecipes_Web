@@ -16,16 +16,17 @@ export class SpinnerOverlayService {
 
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create();
-    }
 
-    // Create ComponentPortal that can be attached to a PortalHost
-    const spinnerOverlayPortal = new ComponentPortal(SpinnerOverlayComponent);
-    const component = this.overlayRef.attach(spinnerOverlayPortal); // Attach ComponentPortal to PortalHost
+      // Create ComponentPortal that can be attached to a PortalHost
+      const spinnerOverlayPortal = new ComponentPortal(SpinnerOverlayComponent);
+      const component = this.overlayRef.attach(spinnerOverlayPortal); // Attach ComponentPortal to PortalHost
+    }
   }
 
   public hide() {
     if (!!this.overlayRef) {
       this.overlayRef.detach();
+      this.overlayRef = null;
     }
   }
 

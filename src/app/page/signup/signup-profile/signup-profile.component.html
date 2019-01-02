@@ -4,43 +4,54 @@
     <!-- logo -->
     <img class="logo" src="../../../assets/imgs/logo.png" />
 
-    <div class="flex-col content">
+    <div class="content">
 
-      <!-- upload image -->
-      <app-image-uploader class="nm-center">
-        <div class="flex-col">
-          <i class="icon ion-md-add nm-center"></i>
-          <span>Upload <br />Photo</span>
+      <form ngNativeValidate
+            class="flex-col"
+            (ngSubmit)="onNext()">
+
+        <!-- upload image -->
+        <app-image-uploader
+          class="nm-center"
+          #imageProfile>
+          <div class="flex-col">
+            <i class="icon ion-md-add nm-center"></i>
+            <span>Upload <br />Photo</span>
+          </div>
+        </app-image-uploader>
+
+        <!-- first name -->
+        <div class="flex-c-row input-item signin-input"
+             style="margin-top: 10px">
+          <input
+            name="firstName"
+            type="text"
+            class="form-control"
+            placeholder="First Name"
+            [(ngModel)]="firstName">
         </div>
-      </app-image-uploader>
 
-      <!-- first name -->
-      <div class="flex-c-row input-item signin-input"
-           style="margin-top: 10px">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="First Name">
-      </div>
+        <!-- last name -->
+        <div class="flex-c-row input-item signin-input"
+             style="margin-top: 12px;">
+          <input
+            name="lastName"
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            [(ngModel)]="lastName">
+        </div>
 
-      <!-- last name -->
-      <div class="flex-c-row input-item signin-input"
-           style="margin-top: 12px;">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Last Name">
-      </div>
-
-      <!-- buttons -->
-      <div class="button-wrapper">
-        <button
-          full
-          type="submit"
-          class="btn btn-light round"
-          (click)="onButNext()"
-        >Next</button>
-      </div>
+        <!-- buttons -->
+        <div class="button-wrapper">
+          <button
+            full
+            type="submit"
+            class="btn btn-light round"
+            [disabled]="!(firstName && lastName)"
+          >Next</button>
+        </div>
+      </form>
 
     </div>
 

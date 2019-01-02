@@ -83,6 +83,31 @@ export class User extends BaseModel {
       });
   }
 
+  tableName() {
+    return User.TABLE_NAME;
+  }
+
+  toDictionary() {
+    const dict = super.toDictionary();
+
+    dict[User.FIELD_EMAIL] = this.email;
+    dict[User.FIELD_FIRSTNAME] = this.firstName;
+    dict[User.FIELD_LASTNAME] = this.lastName;
+
+    this.addDictitem(dict, User.FIELD_PHOTO, this.photoUrl);
+    this.addDictitem(dict, User.FIELD_DESC, this.desc);
+
+    return dict;
+  }
+
+  fullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+
+  //
+  // cuisines
+  //
+
   /**
    * fetch cuisines data
    * @param completion
