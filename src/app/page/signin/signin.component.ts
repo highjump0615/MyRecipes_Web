@@ -29,26 +29,6 @@ export class SigninComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log('signin init');
-
-    const userCurrent = User.currentUser;
-
-    // not logged in
-    if (!userCurrent) {
-      const value = this.storage.get(AppComponent.KEY_ONBOARD);
-      if (!value) {
-        // app is opened for the first time
-        this.router.navigate(['onboard']);
-      }
-
-      return;
-    }
-
-    //
-    // logged in
-    //
-    this.router.navigate(['home']);
   }
 
   onButForget() {
