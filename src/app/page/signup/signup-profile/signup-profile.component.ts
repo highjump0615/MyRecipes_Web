@@ -27,9 +27,9 @@ export class SignupProfileComponent extends BaseComponent implements OnInit {
     private dataStore: DataStoreService,
     private overlay: SpinnerOverlayService,
     public dialog: MatDialog,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
+    @Inject(SESSION_STORAGE) public storage: StorageService,
   ) {
-    super(dialog);
+    super(dialog, storage);
   }
 
   ngOnInit() {
@@ -116,7 +116,8 @@ export class SignupProfileComponent extends BaseComponent implements OnInit {
     user.saveToDatabase();
 
     // save user info to session storage
-    this.storage.set(AppComponent.KEY_USER, User.currentUser);
+    User.currentUser = user;
+    this.updateUser(User.currentUser);
 
     // hide loading view
     this.overlay.hide();

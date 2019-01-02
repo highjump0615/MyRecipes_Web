@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../../models/user';
 import {MatDialog} from '@angular/material';
 import {ErrorDialogComponent} from '../../dialogs/error-dialog/error-dialog.component';
+import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
+import {AppComponent} from '../../app.component';
 
 
 
@@ -14,7 +16,8 @@ import {ErrorDialogComponent} from '../../dialogs/error-dialog/error-dialog.comp
 export class BaseComponent implements OnInit {
 
   constructor(
-    public dialog?: MatDialog
+    public dialog?: MatDialog,
+    @Inject(SESSION_STORAGE) public storage?: StorageService
   ) { }
 
   ngOnInit() {
@@ -33,5 +36,9 @@ export class BaseComponent implements OnInit {
         msg: msg
       }
     });
+  }
+
+  updateUser(user) {
+    this.storage.set(AppComponent.KEY_USER, user);
   }
 }

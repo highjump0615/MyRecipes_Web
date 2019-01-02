@@ -5,21 +5,24 @@ import {User} from '../../../models/user';
 import {FirebaseManager} from '../../../helpers/firebase-manager';
 import {AppComponent} from '../../../app.component';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
+import {BaseComponent} from '../../base/base.component';
 
 @Component({
   selector: 'app-signup-favourite',
   templateUrl: './signup-favourite.component.html',
   styleUrls: ['./signup-favourite.component.scss']
 })
-export class SignupFavouriteComponent implements OnInit {
+export class SignupFavouriteComponent extends BaseComponent implements OnInit {
 
   favourites: Array<Cuisine> = [];
   userCurrent: User;
 
   constructor(
     private router: Router,
-    @Inject(SESSION_STORAGE) private storage: StorageService
+    @Inject(SESSION_STORAGE) public storage: StorageService
   ) {
+    super(null, storage);
+
     const that = this;
 
     // set current user
@@ -63,7 +66,8 @@ export class SignupFavouriteComponent implements OnInit {
     this.userCurrent.addFavouriteCuisine(new Cuisine());
 
     // save user info to session storage
-    this.storage.set(AppComponent.KEY_USER, User.currentUser);
+    User.currentUser = this.userCurrent;
+    this.updateUser(User.currentUser);
 
     // go to signup allergies page
     this.router.navigate(['signup/allergy']);

@@ -145,6 +145,78 @@ export class User extends BaseModel implements Deserializable {
   }
 
   /**
+   * add or remove allergy
+   * @param data
+   */
+  addAllergy(data: Cuisine) {
+    const dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_ALLERGY)
+      .child(this.id);
+
+    let index = -1;
+
+    if (this.allergies) {
+      index = this.allergies.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.allergies) {
+        this.allergies = [];
+      }
+
+      if (!data.isInitData()) {
+        this.allergies.push(data.id);
+      }
+    } else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.allergies.splice(index, 1);
+    }
+  }
+
+  /**
+   * add or remove diet
+   * @param data
+   */
+  addDiet(data: Cuisine) {
+    const dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DIET)
+      .child(this.id);
+
+    let index = -1;
+
+    if (this.diets) {
+      index = this.diets.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.diets) {
+        this.diets = [];
+      }
+
+      if (!data.isInitData()) {
+        this.diets.push(data.id);
+      }
+    } else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.diets.splice(index, 1);
+    }
+  }
+
+  /**
    * fetch cuisines data
    * @param completion
    */

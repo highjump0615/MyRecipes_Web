@@ -28,12 +28,12 @@ const routes: Routes = [
   },
   {
     path: 'favourite',
-    component: SignupFavouriteComponent,
-    canActivate: [AuthGuard],
+    component: SignupFavouriteComponent
   },
   {
     path: 'allergy',
-    component: SignupAllergiesComponent
+    component: SignupAllergiesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'dislike',

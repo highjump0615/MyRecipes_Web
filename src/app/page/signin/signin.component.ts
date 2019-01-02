@@ -22,10 +22,10 @@ export class SigninComponent extends BaseComponent implements OnInit {
   constructor(
     public router: Router,
     private overlay: SpinnerOverlayService,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
+    @Inject(SESSION_STORAGE) public storage: StorageService,
     public dialog: MatDialog
   ) {
-    super(dialog);
+    super(dialog, storage);
   }
 
   ngOnInit() {
@@ -107,7 +107,7 @@ export class SigninComponent extends BaseComponent implements OnInit {
         this.router.navigate(['signup/profile']);
       } else {
         // save user info to session storage
-        this.storage.set(AppComponent.KEY_USER, User.currentUser);
+        this.updateUser(User.currentUser);
 
         this.router.navigate(['home']);
       }
