@@ -103,9 +103,6 @@ export class SigninComponent extends BaseComponent implements OnInit {
           User.currentUser = newUser;
         }
 
-        // save user info to session storage
-        this.storage.set(AppComponent.KEY_USER, User.currentUser);
-
         // social login, go to signup profile page
         this.router.navigate(['signup/profile']);
       } else {
