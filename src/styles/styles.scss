@@ -207,3 +207,16 @@ button[icon-only] {
 .inactive {
   opacity: 0.6;
 }
+
+.dv-no-list-item {
+  min-height: 94px;
+  font-size: 9pt;
+  color: gray;
+}
+
+/**
+  photo images
+ */
+img.photo {
+  object-fit: cover;
+}

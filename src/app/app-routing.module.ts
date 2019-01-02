@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: './page/signup/signup.module#SignupModule'
+    loadChildren: './page/signup/signup.module#SignupModule',
   },
   {
     path: 'home',

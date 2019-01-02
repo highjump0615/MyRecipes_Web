@@ -5,18 +5,18 @@
   <div
     class="square border"
     style="background-image: url('../../../assets/imgs/default_food.png')"
-    (click)="onSelectChanged($event)">
+    (click)="onSelectChangeed($event)">
     <!-- tick mark -->
     <div
       class="nm-center tick"
-      *ngIf="selected">
+      *ngIf="item.selected">
       <i class="icon ion-md-checkmark"></i>
     </div>
   </div>
 
   <!-- text -->
   <span
-    [style.font-weight]="selected ? 'bold' : 'normal'">
-    {{text}}
+    [style.font-weight]="item.selected ? 'bold' : 'normal'">
+    {{item.name}}
   </span>
 </div>

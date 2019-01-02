@@ -1,6 +1,10 @@
 import DataSnapshot = firebase.database.DataSnapshot;
 import {FirebaseManager} from '../helpers/firebase-manager';
 
+export interface Deserializable {
+  deserialize(input: any): this;
+}
+
 export class BaseModel {
 
   //

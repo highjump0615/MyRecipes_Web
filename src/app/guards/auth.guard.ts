@@ -34,10 +34,11 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
-    const userCurrent = this.storage.get(AppComponent.KEY_USER);
+    const userObj = this.storage.get(AppComponent.KEY_USER);
+    User.currentUser = new User().deserialize(userObj);
 
     // check authentication state
-    if (!userCurrent) {
+    if (!User.currentUser) {
       const value = this.storage.get(AppComponent.KEY_ONBOARD);
       if (!value) {
         // app is opened for the first time

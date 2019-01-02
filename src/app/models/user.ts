@@ -1,8 +1,9 @@
 import {FirebaseManager} from '../helpers/firebase-manager';
 import DataSnapshot = firebase.database.DataSnapshot;
-import {BaseModel} from './base-model';
+import {BaseModel, Deserializable} from './base-model';
+import {Cuisine} from './cuisine';
 
-export class User extends BaseModel {
+export class User extends BaseModel implements Deserializable {
   static currentUser: User;
 
   //
@@ -107,6 +108,41 @@ export class User extends BaseModel {
   //
   // cuisines
   //
+  /**
+   * add or remove favourite cuisine
+   * @param data
+   */
+  addFavouriteCuisine(data: Cuisine) {
+    const dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_FAVOURITE_CUISINE)
+      .child(this.id);
+
+    let index = -1;
+
+    if (this.favouriteCuisines) {
+      index = this.favouriteCuisines.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.favouriteCuisines) {
+        this.favouriteCuisines = [];
+      }
+
+      if (!data.isInitData()) {
+        this.favouriteCuisines.push(data.id);
+      }
+    } else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.favouriteCuisines.splice(index, 1);
+    }
+  }
 
   /**
    * fetch cuisines data
@@ -238,6 +274,12 @@ export class User extends BaseModel {
       .catch((err) => {
         completion();
       });
+  }
+
+  deserialize(input: any): this {
+    Object.assign(this, input);
+
+    return this;
   }
 
 }

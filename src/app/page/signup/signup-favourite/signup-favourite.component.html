@@ -4,12 +4,12 @@
 
     <!-- user photo -->
     <img class="nm-center round border-white photo"
-         src="../../../../assets/imgs/default_user.png" />
+         [src]="(userCurrent && userCurrent.photoUrl) ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'" />
 
     <!-- user name -->
     <span class="sp-notice"
           style="margin-top: 12px;"
-    >Kristine Maloine</span>
+    >{{userCurrent ? userCurrent.fullName() : ''}}</span>
 
     <!-- title -->
     <span class="sp-title top-border bottom-border"
@@ -20,11 +20,19 @@
       class="content"
       style="margin-top: 14px;">
       <div class="container-scroll">
-        <div class="row">
-          <div class="col-3" *ngFor="let data of favourites">
-            <app-cuisine-item text="AMERICAN"></app-cuisine-item>
-          </div>
+        <div class="dv-no-list-item flex-c-row nm-center"
+             *ngIf="favourites.length == 0; else list">
+          <span>No cuisine items yet</span>
         </div>
+
+        <ng-template #list>
+          <div class="row">
+            <div class="col-3" *ngFor="let data of favourites">
+              <app-cuisine-item [item]="data"></app-cuisine-item>
+            </div>
+          </div>
+        </ng-template>
+
       </div>
     </div>
 

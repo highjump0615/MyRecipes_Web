@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Cuisine} from '../../models/cuisine';
 
 @Component({
   selector: 'app-cuisine-item',
@@ -7,7 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CuisineItemComponent implements OnInit {
 
-  @Input() text: string;
+  @Input() index: number;
+  @Input() item: Cuisine;
+  @Output() selectChanged = new EventEmitter();
 
   /**
    * item is selected or not
@@ -19,8 +22,19 @@ export class CuisineItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelectChanged(event) {
-    this.selected = !this.selected;
+  /**
+   * clicked main image
+   *
+   * @param {*} event
+   * @memberof CuisineItemComponent
+   */
+  onSelectChangeed(event) {
+    this.item.selected = !this.item.selected;
+
+    this.selectChanged.emit({
+      index: this.index,
+      cuisine: this.item
+    });
   }
 
 }

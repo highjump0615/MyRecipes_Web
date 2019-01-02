@@ -6,6 +6,7 @@ import {SignupProfileComponent} from './signup-profile/signup-profile.component'
 import {SignupAllergiesComponent} from './signup-allergies/signup-allergies.component';
 import {SignupFavouriteComponent} from './signup-favourite/signup-favourite.component';
 import {SignupDislikeComponent} from './signup-dislike/signup-dislike.component';
+import {AuthGuard} from '../../guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'favourite',
-    component: SignupFavouriteComponent
+    component: SignupFavouriteComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'allergy',
