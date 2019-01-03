@@ -6,6 +6,8 @@
 
     <!-- forget form-->
     <form
+      ngNativeValidate
+      (ngSubmit)="onSubmit()"
       style="margin-left: 80px; width: 240px;">
       <div class="flex-col">
 
@@ -18,9 +20,12 @@
             src="../assets/imgs/signin/signin_email.png"
             style="width: 16px;" />
           <input
+            name="email"
             type="email"
+            required
             class="form-control"
-            placeholder="Email">
+            placeholder="Email"
+            [(ngModel)]="email">
         </div>
 
         <span
