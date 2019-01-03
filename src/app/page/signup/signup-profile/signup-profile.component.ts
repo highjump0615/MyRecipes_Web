@@ -9,27 +9,23 @@ import {BaseComponent} from '../../base/base.component';
 import {MatDialog} from '@angular/material';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {AppComponent} from '../../../app.component';
+import {BaseProfileComponent} from '../../base/base-profile.component';
 
 @Component({
   selector: 'app-signup-profile',
   templateUrl: './signup-profile.component.html',
   styleUrls: ['../signup-email/signup-email.component.scss']
 })
-export class SignupProfileComponent extends BaseComponent implements OnInit {
-
-  firstName = '';
-  lastName = '';
-
-  @ViewChild('imageProfile') uploadPhoto: ImageUploaderComponent;
+export class SignupProfileComponent extends BaseProfileComponent implements OnInit {
 
   constructor(
     private router: Router,
     private dataStore: DataStoreService,
-    private overlay: SpinnerOverlayService,
+    public overlay: SpinnerOverlayService,
     public dialog: MatDialog,
     @Inject(SESSION_STORAGE) public storage: StorageService,
   ) {
-    super(dialog, storage);
+    super(overlay, dialog, storage);
   }
 
   ngOnInit() {
@@ -66,7 +62,7 @@ export class SignupProfileComponent extends BaseComponent implements OnInit {
 
       User.currentUser = userNew;
 
-      this.uploadImageAndSetupUserInfo();
+      this.uploadImageAndSetupUserInfo(this.gotoNext);
 
     }).catch((err) => {
       console.log(err);
@@ -78,51 +74,9 @@ export class SignupProfileComponent extends BaseComponent implements OnInit {
     });
   }
 
-  uploadImageAndSetupUserInfo() {
-
-    if (this.uploadPhoto.picture) {
-      // show loading view
-      this.overlay.show();
-
-      // upload photo
-      const user = User.currentUser;
-      const path = 'users/' + user.id + '.png';
-
-      FirebaseManager.getInstance().uploadImageTo(
-        path,
-        this.uploadPhoto.picture,
-        (downloadURL, error) => {
-          if (error) {
-            // failed to upload
-            this.overlay.hide();
-            return;
-          }
-
-          User.currentUser.photoUrl = downloadURL;
-          this.saveUserInfo();
-        });
-    } else {
-      this.saveUserInfo();
-    }
-  }
-
-  saveUserInfo() {
-    const user = User.currentUser;
-
-    // save info
-    user.firstName = this.firstName;
-    user.lastName = this.lastName;
-
-    user.saveToDatabase();
-
-    // save user info to session storage
-    User.currentUser = user;
-    this.updateUser(User.currentUser);
-
-    // hide loading view
-    this.overlay.hide();
-
+  gotoNext() {
     // go to signup favourite page
     this.router.navigate(['signup/favourite']);
   }
+
 }

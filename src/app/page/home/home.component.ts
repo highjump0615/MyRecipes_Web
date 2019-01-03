@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
 })
 export class HomeComponent implements OnInit {
 
-  desc = 'Food Blogger, Explorer, Designer, Entrepreneur, Food photographer';
+  // user info
+  userCurrent: User;
 
   menus: Array<string> = [];
 
@@ -21,6 +23,9 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private overlay: SpinnerOverlayService,
   ) {
+    // set current user
+    this.userCurrent = User.currentUser;
+
     // init data
     for (let i = 0; i < 2; i++) {
       this.menus.push('aa');

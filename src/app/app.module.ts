@@ -19,6 +19,7 @@ import { BaseComponent } from './page/base/base.component';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataStoreService} from './services/data-store.service';
+import {BaseProfileComponent} from './page/base/base-profile.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {DataStoreService} from './services/data-store.service';
     SidebarMenuItemComponent,
     SpinnerOverlayComponent,
     BaseComponent,
+    BaseProfileComponent,
     ErrorDialogComponent
   ],
   imports: [

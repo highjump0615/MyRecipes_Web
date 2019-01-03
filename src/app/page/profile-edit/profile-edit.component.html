@@ -12,22 +12,44 @@
       <!-- upload image -->
       <app-image-uploader
         class="nm-center"
-        defaultImg="../../../../assets/imgs/default_user.png">
+        [defaultImg]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'"
+        #imageProfile>
       </app-image-uploader>
 
-      <form class="d-flex flex-column">
+      <form class="d-flex flex-column"
+            ngNativeValidate
+            (ngSubmit)="onSubmit()">
         <!-- first name -->
         <div class="form-group">
           <label>First Name</label>
-          <input class="form-control"
-                 placeholder="Enter first name" />
+          <input
+            class="form-control"
+            name="firstName"
+            required
+            placeholder="Enter first name"
+            [(ngModel)]="firstName" />
         </div>
 
         <!-- last name -->
         <div class="form-group">
           <label>Last Name</label>
-          <input class="form-control"
-                 placeholder="Enter last name" />
+          <input
+            class="form-control"
+            name="lastName"
+            placeholder="Enter last name"
+            required
+            [(ngModel)]="lastName" />
+        </div>
+
+        <!-- description -->
+        <div class="form-group">
+          <label>Description</label>
+          <textarea
+            class="form-control"
+            name="desc"
+            placeholder="Enter description"
+            [(ngModel)]="desc">
+          </textarea>
         </div>
 
         <!-- current password -->

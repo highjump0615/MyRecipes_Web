@@ -4,21 +4,21 @@
        style="margin-top: 16px;">
     <!-- user photo -->
     <img class="round photo"
-         src="../../../../assets/imgs/default_user.png" />
+         [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'" />
 
     <!--user info-->
     <div class="d-flex flex-col"
          style="flex: 1;">
       <!-- username -->
       <div class="username d-flex">
-        <span>Kristina Maloine</span>
-        <a href="#">
+        <span>{{userCurrent.fullName()}}</span>
+        <a routerLink="/profile">
           <img src="../../../../assets/imgs/home_edit.png" />
         </a>
       </div>
 
       <!-- description -->
-      <div class="user-desc">{{desc}}</div>
+      <div class="user-desc">{{userCurrent.desc}}</div>
     </div>
 
     <!-- buttons -->
