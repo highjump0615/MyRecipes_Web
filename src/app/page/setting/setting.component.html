@@ -13,6 +13,7 @@
       [multiple]="true">
       <!-- about -->
       <app-expand-menu-item
+        *ngIf="!userCurrent.isAdmin()"
         class="card with-shadow"
         title="About the App"
         linkPage="/about">
@@ -20,6 +21,7 @@
 
       <!-- privacy -->
       <app-expand-menu-item
+        *ngIf="!userCurrent.isAdmin()"
         class="card with-shadow"
         title="Privacy Policy"
         linkTo="https://termsfeed.com/privacy-policy/2295de3aaaa3da6fd36567c0ed435590">
@@ -27,9 +29,18 @@
 
       <!-- report -->
       <app-expand-menu-item
+        *ngIf="!userCurrent.isAdmin()"
         class="card with-shadow"
         title="Report a Problem"
         linkTo="mailto:admin@numenu.com?subject=Report a Problem&body=">
+      </app-expand-menu-item>
+
+      <!-- change password -->
+      <app-expand-menu-item
+        *ngIf="userCurrent.isAdmin()"
+        class="card with-shadow"
+        title="Change Password"
+        linkPage="/profile">
       </app-expand-menu-item>
     </app-expand-menu>
 

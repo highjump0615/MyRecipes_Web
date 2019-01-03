@@ -62,7 +62,7 @@ export class SignupProfileComponent extends BaseProfileComponent implements OnIn
 
       User.currentUser = userNew;
 
-      this.uploadImageAndSetupUserInfo(this.gotoNext);
+      this.uploadImageAndSetupUserInfo(this.doneCallback);
 
     }).catch((err) => {
       console.log(err);
@@ -74,7 +74,7 @@ export class SignupProfileComponent extends BaseProfileComponent implements OnIn
     });
   }
 
-  gotoNext() {
+  doneCallback = () => {
     // go to signup favourite page
     this.router.navigate(['signup/favourite']);
   }

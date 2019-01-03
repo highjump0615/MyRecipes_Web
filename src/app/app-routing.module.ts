@@ -33,7 +33,8 @@ const routes: Routes = [
     path: 'home',
     component: PageComponent,
     loadChildren: './page/home/home.module#HomeModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {path: 'home'}
   },
   {
     path: 'preference',

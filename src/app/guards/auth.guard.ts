@@ -36,9 +36,7 @@ export class AuthGuard implements CanActivate {
 
     // check authentication state
     const userObj = this.storage.get(AppComponent.KEY_USER);
-    if (userObj) {
-      User.currentUser = new User().deserialize(userObj);
-    } else {
+    if (!userObj) {
       const value = this.storage.get(AppComponent.KEY_ONBOARD);
       if (!value) {
         // app is opened for the first time
@@ -55,9 +53,17 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
+    User.currentUser = new User().deserialize(userObj);
+
     if (path === 'login') {
       this.router.navigate(['home']);
       return false;
+    } else if (path === 'home') {
+      // redirect to recipes page when admin user
+      if (User.currentUser.isAdmin()) {
+        this.router.navigate(['myrecipes']);
+        return false;
+      }
     }
 
     return true;

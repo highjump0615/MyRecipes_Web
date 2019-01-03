@@ -15,12 +15,16 @@ export class User extends BaseModel implements Deserializable {
   static FIELD_LASTNAME = 'lastName';
   static FIELD_PHOTO = 'photoUrl';
   static FIELD_DESC = 'description';
+  static FIELD_TYPE = 'type';
 
   // cuisines
   static TABLE_NAME_FAVOURITE_CUISINE = 'userFavouriteCuisines';
   static TABLE_NAME_ALLERGY = 'userAllergies';
   static TABLE_NAME_DIET = 'userDiets';
   static TABLE_NAME_DISLIKE = 'userDislikes';
+
+  static USER_TYPE_NORMAL = 'normal';
+  static USER_TYPE_ADMIN = 'admin';
 
   //
   // properties
@@ -30,6 +34,8 @@ export class User extends BaseModel implements Deserializable {
   lastName = '';
   desc = '';
   photoUrl = '';
+
+  type = User.USER_TYPE_NORMAL;
 
   favouriteCuisines: any;
   allergies: any;
@@ -55,6 +61,10 @@ export class User extends BaseModel implements Deserializable {
       this.lastName = info[User.FIELD_LASTNAME];
       this.photoUrl = info[User.FIELD_PHOTO];
       this.desc = info[User.FIELD_DESC];
+
+      if (User.FIELD_TYPE in info) {
+        this.type = info[User.FIELD_TYPE];
+      }
     }
 
     if (withId) {
@@ -103,6 +113,10 @@ export class User extends BaseModel implements Deserializable {
 
   fullName() {
     return this.firstName + ' ' + this.lastName;
+  }
+
+  isAdmin() {
+    return this.type === User.USER_TYPE_ADMIN;
   }
 
   //
