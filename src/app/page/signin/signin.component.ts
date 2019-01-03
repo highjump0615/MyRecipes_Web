@@ -8,6 +8,7 @@ import {AppComponent} from '../../app.component';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {MatDialog} from '@angular/material';
 import {ErrorDialogComponent} from '../../dialogs/error-dialog/error-dialog.component';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-signin',
@@ -18,6 +19,12 @@ export class SigninComponent extends BaseComponent implements OnInit {
 
   email = '';
   password = '';
+
+  SIGNIN_EMAIL = 0;
+  SIGNIN_FACEBOOK = 1;
+  SIGNIN_GOOGLE = 2;
+
+  signinMethod = this.SIGNIN_EMAIL;
 
   constructor(
     public router: Router,
@@ -118,5 +125,98 @@ export class SigninComponent extends BaseComponent implements OnInit {
         onComplete();
       }
     });
+  }
+
+  onButFacebook() {
+    this.signinMethod = this.SIGNIN_FACEBOOK;
+    const that = this;
+
+    this.overlay.show();
+
+    // browser
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    FirebaseManager.auth().signInWithPopup(provider)
+      .then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        const profile = result.additionalUserInfo.profile;
+
+        console.log(profile);
+
+        that.continueSocialSignIn(
+          result.credential,
+          profile['first_name'],
+          profile['last_name'],
+          profile['picture']['data']['url']);
+      }).catch(function(error) {
+      that.onError(error);
+    });
+  }
+
+  onButGoogle() {
+    this.signinMethod = this.SIGNIN_GOOGLE;
+    const that = this;
+
+    this.overlay.show();
+
+    // browser
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    FirebaseManager.auth().signInWithPopup(provider)
+      .then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        const profile = result.additionalUserInfo.profile;
+
+        console.log(profile);
+
+        that.continueSocialSignIn(
+          result.credential,
+          profile['given_name'],
+          profile['family_name'],
+          profile['picture']);
+      })
+      .catch(function(error) {
+        that.onError(error);
+      });
+  }
+
+  continueSocialSignIn(credential, firstName, lastName, photoUrl) {
+    const that = this;
+
+    FirebaseManager.auth().signInAndRetrieveDataWithCredential(credential)
+      .then((res) => {
+        this.fetchUserInfo(
+          res.user,
+          firstName,
+          lastName,
+          photoUrl,
+          () => {
+            this.overlay.hide();
+            FirebaseManager.getInstance().signOut();
+          });
+      })
+      .catch((err) => {
+        this.onError(err);
+      });
+  }
+
+  onError(err) {
+    console.log(err);
+
+    this.overlay.hide();
+
+    let strTitle = 'Google Login Failed';
+    if (this.signinMethod === this.SIGNIN_FACEBOOK) {
+      strTitle = 'Facebook Login Failed';
+    }
+
+    // show error alert
+    this.showErrorDialg(strTitle, err.message);
   }
 }
