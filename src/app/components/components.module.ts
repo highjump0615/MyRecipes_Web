@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
 import { ComboBoxComponent } from './combo-box/combo-box.component';
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import {FormsModule} from '@angular/forms';
 
 const COMPONENTS = [
   ExpandMenuComponent,
@@ -29,7 +30,8 @@ const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   declarations: [
     ...COMPONENTS

@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { TipCreateRoutingModule } from './tip-create-routing.module';
 import { TipCreateComponent } from './tip-create.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    TipCreateRoutingModule
+    TipCreateRoutingModule,
+    FormsModule
   ],
   declarations: [TipCreateComponent]
 })
