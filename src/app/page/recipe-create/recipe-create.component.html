@@ -1,120 +1,158 @@
 <div class="pg-content">
-  <!-- title -->
-  <div class="pg-title">
-    <div>
-      <span class="title">Add Recipe</span>
+  <form
+    ngNativeValidate
+    (ngSubmit)="onAdd()">
 
-      <!-- buttons -->
-      <div class="button-wrapper nm-center d-flex">
-        <button
-          type="button"
-          class="btn btn-gradient round"
-          (click)="onButSubmit()"
-        >Save</button>
+    <!-- title -->
+    <div class="pg-title">
+      <div>
+        <span class="title">Add Recipe</span>
+
+        <!-- buttons -->
+        <div class="button-wrapper nm-center d-flex">
+          <button
+            type="submit"
+            class="btn btn-gradient round"
+          >Save</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="dv-content">
-    <div class="card with-shadow">
-      <!-- upload image -->
-      <app-image-uploader class="nm-center">
-        <div class="d-flex nm-center align-items-center">
-          <i class="icon ion-md-add"></i>
-          <span>Upload Photo</span>
-        </div>
-      </app-image-uploader>
+    <div class="dv-content">
+      <div class="card with-shadow">
+        <!-- upload image -->
+        <app-image-uploader class="nm-center">
+          <div class="d-flex nm-center align-items-center">
+            <i class="icon ion-md-add"></i>
+            <span>Upload Photo</span>
+          </div>
+        </app-image-uploader>
 
-      <form class="d-flex flex-column">
-        <!-- title -->
-        <div class="form-group">
-          <label>Title</label>
-          <input class="form-control"
-                 placeholder="Enter recipe title" />
-        </div>
+        <div class="d-flex flex-column">
+          <!-- title -->
+          <div class="form-group">
+            <label>Title</label>
+            <input class="form-control"
+                   name="title"
+                   required
+                   placeholder="Enter recipe title"
+                   [(ngModel)]="title"/>
+          </div>
 
-        <!-- skill level -->
-        <div class="form-group">
-          <label>Skill Level</label>
-          <select class="custom-select form-control">
-            <option selected>Select skill level</option>
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">Hight</option>
-          </select>
-        </div>
+          <!-- skill level -->
+          <div class="form-group">
+            <label>Skill Level</label>
+            <select class="custom-select form-control"
+                    name="skill"
+                    required
+                    [(ngModel)]="skill">
+              <option value="" selected>Select skill level</option>
+              <option value="1">Low</option>
+              <option value="2">Medium</option>
+              <option value="3">Hight</option>
+            </select>
+          </div>
 
-        <!-- servings -->
-        <div class="form-group">
-          <label>Servings</label>
-          <input class="form-control"
-                 type="number"
-                 placeholder="Enter servings number" />
-        </div>
+          <!-- servings -->
+          <div class="form-group">
+            <label>Servings</label>
+            <input class="form-control"
+                   name="serving"
+                   type="number"
+                   required
+                   placeholder="Enter servings number"
+                   [(ngModel)]="serving" />
+          </div>
 
-        <div class="form-group dv-ingredient">
-          <label>Ingredients</label>
-          <form>
-            <div class="form-row">
-              <!-- name -->
-              <div class="col-7">
-                <app-combo-box></app-combo-box>
+          <div class="form-group dv-ingredient">
+            <label>Ingredients</label>
+            <form ngNativeValidate
+                  (ngSubmit)="onAddIngredient()">
+              <div class="form-row">
+                <!-- name -->
+                <div class="col-7">
+                  <app-combo-box
+                    [(text)]="ingName"
+                    [listAll]="cmbIngList"
+                    (textChange)="onIngredientChange($event)">
+                  </app-combo-box>
+                </div>
+
+                <!-- unit -->
+                <div class="col-2">
+                  <input class="form-control"
+                         name="unit"
+                         required
+                         placeholder="Unit"
+                         [(ngModel)]="ingUnit" />
+                </div>
+
+                <!-- count -->
+                <div class="col-2">
+                  <input class="form-control"
+                         name="number"
+                         type="number"
+                         required
+                         placeholder="Quantity"
+                         [(ngModel)]="ingQuantity" />
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary col-1"
+                >Add</button>
+
               </div>
+            </form>
 
-              <!-- unit -->
-              <div class="col-2">
-                <input class="form-control"
-                       placeholder="Unit" />
-              </div>
+            <!-- ingredient list -->
+            <table class="table table-sm">
+              <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Quantity</th>
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngIf="ingRecipe.length == 0; else list">
+                <td colspan="5"
+                    class="no-list-font text-center">
+                  No ingredients added yet
+                </td>
+              </tr>
 
-              <!-- count -->
-              <div class="col-2">
-                <input class="form-control"
-                       type="number"
-                       placeholder="Quantity" />
-              </div>
+              <ng-template #list>
+                <tr *ngFor="let ing of ingRecipe; let i = index">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{ing.name}}</td>
+                  <td>{{ing.unit}}</td>
+                  <td>{{ing.quantity}}</td>
+                  <td>
+                    <i class="icon ion-md-trash"
+                       (click)="onRemoveIngRecipe(i)"></i>
+                  </td>
+                </tr>
+              </ng-template>
+              </tbody>
+            </table>
+          </div>
 
-              <button type="submit"
-                      class="btn btn-primary col-1"
-              >Add</button>
-
-            </div>
-          </form>
-
-          <!-- ingredient list -->
-          <table class="table table-sm">
-            <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Name</th>
-              <th scope="col">Unit</th>
-              <th scope="col">Quantity</th>
-              <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Apple</td>
-              <td>kg</td>
-              <td>2</td>
-              <td>
-                <i class="icon ion-md-trash"></i>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+          <!-- preparation -->
+          <div class="form-group">
+            <label>Preparation</label>
+            <textarea class="form-control"
+                      name="preparation"
+                      required
+                      placeholder="Enter preparation"
+                      [(ngModel)]="preparation"></textarea>
+          </div>
         </div>
 
-        <!-- preparation -->
-        <div class="form-group">
-          <label>Preparation</label>
-          <textarea class="form-control"
-                    placeholder="Enter preparation"></textarea>
-        </div>
-      </form>
-
+      </div>
     </div>
-  </div>
+
+  </form>
 
 </div>

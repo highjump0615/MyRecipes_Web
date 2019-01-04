@@ -209,7 +209,10 @@ button[icon-only] {
 }
 
 .dv-no-list-item {
+  @extend .no-list-font;
   min-height: 94px;
+}
+.no-list-font {
   font-size: 9pt;
   color: gray;
 }

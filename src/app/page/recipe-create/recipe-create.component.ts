@@ -1,15 +1,156 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {Ingredient} from '../../models/ingredient';
+import {FirebaseManager} from '../../helpers/firebase-manager';
+import {DataStoreService} from '../../services/data-store.service';
+import {Router} from '@angular/router';
+import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
+import {MatDialog} from '@angular/material';
+import {BaseComponent} from '../base/base.component';
+import {ComboBoxComponent} from '../../components/combo-box/combo-box.component';
 
 @Component({
   selector: 'app-recipe-create',
   templateUrl: './recipe-create.component.html',
   styleUrls: ['./recipe-create.component.scss']
 })
-export class RecipeCreateComponent implements OnInit {
+export class RecipeCreateComponent extends BaseComponent implements OnInit {
 
-  constructor() { }
+  title = '';
+  skill = '';
+  serving: number;
+  preparation = '';
+
+  // ingredient form
+  ingName = '';
+  ingUnit = '';
+  ingQuantity: number;
+
+  ingAll: Array<Ingredient> = [];
+  ingRecipe: Array<Ingredient> = [];
+  cmbIngList: Array<any> = [];
+
+  constructor(
+    public router: Router,
+    private overlay: SpinnerOverlayService,
+    public dialog: MatDialog,
+    private dataStore: DataStoreService
+  ) {
+    super(dialog);
+
+    this.ingAll = this.dataStore.ingredients;
+    this.fillComboList();
+
+    // fetch cuisines
+    const dbRef = FirebaseManager.ref();
+
+    const query = dbRef.child(Ingredient.TABLE_NAME);
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryIng = [];
+
+        snapshot.forEach(function(child) {
+          const i = new Ingredient(child);
+
+          aryIng.push(i);
+        });
+
+        this.ingAll = aryIng;
+
+        // fill combo box
+        this.fillComboList();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   ngOnInit() {
   }
 
+  fillComboList() {
+    this.cmbIngList = [];
+
+    for (let i = 0; i < this.ingAll.length; i++) {
+      const ing = this.ingAll[i];
+
+      const cmbObj = {};
+      cmbObj[ComboBoxComponent.KEY_INDEX] = i;
+      cmbObj[ComboBoxComponent.KEY_NAME] = ing.name;
+
+      this.cmbIngList.push(cmbObj);
+    }
+  }
+
+  onAdd() {
+    // check ingredients
+    if (this.ingRecipe.length <= 0) {
+      this.showErrorDialg(
+        'Ingredients Missing',
+        'At least 1 ingredient needs to make a recipe'
+      );
+
+      return;
+    }
+  }
+
+  /**
+   * add ingredient
+   */
+  onAddIngredient() {
+    let ingredient = null;
+
+    // if selected exisiting ingredient
+    for (const i of this.ingAll) {
+      if (this.ingName === i.name) {
+        ingredient = i;
+        break;
+      }
+    }
+
+    // if not, make new one
+    if (!ingredient) {
+      ingredient = new Ingredient();
+
+      ingredient.name = this.ingName;
+      ingredient.unit = this.ingUnit;
+
+      ingredient.saveToDatabase();
+
+      this.dataStore.ingredients.push(ingredient);
+
+      // add to all ingredient list
+      this.ingAll.push(ingredient);
+      // update combo box
+      this.fillComboList();
+    }
+
+    ingredient.quantity = this.ingQuantity;
+
+    // add to ingredient list
+    this.ingRecipe.push(ingredient);
+
+    // clear input fields
+    this.ingName = '';
+    this.ingUnit = '';
+    this.ingQuantity = null;
+  }
+
+  onIngredientChange(event) {
+    this.ingName = event;
+
+    // check ingredient and fill unit
+    for (const i of this.ingAll) {
+      if (i.name === this.ingName) {
+        this.ingUnit = i.unit;
+        break;
+      }
+    }
+  }
+
+  onRemoveIngRecipe(index) {
+    this.ingRecipe.splice(index, 1);
+  }
 }
