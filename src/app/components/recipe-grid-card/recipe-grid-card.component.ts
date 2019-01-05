@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Recipe} from '../../models/recipe';
 
 @Component({
   selector: 'app-recipe-grid-card',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class RecipeGridCardComponent implements OnInit {
 
+  @Input() recipe: Recipe;
   @Input() showDate = true;
 
   constructor() { }

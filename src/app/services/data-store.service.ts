@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Tip} from '../models/tip';
 import {Ingredient} from '../models/ingredient';
+import {Recipe} from '../models/recipe';
 
 @Injectable()
 export class DataStoreService {
@@ -14,6 +15,9 @@ export class DataStoreService {
 
   // ingredients
   ingredients: Array<Ingredient> = [];
+
+  // all recipes
+  myRecipes: Array<Recipe> = [];
 
   constructor() { }
 

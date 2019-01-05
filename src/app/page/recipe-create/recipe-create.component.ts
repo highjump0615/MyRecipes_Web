@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Ingredient} from '../../models/ingredient';
 import {FirebaseManager} from '../../helpers/firebase-manager';
 import {DataStoreService} from '../../services/data-store.service';
@@ -7,6 +7,10 @@ import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
 import {MatDialog} from '@angular/material';
 import {BaseComponent} from '../base/base.component';
 import {ComboBoxComponent} from '../../components/combo-box/combo-box.component';
+import {ImageUploaderComponent} from '../../components/image-uploader/image-uploader.component';
+import {Recipe} from '../../models/recipe';
+import {User} from '../../models/user';
+
 
 @Component({
   selector: 'app-recipe-create',
@@ -14,6 +18,8 @@ import {ComboBoxComponent} from '../../components/combo-box/combo-box.component'
   styleUrls: ['./recipe-create.component.scss']
 })
 export class RecipeCreateComponent extends BaseComponent implements OnInit {
+
+  @ViewChild('imagePhoto') uploadPhoto: ImageUploaderComponent;
 
   title = '';
   skill = '';
@@ -85,6 +91,16 @@ export class RecipeCreateComponent extends BaseComponent implements OnInit {
   }
 
   onAdd() {
+    // check image
+    if (!this.uploadPhoto.picture) {
+      this.showErrorDialg(
+        'Photo Missing',
+        'Photo needs be added to make a recipe'
+      );
+
+      return;
+    }
+
     // check ingredients
     if (this.ingRecipe.length <= 0) {
       this.showErrorDialg(
@@ -94,6 +110,49 @@ export class RecipeCreateComponent extends BaseComponent implements OnInit {
 
       return;
     }
+
+    this.overlay.show();
+
+    const userCurrent = User.currentUser;
+
+    // upload photo image
+    const photoName = userCurrent.id + Math.floor(Date.now() / 1000);
+    const path = 'recipes/' + photoName + '.png';
+
+    FirebaseManager.getInstance().uploadImageTo(
+      path,
+      this.uploadPhoto.picture,
+      (downloadURL, error) => {
+        this.overlay.hide();
+
+        if (error) {
+          // failed to upload
+          this.showErrorDialg('Upload photo failed', error);
+
+          return;
+        }
+
+        // add new recipe
+        const recipeNew = new Recipe();
+
+        recipeNew.title = this.title;
+        recipeNew.photoUrl = downloadURL;
+        recipeNew.skill = parseInt(this.skill, 10);
+        recipeNew.serving = this.serving;
+        recipeNew.ingredients = this.ingRecipe;
+        recipeNew.preparation = this.preparation;
+
+        // user info
+        recipeNew.user = userCurrent;
+        recipeNew.userId = userCurrent.id;
+
+        recipeNew.saveToDatabase();
+
+        this.dataStore.myRecipes.push(recipeNew);
+
+        // back to list page
+        this.router.navigate(['myrecipes']);
+      });
   }
 
   /**

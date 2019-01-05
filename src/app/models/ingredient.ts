@@ -36,4 +36,5 @@ export class Ingredient extends BaseModel {
 
     return dict;
   }
+
 }

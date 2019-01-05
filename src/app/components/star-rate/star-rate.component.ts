@@ -12,7 +12,8 @@ export class StarRateComponent implements OnInit {
 
   @Input() rating: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -47,7 +48,7 @@ export class StarRateComponent implements OnInit {
    * @param index
    */
   isAboveRating(index: number): boolean {
-    return index > this.rating;
+    return index > Math.round(this.rating);
   }
 
 }

@@ -4,19 +4,19 @@
       <!-- image -->
       <div
         class="square border"
-        style="background-image: url('../../../assets/imgs/default_food.png')">
+        [style.background-image]="'url(' + recipe.photoUrl + ')'">
       </div>
 
       <!-- rate -->
       <app-star-rate
-        [rating]="3">
+        [rating]="recipe.recipeRate()">
       </app-star-rate>
 
       <!-- title -->
-      <span class="title nm-center">Burger Americana</span>
+      <span class="title nm-center">{{recipe.title}}</span>
     </div>
 
     <!-- date -->
-    <div *ngIf="showDate" class="date">Feb 12, Monday</div>
+    <div *ngIf="showDate" class="date">{{recipe.dateFormatted()}}</div>
   </div>
 </a>

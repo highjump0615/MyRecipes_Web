@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {User} from '../../models/user';
+import {Recipe} from '../../models/recipe';
+import {FirebaseManager} from '../../helpers/firebase-manager';
+import {DataStoreService} from '../../services/data-store.service';
+
 
 @Component({
   selector: 'app-myrecipe',
@@ -9,15 +14,43 @@ import {Router} from '@angular/router';
 export class MyrecipeComponent implements OnInit {
 
   // recipes
-  recipes: Array<string> = [];
+  recipes: Array<Recipe> = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private dataStore: DataStoreService
   ) {
-    // init data
-    for (let i = 0; i < 4; i++) {
-      this.recipes.push('aa');
+    const userCurrent = User.currentUser;
+
+    this.recipes = this.dataStore.myRecipes;
+
+    // fetch cuisines
+    const dbRef = FirebaseManager.ref();
+
+    const query = dbRef.child(Recipe.TABLE_NAME);
+    if (!userCurrent.isAdmin()) {
+      query.orderByChild(Recipe.FIELD_USER)
+        .equalTo(userCurrent.id);
     }
+
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryRecipe = [];
+
+        snapshot.forEach(function(child) {
+          const r = new Recipe(child);
+
+          aryRecipe.push(r);
+        });
+
+        this.recipes = aryRecipe;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   ngOnInit() {

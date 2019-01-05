@@ -21,7 +21,9 @@
     <div class="dv-content">
       <div class="card with-shadow">
         <!-- upload image -->
-        <app-image-uploader class="nm-center">
+        <app-image-uploader
+          class="nm-center"
+          #imagePhoto>
           <div class="d-flex nm-center align-items-center">
             <i class="icon ion-md-add"></i>
             <span>Upload Photo</span>
@@ -49,7 +51,7 @@
               <option value="" selected>Select skill level</option>
               <option value="1">Low</option>
               <option value="2">Medium</option>
-              <option value="3">Hight</option>
+              <option value="3">High</option>
             </select>
           </div>
 

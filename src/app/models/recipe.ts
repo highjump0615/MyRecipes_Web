@@ -1,33 +1,108 @@
-export class Recipe {
-  ingredients: Array<string>;
-  preparation: string;
+import {Ingredient} from './ingredient';
+import DataSnapshot = firebase.database.DataSnapshot;
+import {BaseModel} from './base-model';
+import {User} from './user';
 
-  constructor() {
-    this.ingredients = [
-      '2 acorn suqash',
-      '4 cups vegetable stock',
-      '1 Tbsp. butter or oil',
-      '1/4 of a fresh nutmeg, grated',
-      '1 red onion, minced',
-      '1 Tbsp. curry powder',
-      '2 pears, chopped',
-      'salt & pepper to taste',
-    ];
+export class Recipe extends BaseModel {
 
-    this.preparation = 'Preheat your oven to 425F.\n' +
-      'Slice the acorn squash in half, lengthwise, and scoop ' +
-      'out the seeds.  Place the squash cut-side-down on a baking ' +
-      'sheet lined with aluminum foil.  Roast at 425F for 45 minutes, ' +
-      'until the flesh is tender.  Let cool, and scoop out the acorn ' +
-      'squash flesh.\n'
-      + 'Heat a large pot over medium heat, and add your butter or oil.  ' +
-      'Add the onion, and sautee until the onions are soft.  ' +
-      'Add the roasted squash, pears, vegetable stock, nutmeg, and curry powder,' +
-      ' and stir to combine everything.\n'
-      + 'Turn the heat to high and bring the pot to a boil.  ' +
-      'Turn the heat down to low and simmer for 45 minutes, until all of the ' +
-      'flavours are infused and gorgeous.  Your home will smell decadent.  ' +
-      'Season with salt & pepper.\n'
-      + 'Serve warm, topped with your favourite soup toppings.  I like a little Greek yoghurt and some freshly chopped chives.';
+  //
+  // table info
+  //
+  static TABLE_NAME = 'recipes';
+  static FIELD_TITLE = 'title';
+  static FIELD_PHOTO = 'photoUrl';
+  static FIELD_SKILL = 'skill';
+  static FIELD_SERVING = 'serving';
+  static FIELD_INGREDIENT = 'ingredients';
+  static FIELD_PREPARATION = 'preparation';
+  static FIELD_USER = 'user';
+
+  static FIELD_RATE = 'rate';
+  static FIELD_RATECOUNT = 'rateCount';
+
+  static SKILL_LOW = 1;
+  static SKILL_MEDIUM = 2;
+  static SKILL_HIGH = 3;
+
+  title = '';
+  photoUrl = '';
+  skill: number;
+  serving: number;
+  preparation = '';
+
+  ingredientIds = [];
+  ingredients: Array<Ingredient> = [];
+
+  userId = '';
+  user: User;
+
+  rate = 0;
+  rateCount = 0;
+
+  tableName() {
+    return Recipe.TABLE_NAME;
+  }
+
+  constructor(snapshot?: DataSnapshot) {
+    super(snapshot);
+
+    if (snapshot) {
+      const info = snapshot.val();
+
+      this.title = info[Recipe.FIELD_TITLE];
+      this.photoUrl = info[Recipe.FIELD_PHOTO];
+      this.skill = info[Recipe.FIELD_SKILL];
+      this.serving = info[Recipe.FIELD_SERVING];
+      this.preparation = info[Recipe.FIELD_PREPARATION];
+      this.userId = info[Recipe.FIELD_USER];
+
+      // set ingredients
+      this.ingredientIds = info[Recipe.FIELD_INGREDIENT];
+    }
+  }
+
+  toDictionary() {
+    const dict = super.toDictionary();
+
+    dict[Recipe.FIELD_TITLE] = this.title;
+    dict[Recipe.FIELD_PHOTO] = this.photoUrl;
+    dict[Recipe.FIELD_SKILL] = this.skill;
+    dict[Recipe.FIELD_SERVING] = this.serving;
+    dict[Recipe.FIELD_PREPARATION] = this.preparation;
+
+    const dictIngs = [];
+    for (const i of this.ingredients) {
+      dictIngs[i.id] = i.quantity;
+    }
+    dict[Recipe.FIELD_INGREDIENT] = dictIngs;
+
+    // user
+    dict[Recipe.FIELD_USER] = this.userId;
+
+    // rate
+    dict[Recipe.FIELD_RATE] = this.rate;
+    dict[Recipe.FIELD_RATECOUNT] = this.rateCount;
+
+    return dict;
+  }
+
+  recipeRate() {
+    // avoid division by 0
+    if (this.rateCount === 0) {
+      return 0;
+    }
+
+    return this.rate / this.rateCount;
+  }
+
+  dateFormatted() {
+    const dateCreated = new Date(this.createdAt);
+
+    // format: Feb 12, Monday
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+    const date = ((dateCreated.getDate() < 10) ? '0' : '') + dateCreated.getDate();
+
+    return months[dateCreated.getMonth()] + ' ' + date + ', ' + days[dateCreated.getDay()];
   }
 }

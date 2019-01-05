@@ -40,8 +40,6 @@ export class ComboBoxComponent implements OnInit {
   }
 
   onItemSelected(index) {
-    console.log(index);
-
     this.text = this.list[index].name;
     this.textChange.emit(this.text);
   }
