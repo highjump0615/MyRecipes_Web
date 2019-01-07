@@ -23,9 +23,6 @@ export class DataStoreService {
   // selected object
   recipeSelected: Recipe;
 
-  // reviews
-  reviews: Array<Review> = [];
-
   constructor() { }
 
 }

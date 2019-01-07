@@ -23,7 +23,7 @@ export class MyrecipeComponent implements OnInit {
   ) {
     this.recipes = this.dataStore.myRecipes;
 
-    // fetch cuisines
+    // fetch recipes
     const dbRef = FirebaseManager.ref();
 
     const query = dbRef.child(Recipe.TABLE_NAME);

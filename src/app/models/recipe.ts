@@ -3,6 +3,7 @@ import {BaseModel} from './base-model';
 import {User} from './user';
 import {FirebaseManager} from '../helpers/firebase-manager';
 import DataSnapshot = firebase.database.DataSnapshot;
+import {Utils} from '../helpers/utils';
 
 export class Recipe extends BaseModel {
 
@@ -59,6 +60,10 @@ export class Recipe extends BaseModel {
       this.serving = info[Recipe.FIELD_SERVING];
       this.preparation = info[Recipe.FIELD_PREPARATION];
       this.userId = info[Recipe.FIELD_USER];
+
+      // rate
+      this.rate = info[Recipe.FIELD_RATE];
+      this.rateCount = info[Recipe.FIELD_RATECOUNT];
 
       // set ingredients
       this.ingredientIds = info[Recipe.FIELD_INGREDIENT];
@@ -142,14 +147,7 @@ export class Recipe extends BaseModel {
   }
 
   dateFormatted() {
-    const dateCreated = new Date(this.createdAt);
-
-    // format: Feb 12, Monday
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const date = ((dateCreated.getDate() < 10) ? '0' : '') + dateCreated.getDate();
-
-    return months[dateCreated.getMonth()] + ' ' + date + ', ' + days[dateCreated.getDay()];
+    return Utils.getInstance().toDateWithDay(this.createdAt);
   }
 
   /**

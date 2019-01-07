@@ -1,6 +1,7 @@
 import {BaseModel} from './base-model';
 import DataSnapshot = firebase.database.DataSnapshot;
 import {User} from './user';
+import {Utils} from '../helpers/utils';
 
 export class Review extends BaseModel {
 
@@ -50,5 +51,9 @@ export class Review extends BaseModel {
     dict[Review.FIELD_USERID] = this.userId;
 
     return dict;
+  }
+
+  dateFormatted() {
+    return Utils.getInstance().toDateLong(this.createdAt);
   }
 }

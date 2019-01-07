@@ -18,26 +18,33 @@
 
   <!-- reviews -->
   <div class="dv-content">
-    <div class="card with-shadow"
-      *ngFor="let num of [1, 2, 3, 4, 5]">
-
-      <!-- heading -->
-      <div class="d-flex align-items-center heading">
-        <app-star-rate
-          [rating]="3">
-        </app-star-rate>
-        <span>Easy to prepare</span>
-      </div>
-
-      <!-- user & time -->
-      <div class="user-info"
-      >By John Williams on March 31, 2018</div>
-
-      <!-- content -->
-      <div class="content"
-      >Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</div>
-
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="reviews.length == 0; else list">
+      <span>No reviews yet</span>
     </div>
+
+    <ng-template #list>
+      <div class="card with-shadow"
+           *ngFor="let data of reviews">
+
+        <!-- heading -->
+        <div class="d-flex align-items-center heading">
+          <app-star-rate
+            [rating]="data.rate">
+          </app-star-rate>
+          <span>{{data.title}}</span>
+        </div>
+
+        <!-- user & time -->
+        <div class="user-info"
+        >By {{data.user.fullName()}} on {{data.dateFormatted()}}</div>
+
+        <!-- content -->
+        <div class="content"
+        >{{data.content}}</div>
+
+      </div>
+    </ng-template>
 
   </div>
 
