@@ -15,22 +15,21 @@ export class MyrecipeComponent implements OnInit {
 
   // recipes
   recipes: Array<Recipe> = [];
+  userCurrent = User.currentUser;
 
   constructor(
     private router: Router,
     private dataStore: DataStoreService
   ) {
-    const userCurrent = User.currentUser;
-
     this.recipes = this.dataStore.myRecipes;
 
     // fetch cuisines
     const dbRef = FirebaseManager.ref();
 
     const query = dbRef.child(Recipe.TABLE_NAME);
-    if (!userCurrent.isAdmin()) {
+    if (!this.userCurrent.isAdmin()) {
       query.orderByChild(Recipe.FIELD_USER)
-        .equalTo(userCurrent.id);
+        .equalTo(this.userCurrent.id);
     }
 
     query.once('value')

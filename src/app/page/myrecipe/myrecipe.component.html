@@ -2,7 +2,7 @@
   <!-- title -->
   <div class="pg-title">
     <div>
-      <span class="title">My Recipes</span>
+      <span class="title">{{userCurrent.isAdmin() ? 'Recipes' : 'My Recipes'}}</span>
 
       <!-- buttons -->
       <div class="button-wrapper nm-center d-flex">

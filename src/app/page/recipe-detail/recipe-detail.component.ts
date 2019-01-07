@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../../models/recipe';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DataStoreService} from '../../services/data-store.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,7 +14,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataStore: DataStoreService
   ) {
   }
 
@@ -23,7 +25,9 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onButReview() {
+    this.dataStore.recipeSelected = this.recipe;
+
     // go to reviews page
-    this.router.navigate(['reviews']);
+    this.router.navigate(['reviews', this.recipe.id]);
   }
 }

@@ -1,4 +1,8 @@
 <div class="pg-content">
+  <form
+    ngNativeValidate
+    (ngSubmit)="onAdd()">
+
   <!-- title -->
   <div class="pg-title">
     <div>
@@ -9,7 +13,7 @@
         <button
           type="button"
           class="btn btn-gradient round"
-          (click)="onButSubmit()"
+          (click)="onAdd()"
         >Submit</button>
       </div>
     </div>
@@ -21,18 +25,27 @@
 
       <app-star-rate
         [starSize]="24"
-        [rating]="3"
-        [readOnly]="false">
+        [rating]="5"
+        [readOnly]="false"
+        #starRate>
       </app-star-rate>
 
       <form class="d-flex flex-column">
         <!-- first name -->
         <input class="form-control"
-               placeholder="Headline for review" />
+               name="review-title"
+               required
+               placeholder="Headline for review"
+               [(ngModel)]="title" />
         <textarea class="form-control"
-                  placeholder="Write your review here"></textarea>
+                  name="content"
+                  required
+                  placeholder="Write your review here"
+                  [(ngModel)]="content"></textarea>
       </form>
     </div>
   </div>
+
+  </form>
 
 </div>

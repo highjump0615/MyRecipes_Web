@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Tip} from '../models/tip';
 import {Ingredient} from '../models/ingredient';
 import {Recipe} from '../models/recipe';
+import {Review} from '../models/review';
 
 @Injectable()
 export class DataStoreService {
@@ -18,6 +19,12 @@ export class DataStoreService {
 
   // all recipes
   myRecipes: Array<Recipe> = [];
+
+  // selected object
+  recipeSelected: Recipe;
+
+  // reviews
+  reviews: Array<Review> = [];
 
   constructor() { }
 

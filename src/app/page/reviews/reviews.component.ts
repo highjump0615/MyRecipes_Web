@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-reviews',
@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class ReviewsComponent implements OnInit {
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router
   ) {
   }
@@ -18,6 +19,6 @@ export class ReviewsComponent implements OnInit {
 
   onButNewReview() {
     // go to write review page
-    this.router.navigate(['reviews/new']);
+    this.router.navigate([this.router.url + '/new']);
   }
 }

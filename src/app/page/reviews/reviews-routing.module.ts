@@ -5,11 +5,11 @@ import {ReviewCreateComponent} from './review-create/review-create.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ReviewsComponent
   },
   {
-    path: 'new',
+    path: ':id/new',
     component: ReviewCreateComponent
   },
 ];
