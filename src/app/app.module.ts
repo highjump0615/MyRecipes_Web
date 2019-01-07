@@ -20,6 +20,7 @@ import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.compon
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataStoreService} from './services/data-store.service';
 import {BaseProfileComponent} from './page/base/base-profile.component';
+import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {BaseProfileComponent} from './page/base/base-profile.component';
   providers: [
     AuthGuard,
     SpinnerOverlayService,
-    DataStoreService
+    DataStoreService,
+    RecipeDetailResolver
   ],
   bootstrap: [AppComponent],
   entryComponents: [

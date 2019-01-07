@@ -3,12 +3,12 @@
   <div class="pg-title">
     <div>
       <div class="d-flex">
-        <span class="title">Barbecue Pork Ribs</span>
+        <span class="title">{{recipe?.title}}</span>
 
         <!-- rate -->
         <app-star-rate
           [starSize]="16"
-          [rating]="3"
+          [rating]="recipe?.recipeRate()"
           (click)="onButReview()">
         </app-star-rate>
       </div>
@@ -36,7 +36,7 @@
       </button>
 
       <img class="with-shadow"
-           src="../../../assets/imgs/default_food.png" />
+           [src]="recipe?.photoUrl" />
 
       <!-- right button -->
       <button
@@ -50,14 +50,14 @@
     <!-- skill level -->
     <div class="card with-shadow">
       <div class="card-body">
-        <span class="title">Skill Level:</span> Medium
+        <span class="title">Skill Level:</span> {{recipe.skillDesc()}}
       </div>
     </div>
 
     <!-- serving -->
     <div class="card with-shadow">
       <div class="card-body">
-        <span class="title">Serving:</span> 3
+        <span class="title">Serving:</span> {{recipe.serving}}
       </div>
     </div>
 
@@ -67,7 +67,7 @@
         <span class="title">Ingredients:</span>
         <ul>
           <li *ngFor="let ing of recipe.ingredients">
-            {{ing}}
+            {{ing.name}} {{ing.quantity}}{{ing.unit}}
           </li>
         </ul>
       </div>

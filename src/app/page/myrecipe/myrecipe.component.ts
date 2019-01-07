@@ -47,6 +47,7 @@ export class MyrecipeComponent implements OnInit {
         });
 
         this.recipes = aryRecipe;
+        this.dataStore.myRecipes = aryRecipe;
       })
       .catch((err) => {
         console.log(err);

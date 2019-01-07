@@ -4,6 +4,7 @@ import {OnboardComponent} from './page/onboard/onboard.component';
 import {PageComponent} from './page/page.component';
 import {AuthGuard} from './guards/auth.guard';
 import {AppComponent} from './app.component';
+import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver';
 
 const routes: Routes = [
   {
@@ -85,10 +86,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'recipe',
+    path: 'recipe/:id',
     component: PageComponent,
     loadChildren: './page/recipe-detail/recipe-detail.module#RecipeDetailModule',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    resolve: {
+      recipeDetail: RecipeDetailResolver
+    }
   },
   {
     path: 'reviews',

@@ -1,7 +1,8 @@
 import {Ingredient} from './ingredient';
-import DataSnapshot = firebase.database.DataSnapshot;
 import {BaseModel} from './base-model';
 import {User} from './user';
+import {FirebaseManager} from '../helpers/firebase-manager';
+import DataSnapshot = firebase.database.DataSnapshot;
 
 export class Recipe extends BaseModel {
 
@@ -24,6 +25,9 @@ export class Recipe extends BaseModel {
   static SKILL_MEDIUM = 2;
   static SKILL_HIGH = 3;
 
+  //
+  // properties
+  //
   title = '';
   photoUrl = '';
   skill: number;
@@ -38,10 +42,10 @@ export class Recipe extends BaseModel {
 
   rate = 0;
   rateCount = 0;
+  ////
 
-  tableName() {
-    return Recipe.TABLE_NAME;
-  }
+  fetchIngCount = 0;
+  fetchedIngCount = 0;
 
   constructor(snapshot?: DataSnapshot) {
     super(snapshot);
@@ -59,6 +63,37 @@ export class Recipe extends BaseModel {
       // set ingredients
       this.ingredientIds = info[Recipe.FIELD_INGREDIENT];
     }
+  }
+
+  static readFromDatabase(withId: string): Promise<Recipe> {
+
+    const dbRef = FirebaseManager.ref()
+      .child(Recipe.TABLE_NAME)
+      .child(withId);
+
+    const prRecipe = dbRef.once('value')
+      .then((snapshot) => {
+        if (!snapshot.exists()) {
+          return null;
+        }
+
+        return new Recipe(snapshot);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return prRecipe.then((recipe) => {
+      if (!recipe) {
+        return null;
+      }
+
+      return recipe.fetchIngredient();
+    });
+  }
+
+  tableName() {
+    return Recipe.TABLE_NAME;
   }
 
   toDictionary() {
@@ -86,6 +121,17 @@ export class Recipe extends BaseModel {
     return dict;
   }
 
+  skillDesc() {
+    if (this.skill === Recipe.SKILL_LOW) {
+      return 'Low';
+    } else if (this.skill === Recipe.SKILL_MEDIUM) {
+      return 'Medium';
+    } else {
+      return 'High';
+    }
+  }
+
+
   recipeRate() {
     // avoid division by 0
     if (this.rateCount === 0) {
@@ -100,9 +146,43 @@ export class Recipe extends BaseModel {
 
     // format: Feb 12, Monday
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const date = ((dateCreated.getDate() < 10) ? '0' : '') + dateCreated.getDate();
 
     return months[dateCreated.getMonth()] + ' ' + date + ', ' + days[dateCreated.getDay()];
+  }
+
+  /**
+   * fetch ingredients data
+   */
+  fetchIngredient(): Promise<Recipe> {
+
+    // get current index
+    const nIndex = this.ingredients.length;
+
+    if (nIndex >= Object.keys(this.ingredientIds).length) {
+      // all ingredients are fetched
+      return Promise.resolve(this);
+    }
+
+    const ingId = Object.keys(this.ingredientIds)[nIndex];
+
+    const dbRef = FirebaseManager.ref()
+      .child(Ingredient.TABLE_NAME)
+      .child(ingId);
+
+    const that = this;
+
+    return dbRef.once('value')
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const ingNew = new Ingredient(snapshot);
+          ingNew.quantity = that.ingredientIds[ingId];
+
+          that.ingredients.push(ingNew);
+        }
+
+        return that.fetchIngredient();
+      });
   }
 }
