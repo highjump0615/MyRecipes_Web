@@ -100,11 +100,20 @@
     </div>
 
     <!-- content -->
-    <div class="row grid-recipe">
-      <div class="col-3" *ngFor="let data of upcomings">
-        <app-recipe-grid-card></app-recipe-grid-card>
-      </div>
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="upcomings.length == 0; else listUpcoming">
+      <span>No upcoming recipes yet</span>
     </div>
+
+    <ng-template #listUpcoming>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of upcomings">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
 
     <!-- recipes & menus -->
     <div class="title"
@@ -115,11 +124,20 @@
     </div>
 
     <!-- content -->
-    <div class="row grid-recipe">
-      <div class="col-3" *ngFor="let data of upcomings">
-        <app-recipe-grid-card></app-recipe-grid-card>
-      </div>
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="upcomings.length == 0; else listRecipe">
+      <span>No recipes yet</span>
     </div>
+
+    <ng-template #listRecipe>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of upcomings">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
   </div>
 
 </div>

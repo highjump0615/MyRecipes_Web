@@ -68,7 +68,7 @@ export class ProfileEditComponent extends BaseProfileComponent implements OnInit
     if (this.userCurrent.isAdmin()) {
       this.updatePassword(this.doneCallback);
     } else {
-      this.uploadImageAndSetupUserInfo(this.updatePassword);
+      this.uploadImageAndSetupUserInfo(this.updatePassword(this.doneCallback));
     }
   }
 

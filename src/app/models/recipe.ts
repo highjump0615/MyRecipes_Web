@@ -17,7 +17,7 @@ export class Recipe extends BaseModel {
   static FIELD_SERVING = 'serving';
   static FIELD_INGREDIENT = 'ingredients';
   static FIELD_PREPARATION = 'preparation';
-  static FIELD_USER = 'user';
+  static FIELD_USERID = 'userId';
 
   static FIELD_RATE = 'rate';
   static FIELD_RATECOUNT = 'rateCount';
@@ -59,7 +59,7 @@ export class Recipe extends BaseModel {
       this.skill = info[Recipe.FIELD_SKILL];
       this.serving = info[Recipe.FIELD_SERVING];
       this.preparation = info[Recipe.FIELD_PREPARATION];
-      this.userId = info[Recipe.FIELD_USER];
+      this.userId = info[Recipe.FIELD_USERID];
 
       // rate
       this.rate = info[Recipe.FIELD_RATE];
@@ -117,7 +117,7 @@ export class Recipe extends BaseModel {
     dict[Recipe.FIELD_INGREDIENT] = dictIngs;
 
     // user
-    dict[Recipe.FIELD_USER] = this.userId;
+    dict[Recipe.FIELD_USERID] = this.userId;
 
     // rate
     dict[Recipe.FIELD_RATE] = this.rate;

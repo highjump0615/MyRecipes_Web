@@ -1,8 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
-import {Router} from '@angular/router';
+import {Router, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router';
 import {FirebaseManager} from './helpers/firebase-manager';
 import {User} from './models/user';
+import {SpinnerOverlayService} from './services/spinner-overlay.service';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +18,30 @@ export class AppComponent implements OnInit {
 
   constructor(
     public router: Router,
-    @Inject(SESSION_STORAGE) private storage: StorageService
+    private overlay: SpinnerOverlayService
   ) {
     // init firebase
     if (FirebaseManager.getInstance()) {
       console.log('firebase loaded');
     }
+
+    router.events.subscribe((routerEvent: Event) => {
+      this.checkRouterEvent(routerEvent);
+    });
   }
+
   ngOnInit() {
+  }
+
+  checkRouterEvent(routerEvent: Event): void {
+    if (routerEvent instanceof NavigationStart) {
+      this.overlay.show();
+    }
+
+    if (routerEvent instanceof NavigationEnd ||
+      routerEvent instanceof NavigationCancel ||
+      routerEvent instanceof NavigationError) {
+      this.overlay.hide();
+    }
   }
 }

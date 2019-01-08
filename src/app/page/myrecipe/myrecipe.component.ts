@@ -26,9 +26,10 @@ export class MyrecipeComponent implements OnInit {
     // fetch recipes
     const dbRef = FirebaseManager.ref();
 
-    const query = dbRef.child(Recipe.TABLE_NAME);
+    let query: any = dbRef.child(Recipe.TABLE_NAME);
+
     if (!this.userCurrent.isAdmin()) {
-      query.orderByChild(Recipe.FIELD_USER)
+      query = query.orderByChild(Recipe.FIELD_USERID)
         .equalTo(this.userCurrent.id);
     }
 
@@ -43,6 +44,8 @@ export class MyrecipeComponent implements OnInit {
           const r = new Recipe(child);
 
           aryRecipe.push(r);
+
+          console.log(child);
         });
 
         this.recipes = aryRecipe;
@@ -58,6 +61,6 @@ export class MyrecipeComponent implements OnInit {
 
   onButNewRecipe() {
     // go to new recipe page
-    this.router.navigate(['recipe/new']);
+    this.router.navigate(['new/recipe']);
   }
 }

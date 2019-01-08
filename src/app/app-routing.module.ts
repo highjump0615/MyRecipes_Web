@@ -101,7 +101,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'recipe/new',
+    path: 'new/recipe',
     component: PageComponent,
     loadChildren: './page/recipe-create/recipe-create.module#RecipeCreateModule',
     canActivate: [AuthGuard]

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
 import {User} from '../../models/user';
+import {Recipe} from '../../models/recipe';
+import {FirebaseManager} from '../../helpers/firebase-manager';
+import {BaseModel} from '../../models/base-model';
 
 @Component({
   selector: 'app-home',
@@ -11,31 +14,47 @@ import {User} from '../../models/user';
 export class HomeComponent implements OnInit {
 
   // user info
-  userCurrent: User;
+  userCurrent = User.currentUser;
 
   menus: Array<string> = [];
 
   // recipes
-  upcomings: Array<string> = [];
-  recipes: Array<string> = [];
+  upcomings: Array<Recipe> = [];
+  recipes: Array<Recipe> = [];
 
   constructor(
     private router: Router,
     private overlay: SpinnerOverlayService,
   ) {
-    // set current user
-    this.userCurrent = User.currentUser;
+    // fetch recipes
+    const dbRef = FirebaseManager.ref();
 
-    // init data
-    for (let i = 0; i < 2; i++) {
-      this.menus.push('aa');
-    }
+    const that = this;
 
-    // init data
-    for (let i = 0; i < 4; i++) {
-      this.upcomings.push('aa');
-      this.recipes.push('aa');
-    }
+    const query = dbRef.child(Recipe.TABLE_NAME)
+      .orderByChild(BaseModel.FIELD_DATE)
+      .limitToLast(8);
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryRecipe = [];
+
+        snapshot.forEach(function(child) {
+          const r = new Recipe(child);
+
+          that.recipes.splice(0, 0, r);
+
+          // upcomings are 4 recipes at most
+          if (that.upcomings.length < 4) {
+            that.upcomings.splice(0, 0, r);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   ngOnInit() {
