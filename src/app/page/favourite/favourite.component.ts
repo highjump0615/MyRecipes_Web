@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-favourite',
@@ -7,14 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteComponent implements OnInit {
 
-  // recipes
-  recipes: Array<string> = [];
+  userCurrent = User.currentUser;
 
   constructor() {
-    // init data
-    for (let i = 0; i < 4; i++) {
-      this.recipes.push('aa');
-    }
   }
 
   ngOnInit() {

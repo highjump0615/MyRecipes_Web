@@ -17,11 +17,20 @@
 
   <!-- recipes -->
   <div class="dv-content">
-    <div class="row grid-recipe">
-      <div class="col-3" *ngFor="let data of recipes">
-        <app-recipe-grid-card></app-recipe-grid-card>
-      </div>
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="userCurrent.favourites.length == 0; else list">
+      <span>No favorite recipes yet</span>
     </div>
+
+    <ng-template #list>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of userCurrent.favourites">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
   </div>
 
 </div>

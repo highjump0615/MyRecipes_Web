@@ -2,6 +2,7 @@ import {FirebaseManager} from '../helpers/firebase-manager';
 import DataSnapshot = firebase.database.DataSnapshot;
 import {BaseModel, Deserializable} from './base-model';
 import {Cuisine} from './cuisine';
+import {Recipe} from './recipe';
 
 export class User extends BaseModel implements Deserializable {
   static currentUser: User;
@@ -42,6 +43,9 @@ export class User extends BaseModel implements Deserializable {
   diets: any;
   dislikes: any;
   ////
+
+  favourites: Array<Recipe> = [];
+
 
   fetchCuisineCount = 0;
   fetchedCuisineCount = 0;

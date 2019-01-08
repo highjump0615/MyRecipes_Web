@@ -66,21 +66,21 @@ export class ProfileEditComponent extends BaseProfileComponent implements OnInit
     }
 
     if (this.userCurrent.isAdmin()) {
-      this.updatePassword(this.doneCallback);
+      this.updatePassword();
     } else {
-      this.uploadImageAndSetupUserInfo(this.updatePassword(this.doneCallback));
+      this.uploadImageAndSetupUserInfo(this.updatePassword);
     }
   }
 
-  doneCallback = () => {
+  doneCallback() {
     // go back to prev page
     this.location.back();
   }
 
-  updatePassword = (completion: () => void) => {
+  updatePassword = () => {
     // no password input
     if (!this.password) {
-      completion();
+      this.doneCallback();
       return;
     }
 
@@ -98,7 +98,7 @@ export class ProfileEditComponent extends BaseProfileComponent implements OnInit
       .then((data) => {
         fbUser.updatePassword(this.password).then(() => {
             this.overlay.hide();
-            completion();
+            this.doneCallback();
           })
           .catch((err) => {
             this.onError(err);
