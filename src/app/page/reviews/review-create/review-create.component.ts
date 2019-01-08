@@ -49,9 +49,6 @@ export class ReviewCreateComponent implements OnInit {
     recipe.saveToDatabaseWithField(Recipe.FIELD_RATECOUNT, recipe.rateCount);
     recipe.saveToDatabaseWithField(Recipe.FIELD_RATE, recipe.rate);
 
-    // add to data store
-    this.dataStore.reviews.push(reviewNew);
-
     // go back to
     this.location.back();
   }

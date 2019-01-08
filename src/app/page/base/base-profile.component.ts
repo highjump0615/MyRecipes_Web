@@ -27,7 +27,7 @@ export class BaseProfileComponent extends BaseComponent {
     super(dialog, storage);
   }
 
-  uploadImageAndSetupUserInfo(completion: () => void) {
+  uploadImageAndSetupUserInfo(completion: (any?) => void) {
 
     if (this.uploadPhoto.picture) {
       // show loading view
@@ -55,7 +55,7 @@ export class BaseProfileComponent extends BaseComponent {
     }
   }
 
-  saveUserInfo(completion: () => void) {
+  saveUserInfo(completion: (any?) => void) {
     const user = User.currentUser;
 
     // save info

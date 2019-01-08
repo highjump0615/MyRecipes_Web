@@ -61,24 +61,30 @@
              [style.margin-top]="userCurrent.isAdmin() ? '20px' : 'auto'">
           <label>Current Password</label>
           <input class="form-control"
+                 name="oPassword"
                  type="password"
-                 placeholder="Enter current password" />
+                 placeholder="Enter current password"
+                 [(ngModel)]="oPassword"/>
         </div>
 
         <!-- new password -->
         <div class="form-group">
           <label>New Password</label>
           <input class="form-control"
+                 name="cPassword"
                  type="password"
-                 placeholder="Enter new password" />
+                 placeholder="Enter new password"
+                 [(ngModel)]="password" />
         </div>
 
         <!-- re-enter new password -->
         <div class="form-group">
           <label>Re-Enter New Password</label>
           <input class="form-control"
+                 name="cPassword"
                  type="password"
-                 placeholder="Re-enter new password" />
+                 placeholder="Re-enter new password"
+                 [(ngModel)]="cPassword"/>
         </div>
 
         <button type="submit"
