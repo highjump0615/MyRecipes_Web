@@ -1,6 +1,7 @@
 @import '../../../styles/sass/conf/conf';
 @import "~bootstrap/scss/bootstrap";
 
+
 :host {
   .dv-menus {
     background-color: $primary;
@@ -36,5 +37,15 @@
     padding: 6px !important;
     border: 1px solid $primary;
     border-radius: 30px;
+  }
+
+  /deep/ .card {
+    padding: 16px;
+  }
+
+  /deep/ form {
+    > .form-control {
+      margin-bottom: 10px;
+    }
   }
 }

@@ -1,14 +1,5 @@
 @import '../../../../styles/sass/conf/conf';
 
-.card {
-  padding: 16px;
-}
-
-form {
-  > .form-control {
-    margin-bottom: 10px;
-  }
-}
 
 :host /deep/ .menu-filter {
   border-radius: 5px;
