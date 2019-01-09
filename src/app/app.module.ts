@@ -23,6 +23,7 @@ import {BaseProfileComponent} from './page/base/base-profile.component';
 import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver';
 import {BaseIngredientComponent} from './page/base/base-ingredient.component';
 import {ShoppingCreateResolver} from './page/shopping-create/shopping-create.resolver';
+import {BaseCuisineComponent} from './page/base/base-cuisine.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {ShoppingCreateResolver} from './page/shopping-create/shopping-create.res
     BaseComponent,
     BaseProfileComponent,
     BaseIngredientComponent,
+    BaseCuisineComponent,
     ErrorDialogComponent
   ],
   imports: [

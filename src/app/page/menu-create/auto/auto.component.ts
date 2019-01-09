@@ -1,26 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {BaseCuisineComponent} from '../../base/base-cuisine.component';
+import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-auto',
   templateUrl: './auto.component.html',
   styleUrls: ['./auto.component.scss']
 })
-export class AutoComponent implements OnInit {
+export class AutoComponent extends BaseCuisineComponent implements OnInit {
 
-  // recipes
-  favourites: Array<string> = [];
-  allergies: Array<string> = [];
-  diets: Array<string> = [];
-  dislikes: Array<string> = [];
-
-  constructor() {
-    // init data
-    for (let i = 0; i < 4; i++) {
-      this.favourites.push('aa');
-      this.allergies.push('aa');
-      this.diets.push('aa');
-      this.dislikes.push('aa');
-    }
+  constructor(
+    @Inject(SESSION_STORAGE) public storage: StorageService
+  ) {
+    super(storage, false);
   }
 
   ngOnInit() {

@@ -35,7 +35,8 @@
 
           <!-- pref menus -->
           <app-expand-menu
-            class="menu-cuisines">
+            class="menu-cuisines"
+            [multiple]="true">
             <!-- favourites -->
             <app-expand-menu-item
               title="Favorite Cuisines"
@@ -44,11 +45,22 @@
               <!-- content -->
               <div
                 class="content">
-                <div class="row">
-                  <div class="col-3" *ngFor="let data of favourites">
-                    <app-cuisine-item text="AMERICAN"></app-cuisine-item>
-                  </div>
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="favourites.length == 0; else listFavourite">
+                  <span>No items yet</span>
                 </div>
+
+                <ng-template #listFavourite>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of favourites">
+                      <app-cuisine-item
+                        [index]="CUISINE_FAVOURITE"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </app-expand-menu-item>
 
@@ -59,11 +71,22 @@
               <!-- content -->
               <div
                 class="content">
-                <div class="row">
-                  <div class="col-3" *ngFor="let data of allergies">
-                    <app-cuisine-item text="AMERICAN"></app-cuisine-item>
-                  </div>
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="allergies.length == 0; else listAllergy">
+                  <span>No items yet</span>
                 </div>
+
+                <ng-template #listAllergy>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of allergies">
+                      <app-cuisine-item
+                        [index]="CUISINE_ALLERGY"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </app-expand-menu-item>
 
@@ -74,11 +97,22 @@
               <!-- content -->
               <div
                 class="content">
-                <div class="row">
-                  <div class="col-3" *ngFor="let data of diets">
-                    <app-cuisine-item text="AMERICAN"></app-cuisine-item>
-                  </div>
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="diets.length == 0; else listDiet">
+                  <span>No items yet</span>
                 </div>
+
+                <ng-template #listDiet>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of diets">
+                      <app-cuisine-item
+                        [index]="CUISINE_DIET"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </app-expand-menu-item>
 
@@ -89,11 +123,22 @@
               <!-- content -->
               <div
                 class="content">
-                <div class="row">
-                  <div class="col-3" *ngFor="let data of dislikes">
-                    <app-cuisine-item text="AMERICAN"></app-cuisine-item>
-                  </div>
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="dislikes.length == 0; else listDislike">
+                  <span>No items yet</span>
                 </div>
+
+                <ng-template #listDislike>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of dislikes">
+                      <app-cuisine-item
+                        [index]="CUISINE_DISLIKE"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </app-expand-menu-item>
           </app-expand-menu>
