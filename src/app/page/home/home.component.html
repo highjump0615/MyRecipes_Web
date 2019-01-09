@@ -73,9 +73,10 @@
         <!-- menu items -->
         <div class="dv-menu-list d-flex">
           <div class="list-item round"
-               *ngFor="let data of menus">
+               *ngFor="let data of userCurrent.shoppingList"
+               (click)="onClickShopping(data)">
             <img src="../../../../assets/imgs/home_list_icon.png" />
-            <span>Weeknight suppers</span>
+            <span>{{data.name}}</span>
           </div>
         </div>
         <!-- add button -->

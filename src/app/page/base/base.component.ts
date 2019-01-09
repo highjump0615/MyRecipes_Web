@@ -39,6 +39,7 @@ export class BaseComponent implements OnInit {
   }
 
   updateUser(user) {
+    User.currentUser = user;
     this.storage.set(AppComponent.KEY_USER, user);
   }
 }

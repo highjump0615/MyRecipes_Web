@@ -21,6 +21,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataStoreService} from './services/data-store.service';
 import {BaseProfileComponent} from './page/base/base-profile.component';
 import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver';
+import {BaseIngredientComponent} from './page/base/base-ingredient.component';
+import {ShoppingCreateResolver} from './page/shopping-create/shopping-create.resolver';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver'
     SpinnerOverlayComponent,
     BaseComponent,
     BaseProfileComponent,
+    BaseIngredientComponent,
     ErrorDialogComponent
   ],
   imports: [
@@ -48,7 +51,8 @@ import {RecipeDetailResolver} from './page/recipe-detail/recipe-detail.resolver'
     AuthGuard,
     SpinnerOverlayService,
     DataStoreService,
-    RecipeDetailResolver
+    RecipeDetailResolver,
+    ShoppingCreateResolver
   ],
   bootstrap: [AppComponent],
   entryComponents: [

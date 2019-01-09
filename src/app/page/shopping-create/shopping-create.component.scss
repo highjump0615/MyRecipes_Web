@@ -10,6 +10,26 @@
 
   .dv-list {
     margin: 12px 0;
+
+    tr {
+      background-color: #c6c8ca;
+
+      // delete action
+      td:last-child {
+        width: 30px;
+        font-size: 10pt;
+        cursor: pointer;
+      }
+    }
+
+    td {
+      padding: 8px 18px;
+
+      .badge {
+        padding: 4px 8px;
+        font-size: 9pt;
+      }
+    }
   }
 
   .trigger-expand {
@@ -51,10 +71,18 @@
         }
       }
     }
+
+    .list-group-item {
+      padding: 6px 16px;
+    }
   }
 
   .list-group-item {
     cursor: pointer;
-    padding: 6px 16px;
+
+    &.selected {
+      background-color: #f3f3f3;
+    }
   }
+
 }

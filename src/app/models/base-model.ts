@@ -81,4 +81,25 @@ export class BaseModel {
     db.child(field).set(value, onComplete);
   }
 
+  public equalTo(data: BaseModel) {
+    return this.id === data.id;
+  }
+
+  public clone(): any {
+    const cloneObj = new (<any>this.constructor)(); // line fixed
+    for (const attribut in this) {
+      if (typeof this[attribut] === 'object') {
+        cloneObj[attribut] = this.clone();
+      } else {
+        cloneObj[attribut] = this[attribut];
+      }
+    }
+    return cloneObj;
+  }
+
+  deserialize(input: any): this {
+    Object.assign(this, input);
+
+    return this;
+  }
 }

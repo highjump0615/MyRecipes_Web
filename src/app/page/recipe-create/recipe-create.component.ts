@@ -10,6 +10,7 @@ import {ComboBoxComponent} from '../../components/combo-box/combo-box.component'
 import {ImageUploaderComponent} from '../../components/image-uploader/image-uploader.component';
 import {Recipe} from '../../models/recipe';
 import {User} from '../../models/user';
+import {BaseIngredientComponent} from '../base/base-ingredient.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {User} from '../../models/user';
   templateUrl: './recipe-create.component.html',
   styleUrls: ['./recipe-create.component.scss']
 })
-export class RecipeCreateComponent extends BaseComponent implements OnInit {
+export class RecipeCreateComponent extends BaseIngredientComponent implements OnInit {
 
   @ViewChild('imagePhoto') uploadPhoto: ImageUploaderComponent;
 
@@ -26,12 +27,6 @@ export class RecipeCreateComponent extends BaseComponent implements OnInit {
   serving: number;
   preparation = '';
 
-  // ingredient form
-  ingName = '';
-  ingUnit = '';
-  ingQuantity: number;
-
-  ingAll: Array<Ingredient> = [];
   ingRecipe: Array<Ingredient> = [];
   cmbIngList: Array<any> = [];
 
@@ -39,44 +34,24 @@ export class RecipeCreateComponent extends BaseComponent implements OnInit {
     public router: Router,
     private overlay: SpinnerOverlayService,
     public dialog: MatDialog,
-    private dataStore: DataStoreService
+    public dataStore: DataStoreService
   ) {
-    super(dialog);
+    super(dialog, dataStore);
 
-    this.ingAll = this.dataStore.ingredients;
     this.fillComboList();
 
-    // fetch cuisines
-    const dbRef = FirebaseManager.ref();
-
-    const query = dbRef.child(Ingredient.TABLE_NAME);
-    query.once('value')
-      .then((snapshot) => {
-        console.log(snapshot);
-
-        // clear
-        const aryIng = [];
-
-        snapshot.forEach(function(child) {
-          const i = new Ingredient(child);
-
-          aryIng.push(i);
-        });
-
-        this.ingAll = aryIng;
-
-        // fill combo box
-        this.fillComboList();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // fetch all ingredients
+    this.fetchAllIngredients().then(() => {
+      // fill combo box
+      this.fillComboList();
+    });
   }
 
   ngOnInit() {
   }
 
   fillComboList() {
+    console.log(this.ingAll);
     this.cmbIngList = [];
 
     for (let i = 0; i < this.ingAll.length; i++) {

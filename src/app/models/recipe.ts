@@ -4,8 +4,9 @@ import {User} from './user';
 import {FirebaseManager} from '../helpers/firebase-manager';
 import DataSnapshot = firebase.database.DataSnapshot;
 import {Utils} from '../helpers/utils';
+import {BaseIngredient} from './base-ingredient';
 
-export class Recipe extends BaseModel {
+export class Recipe extends BaseIngredient {
 
   //
   // table info
@@ -15,7 +16,6 @@ export class Recipe extends BaseModel {
   static FIELD_PHOTO = 'photoUrl';
   static FIELD_SKILL = 'skill';
   static FIELD_SERVING = 'serving';
-  static FIELD_INGREDIENT = 'ingredients';
   static FIELD_PREPARATION = 'preparation';
   static FIELD_USERID = 'userId';
 
@@ -35,14 +35,11 @@ export class Recipe extends BaseModel {
   serving: number;
   preparation = '';
 
-  ingredientIds = [];
-  ingredients: Array<Ingredient> = [];
+  rate = 0;
+  rateCount = 0;
 
   userId = '';
   user: User;
-
-  rate = 0;
-  rateCount = 0;
   ////
 
   fetchIngCount = 0;
@@ -59,14 +56,13 @@ export class Recipe extends BaseModel {
       this.skill = info[Recipe.FIELD_SKILL];
       this.serving = info[Recipe.FIELD_SERVING];
       this.preparation = info[Recipe.FIELD_PREPARATION];
-      this.userId = info[Recipe.FIELD_USERID];
 
       // rate
       this.rate = info[Recipe.FIELD_RATE];
       this.rateCount = info[Recipe.FIELD_RATECOUNT];
 
-      // set ingredients
-      this.ingredientIds = info[Recipe.FIELD_INGREDIENT];
+      // user
+      this.userId = info[Recipe.FIELD_USERID];
     }
   }
 
@@ -93,7 +89,7 @@ export class Recipe extends BaseModel {
         return null;
       }
 
-      return recipe.fetchIngredient();
+      return recipe.fetchIngredient() as Promise<Recipe>;
     });
   }
 
@@ -150,37 +146,5 @@ export class Recipe extends BaseModel {
     return Utils.getInstance().toDateWithDay(this.createdAt);
   }
 
-  /**
-   * fetch ingredients data
-   */
-  fetchIngredient(): Promise<Recipe> {
 
-    // get current index
-    const nIndex = this.ingredients.length;
-
-    if (nIndex >= Object.keys(this.ingredientIds).length) {
-      // all ingredients are fetched
-      return Promise.resolve(this);
-    }
-
-    const ingId = Object.keys(this.ingredientIds)[nIndex];
-
-    const dbRef = FirebaseManager.ref()
-      .child(Ingredient.TABLE_NAME)
-      .child(ingId);
-
-    const that = this;
-
-    return dbRef.once('value')
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const ingNew = new Ingredient(snapshot);
-          ingNew.quantity = that.ingredientIds[ingId];
-
-          that.ingredients.push(ingNew);
-        }
-
-        return that.fetchIngredient();
-      });
-  }
 }

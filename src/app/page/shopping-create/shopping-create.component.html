@@ -1,92 +1,146 @@
 <div class="pg-content">
-  <!-- title -->
-  <div class="pg-title">
-    <div class="justify-content-between">
-      <span class="title">New Shopping List</span>
+  <form
+    ngNativeValidate
+    (ngSubmit)="onSave()">
 
-      <!-- buttons -->
-      <div class="button-wrapper nm-center d-flex">
-        <button
-          type="button"
-          class="btn btn-gradient round"
-        >Save</button>
+    <!-- title -->
+    <div class="pg-title">
+      <div class="justify-content-between">
+        <span class="title">New Shopping List</span>
+
+        <!-- buttons -->
+        <div class="button-wrapper nm-center d-flex">
+          <button
+            type="submit"
+            class="btn btn-gradient round"
+            [disabled]="ingShopping.length == 0"
+          >Save</button>
+        </div>
       </div>
+
     </div>
 
-  </div>
+    <div class="dv-content">
+      <div class="card with-shadow">
+        <div class="d-flex flex-column">
+          <!-- title -->
+          <input class="form-control"
+                 name="shoppingName"
+                 required
+                 placeholder="Shopping List Name"
+                 [(ngModel)]="shoppingName" />
 
-  <div class="dv-content">
-    <div class="card with-shadow">
-      <div class="d-flex flex-column">
-        <!-- title -->
-        <input class="form-control"
-               placeholder="Shopping List Name" />
+          <!-- shopping list -->
+          <div class="dv-list">
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="ingShopping.length == 0; else listShopping">
+              <span>No items added yet</span>
+            </div>
 
-        <!-- shopping list -->
-        <div class="dv-list">
-          <div class="empty-notice">
-            <span>No items added yet</span>
+            <ng-template #listShopping>
+              <table class="table">
+                <tbody>
+                  <tr *ngFor="let data of ingShopping; let i = index">
+                    <!-- quantity -->
+                    <td>
+                      <span class="badge badge-pill badge-secondary"
+                      >{{data.quantity}} {{data.unit}}</span>
+                    </td>
+
+                    <!-- name -->
+                    <td>{{data.name}}</td>
+                    <td (click)="onRemoveIng(i)">
+                      <i class="icon ion-md-trash"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
           </div>
+
+          <!-- source list -->
+          <div class="trigger-expand"
+               (click)="onToggleExpand()">
+            <i class="icon ion-ios-arrow-down"
+               [ngClass]="{'ion-ios-arrow-up': expanded}"></i>
+          </div>
+          <div class="expand-content"
+               #expandContent>
+            <!-- add form -->
+            <form class="d-flex"
+                  ngNativeValidate
+                  (ngSubmit)="onAddIngredient()">
+              <!-- increase/decrease -->
+              <button
+                type="button"
+                class="btn"
+                clear icon-only
+                (click)="onButCountDec()">
+                <i class="icon ion-ios-remove-circle-outline"></i>
+              </button>
+              <button
+                type="button"
+                class="btn"
+                clear icon-only
+                style="margin-left: 6px;"
+                (click)="onButCountInc()">
+                <i class="icon ion-ios-add-circle-outline"></i>
+              </button>
+
+              <!-- count -->
+              <input
+                class="round" clear
+                name="quantity"
+                required
+                style="margin-left: 10px; width: 70px"
+                type="number"
+                placeholder="Count"
+                [(ngModel)]="ingQuantity"/>
+              <!-- unit -->
+              <input
+                class="round" clear readonly
+                name="unit"
+                required
+                style="margin-left: 10px; width: 60px"
+                placeholder="Unit"
+                [(ngModel)]="ingUnit"/>
+              <!-- item name -->
+              <input
+                class="round" clear readonly
+                name="ingredient"
+                style="margin-left: 10px; flex: 1"
+                placeholder="Item Name"
+                [(ngModel)]="ingName"/>
+
+              <button
+                type="submit"
+                class="btn"
+                clear
+                style="margin-left: 10px; padding: 0 !important;"
+                [disabled]="!(ingUnit && ingName && ingQuantity)"
+              >ADD</button>
+            </form>
+
+            <!-- list of all ingredients -->
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="ingAll.length == 0; else listAll">
+              <span>No ingredients yet</span>
+            </div>
+
+            <ng-template #listAll>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action"
+                    *ngFor="let data of ingAll; let i = index"
+                    (click)="onSelectIngredient(i)"
+                    [ngClass]="{'selected': i == selectedIndex}"
+                >{{data.name}}</li>
+              </ul>
+            </ng-template>
+          </div>
+
         </div>
-
-        <!-- source list -->
-        <div class="trigger-expand">
-          <i class="icon ion-ios-arrow-up"></i>
-        </div>
-        <div class="expand-content">
-          <!-- add form -->
-          <form class="d-flex">
-            <!-- increase/decrease -->
-            <button
-              type="button"
-              class="btn"
-              clear icon-only
-              (click)="onButCountDec()">
-              <i class="icon ion-ios-remove-circle-outline"></i>
-            </button>
-            <button
-              type="button"
-              class="btn"
-              clear icon-only
-              style="margin-left: 6px;"
-              (click)="onButCountInc()">
-              <i class="icon ion-ios-add-circle-outline"></i>
-            </button>
-
-            <!-- count -->
-            <input
-              class="round" clear
-              style="margin-left: 10px; width: 70px"
-              type="number"
-              placeholder="Count" />
-            <!-- unit -->
-            <input
-              class="round" clear readonly
-              style="margin-left: 10px; width: 60px"
-              placeholder="Unit" />
-            <!-- item name -->
-            <input
-              class="round" clear readonly
-              style="margin-left: 10px; flex: 1"
-              placeholder="Item Name" />
-
-            <button
-              type="button"
-              class="btn"
-              clear
-              style="margin-left: 10px; padding: 0 !important;"
-              (click)="onButCountInc()"
-            >ADD</button>
-          </form>
-
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
-            <li class="list-group-item list-group-item-action">Morbi leo risus</li>
-          </ul>
-        </div>
-
       </div>
     </div>
-  </div>
+  </form>
 
 </div>

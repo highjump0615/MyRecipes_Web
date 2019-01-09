@@ -5,6 +5,7 @@ import {User} from '../models/user';
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {AppComponent} from '../app.component';
 import {FirebaseManager} from '../helpers/firebase-manager';
+import {Shopping} from '../models/shopping';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -35,25 +36,41 @@ export class AuthGuard implements CanActivate {
     }
 
     // check authentication state
-    const userObj = this.storage.get(AppComponent.KEY_USER);
-    if (!userObj) {
-      const value = this.storage.get(AppComponent.KEY_ONBOARD);
-      if (!value) {
-        // app is opened for the first time
-        this.router.navigate(['onboard']);
-      } else {
-        // redirect to login, except from login page itself
-        if (path === 'login') {
-          return true;
+    if (!User.currentUser) {
+      const userObj = this.storage.get(AppComponent.KEY_USER);
+      if (!userObj) {
+        const value = this.storage.get(AppComponent.KEY_ONBOARD);
+        if (!value) {
+          // app is opened for the first time
+          this.router.navigate(['onboard']);
+        } else {
+          // redirect to login, except from login page itself
+          if (path === 'login') {
+            return true;
+          }
+
+          this.router.navigate(['login']);
         }
 
-        this.router.navigate(['login']);
+        return false;
       }
 
-      return false;
+      User.currentUser = new User().deserialize(userObj);
     }
 
-    User.currentUser = new User().deserialize(userObj);
+    //
+    // fetch shopping list
+    //
+    const aryShopping = [];
+    for (const shopping of User.currentUser.shoppingList) {
+      if (!(shopping instanceof Shopping)) {
+        aryShopping.push(new Shopping().deserialize(shopping));
+      } else {
+        aryShopping.push(shopping);
+      }
+    }
+    User.currentUser.shoppingList = aryShopping;
+
 
     if (path === 'login') {
       this.router.navigate(['home']);

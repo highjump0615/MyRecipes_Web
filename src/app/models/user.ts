@@ -3,6 +3,7 @@ import DataSnapshot = firebase.database.DataSnapshot;
 import {BaseModel, Deserializable} from './base-model';
 import {Cuisine} from './cuisine';
 import {Recipe} from './recipe';
+import {Shopping} from './shopping';
 
 export class User extends BaseModel implements Deserializable {
   static currentUser: User;
@@ -45,6 +46,7 @@ export class User extends BaseModel implements Deserializable {
   ////
 
   favourites: Array<Recipe> = [];
+  shoppingList: Array<Shopping> = [];
 
 
   fetchCuisineCount = 0;
@@ -402,10 +404,26 @@ export class User extends BaseModel implements Deserializable {
       });
   }
 
-  deserialize(input: any): this {
-    Object.assign(this, input);
+  fetchShoppingList(): Promise<User> {
+    const that = this;
 
-    return this;
+    // from db
+    const dbRef = FirebaseManager.ref()
+      .child(Shopping.TABLE_NAME)
+      .child(this.id);
+
+    return dbRef.once('value')
+      .then((snapshot) => {
+        that.shoppingList = [];
+
+        snapshot.forEach(function(child) {
+          const s = new Shopping(child);
+
+          that.shoppingList.push(s);
+        });
+
+        return that;
+      });
   }
 
 }

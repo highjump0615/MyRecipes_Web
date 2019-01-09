@@ -3,6 +3,7 @@ import {Tip} from '../models/tip';
 import {Ingredient} from '../models/ingredient';
 import {Recipe} from '../models/recipe';
 import {Review} from '../models/review';
+import {Shopping} from '../models/shopping';
 
 @Injectable()
 export class DataStoreService {

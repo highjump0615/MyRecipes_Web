@@ -113,7 +113,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'shopping/new',
+    path: 'shopping',
     component: PageComponent,
     loadChildren: './page/shopping-create/shopping-create.module#ShoppingCreateModule',
     canActivate: [AuthGuard]
