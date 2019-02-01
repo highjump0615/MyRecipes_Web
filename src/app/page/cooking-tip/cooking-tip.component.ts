@@ -25,7 +25,7 @@ export class CookingTipComponent implements OnInit {
 
     this.tips = this.dataStore.cookingTips;
 
-    // fetch cuisines
+    // fetch tips
     const dbRef = FirebaseManager.ref();
 
     const query = dbRef.child(Tip.TABLE_NAME);

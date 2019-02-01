@@ -47,6 +47,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
 
     //
     // fetch recipes
+    //
     const dbRef = FirebaseManager.ref();
 
     const that = this;

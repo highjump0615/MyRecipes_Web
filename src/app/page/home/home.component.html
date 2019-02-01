@@ -126,13 +126,13 @@
 
     <!-- content -->
     <div class="dv-no-list-item flex-c-row nm-center"
-         *ngIf="upcomings.length == 0; else listRecipe">
+         *ngIf="recipes.length == 0; else listRecipe">
       <span>No recipes yet</span>
     </div>
 
     <ng-template #listRecipe>
       <div class="row grid-recipe">
-        <div class="col-3" *ngFor="let data of upcomings">
+        <div class="col-3" *ngFor="let data of recipes">
           <app-recipe-grid-card
             [recipe]="data">
           </app-recipe-grid-card>
