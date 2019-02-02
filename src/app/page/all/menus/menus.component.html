@@ -1,6 +1,12 @@
+<div class="dv-no-list-item flex-c-row nm-center"
+     *ngIf="menus.length == 0; else list">
+  <span>No menus yet</span>
+</div>
+
 <!-- menus -->
+<ng-template #list>
 <div
-  *ngFor="let num of [1, 2, 3, 4, 5]">
+  *ngFor="let menu of menus">
 
   <!-- title -->
   <div class="title">Mother's Day Menus</div>
