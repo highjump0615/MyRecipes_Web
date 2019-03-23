@@ -1,0 +1,53 @@
+<div class="pg-content">
+
+  <form
+    ngNativeValidate
+    (ngSubmit)="onAdd()"
+    #tipForm="ngForm">
+
+    <!-- title -->
+    <div class="pg-title">
+      <div>
+        <span class="title">Add Cooking Tips</span>
+
+        <!-- buttons -->
+        <div class="button-wrapper nm-center d-flex">
+          <button
+            type="submit"
+            class="btn btn-gradient round"
+          >Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dv-content">
+      <div class="card with-shadow">
+
+        <div class="d-flex flex-column">
+          <!-- title -->
+          <div class="form-group">
+            <label>Title</label>
+            <input class="form-control"
+                   name="title"
+                   required
+                   placeholder="Enter title"
+                   [(ngModel)]="title" />
+          </div>
+
+          <!-- preparation -->
+          <div class="form-group">
+            <label>Cooking Tip</label>
+            <textarea class="form-control"
+                      name="content"
+                      required
+                      placeholder="Enter Content"
+                      [(ngModel)]="content"></textarea>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div>

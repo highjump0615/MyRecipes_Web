@@ -1,0 +1,13 @@
+@import '../../../styles/sass/conf/conf';
+
+:host {
+  .page-top {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+
+  nav {
+    background-color: $primary-bg;
+  }
+}

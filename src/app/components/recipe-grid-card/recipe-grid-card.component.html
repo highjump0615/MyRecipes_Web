@@ -1,0 +1,22 @@
+<a [routerLink]="'/recipe/' + recipe.id">
+  <div class="card d-flex flex-column with-shadow">
+    <div class="card-body d-flex flex-column">
+      <!-- image -->
+      <div
+        class="square border"
+        [style.background-image]="'url(' + recipe.photoUrl + ')'">
+      </div>
+
+      <!-- rate -->
+      <app-star-rate
+        [rating]="recipe.recipeRate()">
+      </app-star-rate>
+
+      <!-- title -->
+      <span class="title nm-center">{{recipe.title}}</span>
+    </div>
+
+    <!-- date -->
+    <div *ngIf="showDate" class="date">{{recipe.dateFormatted()}}</div>
+  </div>
+</a>

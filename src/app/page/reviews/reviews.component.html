@@ -1,0 +1,51 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Reviews</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient"
+          (click)="onButNewReview()">
+          <i class="icon ion-md-create"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div class="dv-content">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="reviews.length == 0; else list">
+      <span>No reviews yet</span>
+    </div>
+
+    <ng-template #list>
+      <div class="card with-shadow"
+           *ngFor="let data of reviews">
+
+        <!-- heading -->
+        <div class="d-flex align-items-center heading">
+          <app-star-rate
+            [rating]="data.rate">
+          </app-star-rate>
+          <span>{{data.title}}</span>
+        </div>
+
+        <!-- user & time -->
+        <div class="user-info"
+        >By {{data.user.fullName()}} on {{data.dateFormatted()}}</div>
+
+        <!-- content -->
+        <div class="content"
+        >{{data.content}}</div>
+
+      </div>
+    </ng-template>
+
+  </div>
+
+</div>

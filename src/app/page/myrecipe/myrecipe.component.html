@@ -1,0 +1,38 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">{{userCurrent.isAdmin() ? 'Recipes' : 'My Recipes'}}</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient"
+          (click)="onButNewRecipe()">
+          <i class="icon ion-md-add"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- recipes -->
+  <div class="dv-content">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="recipes.length == 0; else list">
+      <span>No recipes yet</span>
+    </div>
+
+    <ng-template #list>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of recipes">
+          <app-recipe-grid-card
+            [recipe]="data"
+            [showDate]="false">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

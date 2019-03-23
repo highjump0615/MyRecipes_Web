@@ -1,0 +1,84 @@
+<div class="nm-container red-bg nm-center">
+
+  <div class="flex-col main">
+
+    <!-- user photo -->
+    <img class="nm-center round border-white photo"
+         [src]="(userCurrent && userCurrent.photoUrl) ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'" />
+
+    <!-- user name -->
+    <span class="sp-notice"
+          style="margin-top: 12px;"
+    >{{userCurrent ? userCurrent.fullName() : ''}}</span>
+
+    <!-- title -->
+    <span class="sp-title top-border bottom-border"
+    >Any allergies or diets?</span>
+
+    <app-expand-menu>
+      <!-- allergies -->
+      <app-expand-menu-item
+        title="Allergies"
+        [expanded]="true">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="container-scroll">
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="allergies.length == 0; else listAllergy">
+              <span>No items yet</span>
+            </div>
+
+            <ng-template #listAllergy>
+              <div class="row">
+                <div class="col-3" *ngFor="let data of allergies">
+                  <app-cuisine-item [item]="data"></app-cuisine-item>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+      </app-expand-menu-item>
+
+      <!-- diets -->
+      <app-expand-menu-item
+        title="Diets">
+
+        <!-- content -->
+        <div
+          class="content">
+          <div class="container-scroll">
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="diets.length == 0; else listDiet">
+              <span>No items yet</span>
+            </div>
+
+            <ng-template #listDiet>
+              <div class="row">
+                <div class="col-3" *ngFor="let data of diets">
+                  <app-cuisine-item [item]="data"></app-cuisine-item>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+      </app-expand-menu-item>
+    </app-expand-menu>
+
+
+    <!-- buttons -->
+    <div class="button-wrapper nm-center">
+      <button
+        full
+        type="button"
+        class="btn btn-light round"
+        (click)="onButNext()"
+      >Next</button>
+    </div>
+
+  </div>
+
+</div>

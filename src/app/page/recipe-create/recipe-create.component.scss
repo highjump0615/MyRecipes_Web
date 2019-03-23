@@ -1,0 +1,73 @@
+@import '../../../styles/sass/conf/conf';
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+}
+
+.dv-content {
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  .card {
+    padding: 16px 16px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+
+    label {
+      color: darkslategrey;
+      font-size: 10pt;
+      margin-bottom: 2px;
+    }
+  }
+
+  textarea {
+    height: 240px !important;
+  }
+}
+
+.dv-ingredient {
+  button {
+    padding: 0 !important;
+  }
+
+  table {
+    margin-top: 6px;
+
+    th:last-child {
+      width: 30px;
+    }
+
+    // delete action
+    td:last-child {
+      font-size: 10pt;
+      cursor: pointer;
+    }
+  }
+}
+
+// photo
+::ng-deep app-image-uploader {
+  div {
+    color: gray;
+    line-height: 1.5;
+
+    font-size: 14pt;
+    i {
+      font-size: 17pt;
+      margin-right: 10px;
+    }
+  }
+
+  .dv-photo {
+    background: lightgrey;
+    width: 200px !important;
+    height: 130px !important;
+    border-radius: 0 !important;
+  }
+}
+

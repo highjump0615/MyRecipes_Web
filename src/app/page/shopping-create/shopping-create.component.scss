@@ -1,0 +1,88 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-content {
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  .card {
+    padding: 14px 16px;
+  }
+
+  .dv-list {
+    margin: 12px 0;
+
+    tr {
+      background-color: #c6c8ca;
+
+      // delete action
+      td:last-child {
+        width: 30px;
+        font-size: 10pt;
+        cursor: pointer;
+      }
+    }
+
+    td {
+      padding: 8px 18px;
+
+      .badge {
+        padding: 4px 8px;
+        font-size: 9pt;
+      }
+    }
+  }
+
+  .trigger-expand {
+    height: 28px;
+    background: $primary-bg;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: $light;
+
+    i {
+      font-size: 16pt;
+    }
+  }
+
+  .expand-content {
+    button {
+      color: $light;
+
+      &[icon-only] {
+        font-size: 14pt !important;
+      }
+    }
+
+    form {
+      background: $primary;
+      padding: 6px 14px;
+      align-items: center;
+
+      input {
+        background: $light;
+
+        &.round {
+          padding: 4px 10px;
+        }
+      }
+    }
+
+    .list-group-item {
+      padding: 6px 16px;
+    }
+  }
+
+  .list-group-item {
+    cursor: pointer;
+
+    &.selected {
+      background-color: #f3f3f3;
+    }
+  }
+
+}

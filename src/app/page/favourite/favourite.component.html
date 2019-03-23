@@ -1,0 +1,36 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Favorites</span>
+    </div>
+  </div>
+
+  <!-- menus -->
+  <div class="dv-menus">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active">Recipes</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- recipes -->
+  <div class="dv-content">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="userCurrent.favourites.length == 0; else list">
+      <span>No favorite recipes yet</span>
+    </div>
+
+    <ng-template #list>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of userCurrent.favourites">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

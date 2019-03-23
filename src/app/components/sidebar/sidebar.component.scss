@@ -1,0 +1,27 @@
+@import '../../../styles/sass/conf/conf';
+
+:host {
+  .al-sidebar {
+    width: $sidebar-width;
+    height: 100%;
+    padding-top: 41px;
+    left: 0;
+
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 10px #bbb;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    z-index: 1;
+  }
+
+}

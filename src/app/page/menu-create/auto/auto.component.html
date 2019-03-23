@@ -1,0 +1,162 @@
+<div class="card with-shadow">
+
+  <form class="d-flex flex-column">
+    <!-- title -->
+    <input class="form-control"
+           placeholder="Menu Name" />
+
+    <!-- date -->
+    <div class="form-control form-control-wrapper">
+      <input class="form-control" placeholder="Date" />
+      <i class="icon ion-md-calendar"></i>
+    </div>
+
+    <!-- filter -->
+    <app-expand-menu
+      [multiple]="true">
+      <!-- allergies -->
+      <app-expand-menu-item
+        class="menu-filter"
+        title="Filter">
+
+        <!-- content -->
+        <div
+          class="content">
+
+          <!-- use preset -->
+          <div class="d-flex justify-content-between align-items-center dv-preset">
+            <span>Use presets?</span>
+            <button type="button"
+                    class="btn"
+                    clear icon-only>
+              <i class="icon ion-md-square-outline"></i>
+            </button>
+          </div>
+
+          <!-- pref menus -->
+          <app-expand-menu
+            class="menu-cuisines"
+            [multiple]="true">
+            <!-- favourites -->
+            <app-expand-menu-item
+              title="Favorite Cuisines"
+              [expanded]="true">
+
+              <!-- content -->
+              <div
+                class="content">
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="favourites.length == 0; else listFavourite">
+                  <span>No items yet</span>
+                </div>
+
+                <ng-template #listFavourite>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of favourites">
+                      <app-cuisine-item
+                        [index]="CUISINE_FAVOURITE"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </app-expand-menu-item>
+
+            <!-- allergies -->
+            <app-expand-menu-item
+              title="Allergies">
+
+              <!-- content -->
+              <div
+                class="content">
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="allergies.length == 0; else listAllergy">
+                  <span>No items yet</span>
+                </div>
+
+                <ng-template #listAllergy>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of allergies">
+                      <app-cuisine-item
+                        [index]="CUISINE_ALLERGY"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </app-expand-menu-item>
+
+            <!-- diets -->
+            <app-expand-menu-item
+              title="Diets">
+
+              <!-- content -->
+              <div
+                class="content">
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="diets.length == 0; else listDiet">
+                  <span>No items yet</span>
+                </div>
+
+                <ng-template #listDiet>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of diets">
+                      <app-cuisine-item
+                        [index]="CUISINE_DIET"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </app-expand-menu-item>
+
+            <!-- disliked -->
+            <app-expand-menu-item
+              title="Disliked Foods">
+
+              <!-- content -->
+              <div
+                class="content">
+                <div class="dv-no-list-item flex-c-row nm-center"
+                     *ngIf="dislikes.length == 0; else listDislike">
+                  <span>No items yet</span>
+                </div>
+
+                <ng-template #listDislike>
+                  <div class="row">
+                    <div class="col-3" *ngFor="let data of dislikes">
+                      <app-cuisine-item
+                        [index]="CUISINE_DISLIKE"
+                        [item]="data"
+                        (selectChanged)="onSelectItem($event)">
+                      </app-cuisine-item>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </app-expand-menu-item>
+          </app-expand-menu>
+
+        </div>
+
+      </app-expand-menu-item>
+    </app-expand-menu>
+
+    <!-- generate button -->
+    <div class="button-wrapper nm-center">
+      <button
+        type="button"
+        class="btn btn-primary round"
+        (click)="onButSubmit()"
+      >Generate Menu</button>
+    </div>
+
+  </form>
+
+</div>

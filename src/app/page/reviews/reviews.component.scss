@@ -1,0 +1,44 @@
+@import '../../../styles/sass/conf/conf';
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+  button {
+    padding: 2px 8px !important;
+    font-size: 12pt !important;
+  }
+}
+
+.dv-content {
+  margin-top: 12px;
+
+  .card {
+    padding: 6px 12px 8px 12px;
+    margin-bottom: 10px;
+
+    .heading {
+      app-star-rate {
+        width: 78px;
+      }
+
+      span {
+        font-size: 10pt;
+        font-weight: bolder;
+        margin-left: 12px;
+      }
+    }
+
+    .user-info {
+      font-size: 8pt;
+      opacity: 0.6;
+    }
+
+    .content {
+      white-space: pre-wrap;
+      margin-top: 6px;
+      font-size: 9pt;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="nm-container red-bg nm-center">
+
+  <div class="flex-row main">
+    <!-- logo -->
+    <img class="logo" src="../../../assets/imgs/logo.png" />
+
+    <!-- forget form-->
+    <form
+      ngNativeValidate
+      (ngSubmit)="onSubmit()"
+      style="margin-left: 80px; width: 240px;">
+      <div class="flex-col">
+
+        <!-- title -->
+        <span class="sp-title">Forgot Password</span>
+
+        <!-- email-->
+        <div class="flex-c-row input-item signin-input">
+          <img
+            src="../assets/imgs/signin/signin_email.png"
+            style="width: 16px;" />
+          <input
+            name="email"
+            type="email"
+            required
+            class="form-control"
+            placeholder="Email"
+            [(ngModel)]="email">
+        </div>
+
+        <span
+          class="sp-notice"
+          >Put in your email address so we can <br />send a password reset link</span>
+
+        <!-- buttons -->
+        <div class="button-wrapper">
+          <button
+            full
+            type="submit"
+            class="btn btn-light round"
+          >Submit</button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+</div>

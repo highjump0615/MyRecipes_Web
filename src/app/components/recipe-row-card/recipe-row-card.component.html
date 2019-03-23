@@ -1,0 +1,17 @@
+<div
+  class="card with-shadow flex-row">
+  <!-- image -->
+  <img [src]="recipe.photoUrl" />
+
+  <!-- info -->
+  <div class="card-body">
+    <!-- title -->
+    <span class="recipe-title">{{recipe.title}}</span>
+    <!-- rating -->
+    <app-star-rate
+      [rating]="recipe.recipeRate()"
+      starSize="12">
+    </app-star-rate>
+  </div>
+
+</div>

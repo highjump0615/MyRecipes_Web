@@ -1,0 +1,37 @@
+@import '../../../styles/sass/conf/conf';
+@import "~bootstrap/scss/bootstrap";
+
+
+.pg-title {
+  app-search-bar {
+    flex: 1;
+    margin-left: 100px;
+  }
+}
+
+.dv-menus {
+  background-color: $primary;
+  color: $light;
+
+  // content
+  > .nav {
+    margin: 0 auto;
+    width: $page-content-width;
+
+    .nav-link {
+      color: $light;
+
+      @include hover {
+        color: $light-dark;
+      }
+
+      &.active {
+        border-bottom: $danger 3px solid;
+      }
+    }
+  }
+}
+
+.dv-content {
+  margin-top: 12px;
+}

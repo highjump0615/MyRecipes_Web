@@ -1,0 +1,36 @@
+@import '../../../styles/sass/conf/conf';
+
+:host {
+
+  input {
+    display: none;
+  }
+
+  .dv-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    border: solid 3px $light;
+    overflow: hidden;
+
+    button {
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    img.content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+
+}
+

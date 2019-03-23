@@ -1,0 +1,216 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'sass/conf/conf';
+@import 'sass/buttons';
+@import 'sass/form';
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// font
+@font-face {
+  font-family: 'myriad';
+  src: url('../assets/fonts/MyriadProRegular.ttf') format('truetype');
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'myriad';
+  background-color: $light;
+}
+
+/* background */
+.red-bg {
+ background-image: url('../assets/imgs/onboard_bg.png');
+ background-size: cover;
+}
+
+.flex-row {
+  display: flex;
+}
+.flex-c-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.nm-center {
+  align-self: center;
+  justify-content: center !important;
+  text-align: center;
+}
+
+.nm-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+general control properties
+ */
+[full] {
+  width: 100%;
+}
+
+[clear] {
+  border: 0;
+  background-color: transparent;
+
+  &:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+button[icon-only] {
+  padding: 0 !important;
+}
+
+.round {
+  border-radius: 300px !important;
+}
+
+//
+// border
+//
+.top-border {
+  border-top: 1px solid $light;
+}
+.bottom-border {
+  border-bottom: 1px solid $light;
+}
+.border-white {
+  border: solid 3px $light;
+}
+
+
+//
+// signin form
+//
+.signin-input {
+  border-bottom: 1px solid $light;
+
+  .form-control {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 9pt;
+    color: $content-text;
+
+    @include placeholderStyle($content-text, 0.7);
+
+    &:focus {
+      color: $content-text;
+      border: none;
+      background: transparent;
+    }
+  }
+}
+.signin-input img {
+}
+
+/**
+  spans
+ */
+.sp-notice {
+  color: $light;
+  font-size: 10pt;
+  line-height: 1.5;
+
+  a {
+    color: $danger;
+    text-decoration: none !important;
+  }
+}
+.sp-title {
+  color: $light;
+  font-size: 11pt;
+}
+
+//
+// square image
+//
+.square {
+  position: relative;
+  padding-bottom: 100%;
+  background-position: 50%;
+  background-size: cover;
+}
+
+//
+// card
+//
+.with-shadow {
+  box-shadow: 0 2px 10px #ccc !important;
+}
+
+// recipes grid
+.row.grid-recipe {
+  margin-left: -4px;
+  margin-right: -4px;
+
+  .col-3 {
+    padding: 4px 4px;
+  }
+}
+
+.form-control {
+
+}
+
+.form-control-wrapper {
+  display: flex;
+  align-items: center;
+
+  i {
+    color: $primary;
+  }
+
+  &:focus-within {
+    border-color: $primary-bg;
+  }
+
+  input {
+    padding: 0 !important;
+    border: none;
+    box-shadow: none;
+
+    &:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.notice-error {
+  font-size: 9pt;
+
+}
+
+.inactive {
+  opacity: 0.6;
+}
+
+.dv-no-list-item {
+  @extend .no-list-font;
+  min-height: 94px;
+}
+.no-list-font {
+  font-size: 9pt;
+  color: gray;
+}
+
+/**
+  photo images
+ */
+img.photo {
+  object-fit: cover;
+}

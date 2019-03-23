@@ -1,0 +1,59 @@
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+  app-star-rate {
+    margin-left: 10px;
+    width: 92px;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 2px 8px !important;
+    font-size: 12pt !important;
+  }
+}
+
+.dv-content {
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  .image {
+    height: 300px;
+    margin-bottom: 16px;
+
+    img {
+      object-fit: cover;
+      flex: 1;
+      border-radius: 4px;
+    }
+  }
+
+  .card {
+    margin-top: 6px;
+
+    .card-body {
+      padding: 6px 10px;
+
+      .title {
+        font-size: 9pt;
+        font-weight: bolder;
+      }
+
+      ul {
+        margin: 0;
+        columns: 3;
+
+        li {
+          padding-right: 4px;
+        }
+      }
+    }
+
+    .description {
+      white-space: pre-wrap;
+      margin: 6px 0 0 0;
+    }
+  }
+}

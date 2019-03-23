@@ -1,0 +1,48 @@
+@import '../../styles/sass/conf/conf';
+
+:host {
+  .al-main {
+    margin-left: $sidebar-width;
+    min-height: 500px;
+    position: relative;
+    padding-top: 41px;
+
+    font-size: 9pt;
+  }
+
+  .pg-content {
+    display: flex;
+    width: 100%;
+  }
+
+  ::ng-deep .pg-title {
+    background-color: white;
+    height: 64px;
+
+    > div {
+      margin: 0 auto;
+      width: $page-content-width;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      // title
+      span.title {
+        font-size: 18pt;
+        color: $dark-text;
+      }
+    }
+  }
+
+  ::ng-deep .dv-content {
+    margin: 0 auto;
+    width: $page-content-width;
+  }
+
+  /deep/ .form-control {
+    height: auto;
+    padding: 4px 12px;
+
+    @include placeholderStyle($dark-text, 0.4);
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../../../styles/sass/conf/conf';
+
+.logo {
+  width: 160px;
+  height: 175px;
+}
+
+.main {
+  align-self: center;
+}
+
+.content {
+  margin-left: 80px;
+  width: 200px;
+}
+
+.sp-title {
+  margin-bottom: 20px;
+}
+
+app-check-box:not(:first-child) {
+  margin-top: 6px;
+}
+
+
+// operations
+.button-wrapper {
+  margin-top: 30px;
+
+  button {
+    font-size: 9pt;
+  }
+}
+
+
+// photo
+::ng-deep app-image-uploader {
+  div {
+    color: $light;
+    font-size: 9pt;
+    line-height: 1.5;
+
+    i {
+      font-size: 17pt;
+    }
+  }
+
+  .dv-photo {
+    background: $primary;
+  }
+}

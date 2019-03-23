@@ -1,0 +1,39 @@
+@import '../../../styles/sass/conf/conf';
+@import "~bootstrap/scss/bootstrap";
+
+.dv-content {
+  margin-top: 16px;
+
+  .card {
+    margin-bottom: 12px;
+  }
+
+  .card-body {
+    padding: 10px 12px;
+
+    .card-title {
+      font-size: 12pt;
+      margin-bottom: 6pt;
+    }
+
+    .card-text {
+      color: $gray-600;
+      white-space: pre-line
+    }
+  }
+}
+
+.pg-title {
+  > div {
+    justify-content: space-between;
+  }
+
+  app-search-bar {
+    width: 260px !important;
+  }
+
+  button {
+    padding: 2px 8px !important;
+    font-size: 12pt !important;
+  }
+}

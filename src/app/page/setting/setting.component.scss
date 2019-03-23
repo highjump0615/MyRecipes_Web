@@ -1,0 +1,19 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-content {
+  margin-top: 16px;
+}
+
+::ng-deep app-expand-menu-item {
+
+  margin-bottom: 10px;
+
+  a.menu-list-link {
+    height: 34px !important;
+    color: $dark-text !important;
+
+    i {
+      color: $primary;
+    }
+  }
+}

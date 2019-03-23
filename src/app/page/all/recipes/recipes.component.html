@@ -1,0 +1,12 @@
+
+<div class="dv-no-list-item flex-c-row nm-center"
+     *ngIf="recipes.length == 0; else list">
+  <span>No recipes yet</span>
+</div>
+
+<ng-template #list>
+  <app-recipe-row-card
+    *ngFor="let data of recipes"
+    [recipe]="data">
+  </app-recipe-row-card>
+</ng-template>

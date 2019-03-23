@@ -1,0 +1,51 @@
+<div class="pg-content">
+  <form
+    ngNativeValidate
+    (ngSubmit)="onAdd()">
+
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Write a Review</span>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex">
+        <button
+          type="button"
+          class="btn btn-gradient round"
+          (click)="onAdd()"
+        >Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div class="dv-content">
+    <div class="card with-shadow">
+
+      <app-star-rate
+        [starSize]="24"
+        [rating]="5"
+        [readOnly]="false"
+        #starRate>
+      </app-star-rate>
+
+      <form class="d-flex flex-column">
+        <!-- first name -->
+        <input class="form-control"
+               name="review-title"
+               required
+               placeholder="Headline for review"
+               [(ngModel)]="title" />
+        <textarea class="form-control"
+                  name="content"
+                  required
+                  placeholder="Write your review here"
+                  [(ngModel)]="content"></textarea>
+      </form>
+    </div>
+  </div>
+
+  </form>
+
+</div>

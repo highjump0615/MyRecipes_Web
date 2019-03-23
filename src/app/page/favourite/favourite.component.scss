@@ -1,0 +1,24 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-menus {
+  background-color: $primary;
+  color: $light;
+
+  // content
+  > .nav {
+    margin: 0 auto;
+    width: $page-content-width;
+
+    .nav-link {
+      color: $light;
+
+      &.active {
+        border-bottom: $danger 3px solid;
+      }
+    }
+  }
+}
+
+.dv-content {
+  margin-top: 12px;
+}

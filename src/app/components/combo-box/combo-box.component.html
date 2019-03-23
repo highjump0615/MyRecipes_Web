@@ -1,0 +1,29 @@
+<div class="combo-container">
+
+  <input class="form-control"
+         required
+         placeholder="Ingredient"
+         (focus)="onFocusInput()"
+         (blur)="onBlurInput()"
+         (ngModelChange)="onChangeText($event)"
+         [ngModel]="text"/>
+
+  <!-- drop down -->
+  <div class="data-container with-shadow"
+       *ngIf="showDropDown">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="list.length == 0; else listItem">
+      <span>No ingredients yet</span>
+    </div>
+
+    <ng-template #listItem>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action"
+            *ngFor="let data of list; let i = index"
+            (mousedown)="onItemSelected(i)"
+        >{{data.name}}</li>
+      </ul>
+    </ng-template>
+  </div>
+
+</div>

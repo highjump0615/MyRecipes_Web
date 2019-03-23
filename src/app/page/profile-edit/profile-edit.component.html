@@ -1,0 +1,98 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Edit Profile</span>
+    </div>
+  </div>
+
+  <div class="dv-content">
+
+    <div class="card with-shadow">
+      <!-- upload image -->
+      <app-image-uploader
+        *ngIf="!userCurrent.isAdmin()"
+        class="nm-center"
+        [defaultImg]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'"
+        #imageProfile>
+      </app-image-uploader>
+
+      <form class="d-flex flex-column"
+            ngNativeValidate
+            (ngSubmit)="onSubmit()">
+        <!-- first name -->
+        <div class="form-group"
+             *ngIf="!userCurrent.isAdmin()">
+          <label>First Name</label>
+          <input
+            class="form-control"
+            name="firstName"
+            required
+            placeholder="Enter first name"
+            [(ngModel)]="firstName" />
+        </div>
+
+        <!-- last name -->
+        <div class="form-group"
+             *ngIf="!userCurrent.isAdmin()">
+          <label>Last Name</label>
+          <input
+            class="form-control"
+            name="lastName"
+            placeholder="Enter last name"
+            required
+            [(ngModel)]="lastName" />
+        </div>
+
+        <!-- description -->
+        <div class="form-group"
+             *ngIf="!userCurrent.isAdmin()">
+          <label>Description</label>
+          <textarea
+            class="form-control"
+            name="desc"
+            placeholder="Enter description"
+            [(ngModel)]="desc">
+          </textarea>
+        </div>
+
+        <!-- current password -->
+        <div class="form-group"
+             [style.margin-top]="userCurrent.isAdmin() ? '20px' : 'auto'">
+          <label>Current Password</label>
+          <input class="form-control"
+                 name="oPassword"
+                 type="password"
+                 placeholder="Enter current password"
+                 [(ngModel)]="oPassword"/>
+        </div>
+
+        <!-- new password -->
+        <div class="form-group">
+          <label>New Password</label>
+          <input class="form-control"
+                 name="cPassword"
+                 type="password"
+                 placeholder="Enter new password"
+                 [(ngModel)]="password" />
+        </div>
+
+        <!-- re-enter new password -->
+        <div class="form-group">
+          <label>Re-Enter New Password</label>
+          <input class="form-control"
+                 name="cPassword"
+                 type="password"
+                 placeholder="Re-enter new password"
+                 [(ngModel)]="cPassword"/>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary btn-rect"
+        >Save</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>

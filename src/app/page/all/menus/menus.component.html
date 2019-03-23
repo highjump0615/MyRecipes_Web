@@ -1,0 +1,28 @@
+<div class="dv-no-list-item flex-c-row nm-center"
+     *ngIf="menus.length == 0; else list">
+  <span>No menus yet</span>
+</div>
+
+<!-- menus -->
+<ng-template #list>
+<div
+  *ngFor="let menu of menus">
+
+  <!-- title -->
+  <div class="title">Mother's Day Menus</div>
+
+  <!-- recipes -->
+  <div class="dv-recipes">
+    <app-hscroll-container [offset]="660">
+      <div class="row flex-nowrap">
+        <div class="col-3"
+             *ngFor="let num of [1, 2, 3, 4, 5]">
+          <app-recipe-grid-card
+            [showDate]="false">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </app-hscroll-container>
+  </div>
+
+</div>

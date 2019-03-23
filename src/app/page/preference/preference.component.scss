@@ -1,0 +1,29 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-content {
+  margin-top: 16px;
+}
+
+:host /deep/ app-expand-menu-item {
+
+  margin-bottom: 10px;
+
+  a.menu-list-link {
+    color: $dark-text !important;
+
+    i {
+      color: $primary;
+    }
+  }
+
+  .content {
+    padding: 0 8px;
+  }
+  .row {
+    margin: 0;
+  }
+
+  .col-3 {
+    padding: 4px 6px;
+  }
+}

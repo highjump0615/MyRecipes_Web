@@ -1,0 +1,128 @@
+@import '../../../styles/sass/conf/conf';
+
+:host {
+}
+
+.dv-profile, .dv-recipes {
+  margin: 0 auto;
+  width: $page-content-width;
+}
+
+.photo {
+  width: 68px;
+  height: 68px;
+  border: 3px solid $primary;
+  margin-right: 10px;
+}
+
+.username {
+  span {
+    font-size: 15pt;
+    margin-right: 4px;
+  }
+
+  a {
+    margin-top: -4px;
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.user-desc {
+  font-size: 10pt;
+  color: gray;
+}
+
+.button-wrapper {
+  button {
+    width: 120px;
+    font-size: 10pt;
+    padding: 4pt 0;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.dv-menus {
+  background-color: $primary;
+  margin-top: 10px;
+  color: $light;
+
+  // content
+  > div {
+    margin: 0 auto;
+    width: $page-content-width;
+  }
+
+  .dv-menu-list {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    margin: 0 10px;
+
+    .list-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 2px 8px;
+      background-color: $danger;
+      margin: 2px 6px 2px 0;
+
+      img {
+        height: 10px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .btn-add {
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+$menu-spacing: 6px;
+
+.dv-menu {
+  padding: $menu-spacing 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #fff6;
+  }
+}
+
+
+.dv-recipes {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    color: $primary;
+    font-size: 10.5pt;
+
+    .line {
+      height: 1px;
+      background-color: $primary;
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    a {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+}
+
+.dv-no-list-item {
+  min-height: 226px;
+}

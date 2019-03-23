@@ -1,0 +1,49 @@
+<div class="nm-container red-bg nm-center">
+
+  <div class="flex-row main">
+    <!-- logo -->
+    <img class="logo" src="../../../assets/imgs/logo.png" />
+
+    <!-- slide show -->
+    <div
+      class="flex-col"
+      style="margin-left: 80px; margin-top: 20px;"
+    >
+      <div
+        class="owl-carousel owl-theme"
+        appOwlcarousel
+        [owlOptions]="owlCarouselOptions">
+
+        <div class="item">
+          <span>Input your preference and generate<br />a menu that has everything you want.</span>
+        </div>
+        <div class="item">
+          <span>Have access to thousands of recipes<br />that are tailored to your specific<br />preference.</span>
+        </div>
+        <div class="item">
+          <span>Upload your own recipes, take pictures<br />of what you make, and share it on<br />social media.</span>
+        </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center">
+          <button
+            full
+            type="button"
+            class="btn btn-light round"
+            (click)="onButNext()"
+          >{{isLastPage ? 'All Done!' : 'Next'}}</button>
+          <button
+            full clear
+            type="button"
+            class="btn"
+            style="color: white;"
+            *ngIf="!isLastPage"
+            (click)="onButSkip()"
+          >Skip</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

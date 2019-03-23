@@ -1,0 +1,25 @@
+@import '../../../styles/sass/conf/conf';
+
+.dv-version {
+  background-color: $primary-bg;
+  color: $light;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    width: 150px;
+    height: 164px;
+    margin-bottom: 20px;
+  }
+
+  .dv-content {
+    margin-top: 16px;
+  }
+}
+
+.dv-content {
+  margin-top: 16px;
+}

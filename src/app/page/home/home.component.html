@@ -1,0 +1,144 @@
+<div class="pg-content">
+  <!-- profile -->
+  <div class="d-flex dv-profile"
+       style="margin-top: 16px;">
+    <!-- user photo -->
+    <img class="round photo"
+         [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../../assets/imgs/default_user.png'" />
+
+    <!--user info-->
+    <div class="d-flex flex-col"
+         style="flex: 1;">
+      <!-- username -->
+      <div class="username d-flex">
+        <span>{{userCurrent.fullName()}}</span>
+        <a routerLink="/profile">
+          <img src="../../../../assets/imgs/home_edit.png" />
+        </a>
+      </div>
+
+      <!-- description -->
+      <div class="user-desc">{{userCurrent.desc}}</div>
+    </div>
+
+    <!-- buttons -->
+    <div class="button-wrapper nm-center d-flex">
+      <button
+        type="button"
+        class="btn btn-gradient round"
+        (click)="onButCookingTip()"
+      >Cooking Tips</button>
+      <button
+        type="button"
+        class="btn btn-gradient round"
+        (click)="onButFavourite()"
+      >Favorites</button>
+      <button
+        type="button"
+        class="btn btn-gradient round"
+        (click)="onButMyRecipe()"
+      >My Recipes</button>
+    </div>
+
+  </div>
+
+  <!-- menus -->
+  <div class="dv-menus">
+    <div class="flex-col">
+      <!-- menus -->
+      <div class="d-flex dv-menu bottom-border">
+        <span>Menus</span>
+        <!-- menu items -->
+        <div class="dv-menu-list">
+          <div class="list-item round"
+               *ngFor="let data of menus">
+            <img src="../../../../assets/imgs/home_menu_icon.png" />
+            <span>Weeknight suppers</span>
+          </div>
+        </div>
+        <!-- add button -->
+        <button
+          icon-only clear
+          type="button"
+          class="btn btn-add"
+          (click)="onButAddMenu()">
+          <img
+            src="../../../../assets/imgs/home_menu_add.png" />
+        </button>
+      </div>
+
+      <!-- shopping list -->
+      <div class="d-flex dv-menu">
+        <span>Shopping List</span>
+        <!-- menu items -->
+        <div class="dv-menu-list d-flex">
+          <div class="list-item round"
+               *ngFor="let data of userCurrent.shoppingList"
+               (click)="onClickShopping(data)">
+            <img src="../../../../assets/imgs/home_list_icon.png" />
+            <span>{{data.name}}</span>
+          </div>
+        </div>
+        <!-- add button -->
+        <button
+          icon-only clear
+          type="button"
+          class="btn btn-add"
+          (click)="onButAddShoppingList()">
+          <img
+            src="../../../../assets/imgs/home_menu_add.png" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- recipes -->
+  <div class="dv-recipes">
+    <!-- upcoming -->
+    <div class="title">
+      <span>Upcoming Recipes: </span>
+      <div class="line"></div>
+    </div>
+
+    <!-- content -->
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="upcomings.length == 0; else listUpcoming">
+      <span>No upcoming recipes yet</span>
+    </div>
+
+    <ng-template #listUpcoming>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of upcomings">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- recipes & menus -->
+    <div class="title"
+         style="margin-top: 4px">
+      <span>Browse recipes and menus</span>
+      <div class="line"></div>
+      <a routerLink="/all">View All ></a>
+    </div>
+
+    <!-- content -->
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="recipes.length == 0; else listRecipe">
+      <span>No recipes yet</span>
+    </div>
+
+    <ng-template #listRecipe>
+      <div class="row grid-recipe">
+        <div class="col-3" *ngFor="let data of recipes">
+          <app-recipe-grid-card
+            [recipe]="data">
+          </app-recipe-grid-card>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

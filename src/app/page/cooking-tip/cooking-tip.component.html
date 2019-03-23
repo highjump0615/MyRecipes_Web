@@ -1,0 +1,44 @@
+<div class="pg-content">
+  <!-- title -->
+  <div class="pg-title">
+    <div>
+      <span class="title">Cooking Tips</span>
+
+      <!-- search bar -->
+      <app-search-bar
+        (textChange)="onChangeKeyword($event)">
+      </app-search-bar>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center d-flex"
+           *ngIf="userCurrent.isAdmin()">
+        <button
+          type="button"
+          class="btn btn-gradient"
+          (click)="onButNew()">
+          <i class="icon ion-md-add"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv-content">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="tips.length == 0; else list">
+      <span>No cooking tips yet</span>
+    </div>
+
+    <ng-template #list>
+      <div class="card with-shadow"
+           *ngFor="let data of tips">
+        <div class="card-body">
+          <div class="card-title">{{data.title}}</div>
+          <p class="card-text">{{data.content}}</p>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+
+</div>
